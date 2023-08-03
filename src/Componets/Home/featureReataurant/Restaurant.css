@@ -1,0 +1,54 @@
+.Restaurant-holder {
+    height: max-content;
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    align-items: center;
+}
+
+.Restaurantholder-wrapper{
+    height:100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    }
+
+
+.all-restaurant{
+    display: flex;
+    flex-wrap: wrap;
+    height: 90%;
+    width: 100%;
+    justify-content: space-between;   
+}
+
+
+.Partners {
+    height: 20%;
+    width: 100%;
+}
+
+.Partners h1 {
+    text-align: center;
+}
+
+@media (min-width: 67px) and (max-width: 550px) {
+
+    /* CSS styles for mobile devices */
+   
+}
+
+@media (min-width: 623px) and (max-width: 1024px) {
+
+    /* CSS styles for laptop */
+  
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* CSS styles for tablets */
+   
+  
+}

@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+
+.bigcontainer{
+  min-height: 92vh;
+  min-width: 100vw;
+  background: rgb(235, 194, 118);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formcontainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 16px;
+  position:relative;
+  /* background-color: yellow; */
+ /* height: 100%;
+ width: 100% ; */
+}
+
+.form-box {
+  z-index: 999;
+  background-color: white;
+  box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
+  width: 350px;
+  height: 500px;
+  padding: 50px 40px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-box h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.form-box .field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 25px;
+  /* background-color: red ; */
+  /* flex-direction: column; */
+}
+
+.form-box .field.active {
+  border-bottom: 2px solid #0065ff;
+  transition: 0.3s ease;
+}
+
+.form-box .field input {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-size: 1em;
+  padding-bottom: 5px;
+}
+
+.icon {
+  color: #828da0;
+  font-size: 1.8em;
+  margin-right: 10px;
+  padding-bottom: 5px;
+}
+
+.icon.active {
+  color: #0065ff;
+}
+
+::placeholder {
+  color: #828da0;
+  font-size: 0.85em;
+}
+.eyebtnopen {
+  cursor: pointer;
+}
+
+.eyebtnopen:hover {
+  color: #0065ff;
+  transition: 0.3s ease;
+}
+.eyebtn {
+  cursor: pointer;
+}
+
+.eyebtn:hover {
+  color: #0065ff;
+  transition: 0.3s ease;
+}
+
+.forget-link {
+  text-align: right;
+  transform: translateY(-10px);
+}
+
+.forget-link a {
+  color: #0065ff;
+  font-size: 0.8em;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.submit-btn {
+  background-color: orange;
+  color: #fff;
+  border: none;
+  outline: none;
+  width: 120px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.85em;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 5px;
+
+}
+
+.imgBox {
+  z-index: 888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
+  height: 300px;
+  padding: 5px ;
+  /* background-color: yellow; */
+}
+
+.imgBox img {
+  max-width: 300px;
+}
+
+.sliding-link {
+  display: flex;
+  font-size: 0.8em;
+  margin-bottom: 25px;
+}
+
+.sliding-link span {
+  color: #0065ff;
+  font-weight: 600;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* .sign-up{
+  display: none;
+} */
+
+.sign-in .imgBox{
+   border-radius: 0 5px 5px 0;
+}
+.sign-up .imgBox{
+   border-radius: 5px 0 0 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display:flex;
+}
+
+/* Styles for showing and hiding the forms based on the showSignUpForm state */
+/* 
+.sign-in .form-box,
+.sign-in .imgBox {
+  display: ${showSignUpForm ? 'none' : 'flex'};
+} 
+
+ .sign-up .form-box,
+.sign-up .imgBox {
+  display: ${showSignUpForm ? 'flex' : 'none'};
+} */
+
+.error-el{
+  font-size: 12px;
+  color: red;
+   /* flex-direction: column; */
+  display: none;
+ }
+
+ .input:invalid[focused="true"]{
+  border: 1px solid red;
+}
+
+
+.input:invalid[focused="true"] ~ .error-el{
+  display: block;
+}
+ 
+
+
+
+
+
+/* 
+<div className="eye-btn" onClick={handleTogglePassword}>
+                {showPassword ? (
+                  <AiOutlineEye className="eyebtnopen" />
+                ) : (
+                  <AiOutlineEyeInvisible className="eyebtn" />
+                )}
+              </div>
+            </div> */

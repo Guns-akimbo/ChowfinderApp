@@ -1,0 +1,162 @@
+.Review {
+    height: 50vh;
+    width: 100%;
+    margin-bottom: 5%;
+}
+
+.Review-header {
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+
+.Review-container {
+    height: 90%;
+    width: 100%;
+    display: flex;
+}
+
+.left-arrow {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.main-reviewholder {
+
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.right-arrow {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.reviewCard {
+    height: 250px;
+    width: 430px;
+    background-color: #FFA75F;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding-inline: 10px;
+
+}
+
+.reviewCard-image{
+    height: 90%;
+    width: 50%;
+}
+.reviewCard-image img{
+    height: 100%;
+    width: 100%;
+}
+
+.reviewCard-reviews{
+    height: 90%;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.reviewCard-reviews h4{
+  font-size: 24px;
+    }
+
+    .reviewCard-reviews p{
+        font-size: 17px;
+        padding: 12px;
+          }
+
+          @media (min-width: 200px) and (max-width: 767px) {
+
+            /* CSS styles for mobile devices */
+
+            .Review {
+                height: 40vh;
+                width: 100%;
+            }
+            
+            .main-reviewholder {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .reviewCard {
+                height: 100px;
+                width: 200px;
+                           
+            }
+
+            .reviewCard-reviews h4{
+                font-size: 12px;
+                  }
+
+                  .Review-header h1{
+                    font-size: 24px;
+                     }
+           
+        }
+        
+        /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+        @media (min-width: 768px) and (max-width: 991px) {
+        
+            /* CSS styles for tablets */
+            .reviewCard {
+                height: 170px;
+                width: 250px;         
+            }
+
+            
+            .reviewCard-reviews h4{
+                font-size: 14px;
+                  }
+
+                  .Review-header h1{
+                    font-size: 32px;
+                     }
+
+                     .Review {
+                        height: 30vh;
+                        width: 100%;
+                   }
+           
+        }
+
+                /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+                @media (min-width: 768px) and (max-width: 991px) {
+        
+                    /* CSS styles for tablets */
+                    .reviewCard {
+                        height: 170px;
+                        width: 250px;         
+                    }
+        
+                    
+                    .reviewCard-reviews h4{
+                        font-size: 14px;
+                          }
+        
+                          .Review-header h1{
+                            font-size: 32px;
+                             }
+        
+                             .Review {
+                                height: 30vh;
+                                width: 100%;
+                           }
+                   
+                }

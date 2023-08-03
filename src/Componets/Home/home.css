@@ -1,0 +1,239 @@
+.home {
+    height: max-content;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.home-wrapper {
+    height: max-content;
+    width: 90%;
+    /* background-color: #ffdf8f; */
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.firstview {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.search {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bacckima {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   padding-top: 25px;
+}
+
+
+.bacckima img {
+    height: 100%;
+    width: 100%;
+}
+
+.slogan {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+.slogan h4 {
+    color: #FC8019;
+    font-size: 58px;
+    font-weight: 900;
+}
+
+.slogan h4 span {
+    color: #292D32;
+}
+
+
+.slogan p {
+    font-size: 32px;
+    color: #76787B;
+}
+
+.search-restaurant {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+   align-items: center;
+}
+
+.select-restaurant {
+    height: 5rem;
+    width: 20rem;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    /* position: relative; */
+}
+
+.select-restaurant select {
+    border-radius: 8px;
+}
+
+.select-restaurant option {
+    padding: 10px;
+}
+
+.select-restaurant select {
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+   padding: 0 10px;
+}
+
+.select-restaurant select option {
+    background-color: rgb(255, 220, 123);
+
+}
+
+.select-search {
+    height: 5rem;
+    width: 15rem;
+    background-color: #FC8019;
+    border: none;
+    font-size: 17px;
+    border-radius: 8px;
+    color: #fff;
+}
+
+
+
+@media (max-width: 767px) {
+
+    /* CSS styles for mobile devices */
+    .firstview {
+        height: 70vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .select-restaurant {
+        width: 100%;
+        margin-bottom: 10px;
+        }
+
+        .select-search {
+        width: 100%;
+        font-size: 12px;
+    }
+
+    .slogan h4 {
+        color: #FC8019;
+        font-size: 24px;
+    }
+
+    .slogan p {
+          font-size: 12px;
+    }
+
+     p {
+        font-size: 12px;
+  }
+
+    .search {
+        width: 50%;
+        height: 100%;
+    }
+.bacckima{
+    width: 50%;
+    height: 100%;
+    }
+
+    .bacckima img{
+        width: 100%;
+        height: 100%;
+        }
+    .select-restaurant {
+        height: 3rem;
+        width: 8rem;
+    }
+
+    .search {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+  
+    .select-search {
+        height: 3rem;
+        width: 8rem;
+        font-size: 12px;
+    }
+}
+
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .firstview {
+        height: 50vh;
+        width: 100%;
+        display: flex;
+    }
+
+    .select-restaurant {
+        height: 5rem;
+        width: 10rem;
+    }
+
+    .select-search {
+        height: 5rem;
+        width: 10rem;
+        font-size: 12px;
+    }
+
+    
+    .slogan h4 {
+        color: #FC8019;
+        font-size: 24px;
+    }
+
+    .slogan p {
+          font-size: 12px;
+    }
+
+     p {
+        font-size: 12px;
+  }
+
+  .search{
+    height: 100%;
+    width: 50%;
+    display: flex;
+   justify-self:end;
+    flex-direction: column;
+  }
+
+  .bacckima{
+    width: 50%;
+    height: 100%;
+    }
+    
+}

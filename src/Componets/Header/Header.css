@@ -1,0 +1,241 @@
+.Header {
+    height: 8vh;
+    width: 100%;
+    background: #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Helvetica, Arial, sans-serif;
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    opacity: 0.8;
+}
+
+
+
+a.active{ 
+    color: orange;
+}
+
+
+.grid {
+    height: 95%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    cursor: context-menu;
+    /* background-color: red; */
+}
+
+.logo {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    align-items: center;
+/* background-color: blue; */
+}
+
+.logo img {
+    height: 80%;
+    width: 20%;
+    cursor: pointer;
+}
+
+.Navmenu {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    /* background-color: aqua; */
+}
+
+.Navmenu li{
+    height: 100%;
+    /* width: 25%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.Navmenu li:hover {
+    color: #FC8019;
+    font-weight: 500;
+    /* background-color: #f8a866; */
+}
+
+.Navsign {
+    height: 100%;
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    /* background-color: aquamarine; */
+}
+
+.active{
+    /* color: #f8a866; */
+    width: 500;
+    /* background-color: #fff; */
+}
+
+.Navsign:hover {
+    color: #f8a866;
+    font-weight: 400;
+}
+
+.cartlenght {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: #f8a866;
+    left: 10px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: #ffefd8; */
+    font-size: 10px;
+}
+
+.HiMenuAlt2 {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+.dropMenu li {
+    padding-block: 30px;
+ }
+
+.showmenu {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: #f8a866;
+    position: fixed;
+    top: 0;
+  }
+
+.caCircle {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    align-items: center;
+}
+
+.dropMenu{
+    width: 100%;
+    height: 20%;
+    list-style-type: none;
+}
+
+.gridmenu{
+    width: 90%;
+    height: 100%;
+    
+}
+
+.dropMenu li{
+    width: 90%;
+    height: 25%; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 15px;
+    border-radius: 8px;
+}
+
+.dropMenu li:hover{
+color: #f8a866;
+background-color: #fff;
+}
+
+@media (max-width: 767px) {
+
+    /* CSS styles for mobile devices */
+    .logo {
+        height: 100%;
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .HiMenuAlt2 {
+        display: block;
+    }
+
+    .Navmenu {
+        display: none;
+    }
+
+    .showmenu {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+      .cartlenght {
+        position: absolute;
+        left: 6px;
+        top: 15px;
+           }
+}
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* CSS styles for tablets */
+    .HiMenuAlt2 {
+        display: block;
+        align-items: center;
+    }
+
+    .Navmenu {
+        display: none;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .showmenu {
+        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .cartlenght {
+        position: absolute;
+        left: 6px;
+        top: 20px;
+           }
+}
+
+@media (min-width: 991px) and (max-width: 1360px) {
+
+    /* CSS styles for small screen laptop */
+         
+    .Navmenu li{
+        font-size: 12px;
+    }
+    
+}
+

@@ -1,0 +1,92 @@
+.Restaurant{
+    height:410px ;
+    width:27% ;
+    background-color: rgb(255, 254, 253);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    align-items: center;
+    margin-top: 10px;
+    /* margin-left: 10px; */
+}
+
+.Restaurant-wrapper{
+    height: 90%;
+    width: 90%;
+    border-radius: 20px;
+    }
+
+.Restaurant-image{
+    height: 50%;
+    width: 100%;
+    background:linear-gradient(#fff,#fff,#FC8019);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Restaurant-image img{
+    height: 60%;
+    width: 60%;
+}
+
+.Restaurant-name{
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Restaurant-name h4{
+    font-size:24px ;
+}
+
+.Restaurant-btn{
+    height: 25%;
+    width: 100%;
+    display:flex ;
+    align-items: center;
+    justify-content: center;
+}
+
+.Restaurant-btn button{
+    height: 3rem;
+    width: 173px;
+    border: none;
+    background-color: #FC8019;
+    color: #fff;
+    border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+
+    /* CSS styles for mobile devices */
+    .Restaurant{
+        height:300px ;
+        width:45% ;
+          }
+
+          .Restaurant-name h4{
+            font-size:12px ;
+        }
+}    
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* CSS styles for tablets */
+    .Restaurant{
+        height:300px ;
+        width:30% ;
+          }
+
+          .Restaurant-name h4{
+            font-size:20px ;
+        }
+   
+}

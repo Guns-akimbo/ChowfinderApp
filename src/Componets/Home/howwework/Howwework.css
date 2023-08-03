@@ -1,0 +1,151 @@
+.Howwework {
+    height: 50vh;
+    width: 100%;
+    background-color: #fbfbfb;
+    display: flex;
+    align-items: center;
+    margin-top: 3%;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .Howwework-wrapper {
+    height: 85%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .Howwework h4 {
+    font-weight: 600;
+    color: #212529;
+    font-size: 30px;
+  }
+  
+  .about {
+    height: 100%;
+    width: 23%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aqua; */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  
+  .about-img {
+    height: 45%;
+    width: 45%;
+    border-radius: 50%;
+    background-color: #FFDD55;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .about-des {
+    height: 55%;
+    width: 100%;
+    
+  }
+  
+  .how-des {
+    height: 15%;
+    width: 100%;
+    font-size: 28px;
+    color: #212529;
+    text-align: center;
+    font-weight: 600;
+    }
+  
+  .how-dir {
+    height: 85%;
+    width: 100%;
+    font-size: 20px;
+    color: #212529;
+    padding: 5%;
+    text-align:justify;
+  }
+  
+  /* For devices with a width up to 767px (e.g., mobile devices) */
+  @media (max-width: 767px) {
+    .Howwework-wrapper {
+      overflow-y: scroll;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .about {
+      height: 50%;
+      width: 100%;
+      margin-right: 10px;
+    }
+  
+    .about-img {
+      height: 40%;
+      width: 40%;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  
+    .about-des {
+      height: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 15px;
+      flex-direction: column;
+    }
+    .about-des p {
+      font-size: 10px;
+      color: #212529
+    }
+    .Howwework h4 {
+       color: #212529;
+      font-size: 20px;
+    }
+  
+  }
+  
+  
+  
+  /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .Howwework {
+      height: 40vh;
+      justify-content: space-between;
+      overflow-y: scroll;
+    }
+  
+    .about {
+      width: 20%;
+      text-align: center;
+    }
+  
+    .about-des {
+      font-size: 17px;
+      /* Increase font size for tablets */
+    }
+  
+    .about-des h4 {
+      font-size: 16px;
+      color: #212529
+    }
+  
+    .about-img {
+      height: 45%;
+      width: 45%;
+      border-radius: 50%;
+    }
+  
+    .about-des p {
+      font-size: 10px;
+      color: #212529
+    }
+  }
