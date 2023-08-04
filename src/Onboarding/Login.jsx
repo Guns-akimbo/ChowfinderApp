@@ -8,38 +8,22 @@ import slogan from "../assets/slogan.jpeg";
 import { GiConfirmed } from "react-icons/gi";
 import Input from "../Componets/Input";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import Header from "../Componets/Header";
 import { Navigate } from "react-router-dom";
-
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
-  const [load, setLoad] = useState(false);
-  const [valued, setValued] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    password: "",
-    confirmPassword: "",
-  });
-
-  const handleShowSignUpForm = () => {
-    setShowSignUpForm(true);
-  };
-
-  const handleShowSignInForm = () => {
-    setShowSignUpForm(false);
-  };
-  //   const handleTogglePassword = () => {
-  //     setShowPassword((prevShowPassword) => !prevShowPassword);
-  //   };
+  const [load, setLoad] = useState(false)
+  const { register, formState: { errors }, handleSubmit } = useForm();
 
   useEffect(() => {
     console.log(load);
   }, [load]);
+
 
   const Values = [
     {
@@ -47,10 +31,6 @@ const Login = () => {
       name: "email",
       type: "email",
       placeholder: "Email",
-      errorMessage:
-        "Email should be Valid",
-    //   pattern: "^[A-Z-z0-9]{3,16}$",
-      required: true,
       icon: <MdAlternateEmail className={`icon ${isActive ? "active" : ""}`} />,
     },
     {
@@ -58,10 +38,6 @@ const Login = () => {
       name: "password",
       type: "password",
       placeholder: "Password",
-      errorMsgs:
-        "Password should be a 20 character and should include one letter,one number and one special character",
-      pattern: "^[A-Z-z0-9]{3,16}$",
-      required: true,
       icon: (
         <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
       ),
@@ -74,10 +50,6 @@ const Login = () => {
       name: "fullName",
       type: "text",
       placeholder: "Fullname",
-      errorMsgs:
-        "Username should be 3-16 characters and shouldn't include any special characters",
-      pattern: "^[A-Z-z0-9]{3,16}$",
-      required: true,
       icon: <BsPerson className={`icon ${isActive ? "active" : ""}`} />,
     },
     {
@@ -85,7 +57,6 @@ const Login = () => {
       name: "email",
       type: "email",
       placeholder: "Email",
-      errorMsgs: "It should be an email",
 
       icon: (
         <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
@@ -96,46 +67,38 @@ const Login = () => {
       name: "phoneNumber",
       type: "tel",
       placeholder: "Phonenumber",
-      errorMsgs: "",
       icon: <BsTelephone className={`icon ${isActive ? "active" : ""}`} />,
-      required: true,
     },
     {
       id: 4,
       name: "password",
       type: "password",
       placeholder: "Password",
-      errorMsgs:
-        "Password should be a 20 character and should include one letter,one number and one special character",
-      pattern: "^[A-Z-z0-9]{3,16}$",
-      required: true,
+
       icon: (
         <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
       ),
+      
+
     },
     {
       id: 5,
       name: "confirmPassword",
       type: "password",
       placeholder: "Confirm Password",
-      errorMsgs: "Password don't match",
-      //   pattern: valued.password,
-      required: true,
       icon: <GiConfirmed className={`icon ${isActive ? "active" : ""}`} />,
     },
   ];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const signupSubmit = async () => {
     Swal.fire({
-        title: 'Verify email address!',
-        text: 'Kindly go to your mail and verify',
-        icon: 'info',
-        confirmButtonText: 'Ok',
-      })
+      title: "Verify email address!",
+      text: "Kindly go to your mail and verify",
+      icon: "info",
+      confirmButtonText: "Ok",
+    });
     try {
       setLoad(true);
-      const { confirmPassword, ...others } = valued;
       const res = await axios.post(
         "https://chowfinder.onrender.com/api/sign-up",
         others
@@ -155,11 +118,9 @@ const Login = () => {
     }
   };
 
-  const HandleSubmit = async (e) => {
-    e.preventDefault();
+  const loginSubmit = async () => {
     try {
       setLoad(true);
-      const { confirmPassword, ...others } = valued;
       const res = await axios.post(
         "https://chowfinder.onrender.com/api/log-in",
         others
@@ -177,88 +138,76 @@ const Login = () => {
     }
   };
 
-  const onChange = (e) => {
-    setValued({ ...valued, [e.target.name]: e.target.value });
-  };
-
-  console.log(valued);
-
   return (
-    <> 
-
+    <>
       <Header />
-        <section className="bigcontainer">
-
-       
-      <div className="formcontainer">
-        <div className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}>
-          <h2>Login</h2>
-          <form onSubmit={HandleSubmit}>
-            {Values.map((e) => (
-              <Input
-                {...e}
-                key={e.id}
-                value={valued[Values.name]}
-                onChange={onChange}
+      <section className="bigcontainer">
+        <div className="formcontainer">
+          <div
+            className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}
+          >
+            <h2>Login</h2>
+            <form>
+              {Values.map((e) => (
+                <Input {...e} key={e.id} 
+                name={e.name}
+                type={e.type}
+                placeholder={e.placeholder}
+                 icon={e.icon} />
+              ))}
+              <div className="forget-link">
+                <a href="">Forgot Password</a>
+              </div>
+              <input
+                disabled={load}
+                type="submit"
+                className="submit-btn"
+                value="Login"
               />
-            ))}
-            <div className="forget-link">
-              <a href="">Forgot Password</a>
+            </form>
+          </div>
+
+          <div className={`imgBox sign-in ${showSignUpForm ? "hide" : "show"}`}>
+            <div className="sliding-link">
+              <p>Don't have an account yet ?</p>
+              <span className="signup" onClick={() => setShowSignUpForm(true)}>
+                SignUp
+              </span>
             </div>
-            <input
-              disabled={load}
-              type="submit"
-              className="submit-btn"
-              value="Login"
-            />
-          </form>
-        </div>
+            <div>
+              <img src={slogan} alt="" />
+            </div>
+          </div>
 
-        <div className={`imgBox sign-in ${showSignUpForm ? "hide" : "show"}`}>
-          <div className="sliding-link">
-            <p>Don't have an account yet ?</p>
-            <span className="signup" onClick={handleShowSignUpForm}>
-              SignUp
-            </span>
+          <div className={`imgBox sign-up ${showSignUpForm ? "show" : "hide"}`}>
+            <div className="sliding-link">
+              <p>Already a member?</p>
+              <span className="signup" onClick={() => setShowSignUpForm(false)}>
+                Sign In
+              </span>
+            </div>
+            <div>
+              <img src={slogan} alt="" />
+            </div>
           </div>
-          <div>
-            <img src={slogan} alt="" />
-          </div>
-        </div>
+          <div
+            className={`form-box sign-up ${showSignUpForm ? "show" : "hide"}`}
+          >
+            <h2>Sign Up </h2>
+            <form action="">
+              {Value.map((e) => (
+                <Input {...e} key={e.id} />
+              ))}
 
-        <div className={`imgBox sign-up ${showSignUpForm ? "show" : "hide"}`}>
-          <div className="sliding-link">
-            <p>Already a member?</p>
-            <span className="signup" onClick={handleShowSignInForm}>
-              Sign In
-            </span>
-          </div>
-          <div>
-            <img src={slogan} alt="" />
-          </div>
-        </div>
-
-        <div className={`form-box sign-up ${showSignUpForm ? "show" : "hide"}`}>
-          <h2>Sign Up </h2>
-          <form action="" onSubmit={handleSubmit}>
-            {Value.map((e) => (
-              <Input
-                {...e}
-                key={e.id}
-                value={valued[Value.name]}
-                onChange={onChange}
+              <input
+                disabled={load}
+                type="submit"
+                className="submit-btn"
+                value="Sign Up"
               />
-            ))}
-
-            <input
-              disabled={load}
-              type="submit"
-              className="submit-btn"
-              value="Sign Up"
-            />
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
       </section>
     </>
   );

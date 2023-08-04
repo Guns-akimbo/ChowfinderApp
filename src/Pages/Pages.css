@@ -185,8 +185,8 @@
 }
 
 .cartround{
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 100%;
     background-color: orange;
     display: flex;
@@ -196,7 +196,7 @@
 
 .carthead{
     color: white;
-    font-size: 25px;
+    font-size: 16px;
 }
 
 .arrowback{
