@@ -10,28 +10,17 @@ const Header = ({ Logo }) => {
         <div className="Logodiv">
           <NavLink to="/">
             <img src={Logo} alt="" />
-          </NavLink>
-        </div>
-        <div className="signindiv">
-          <div
-            className="cartround"
-            style={{
-              borderRadius: "2px",
-              width: "150px",
-              backgroundColor: "#FFEFD8",
-              cursor: "pointer",
-            }}
-          >
-            <BsPerson
-              className="carthead"
-              style={{ color: "orange", cursor: "pointer" }}
-            />
-            <h4>Victor</h4>
+            </NavLink>
           </div>
-        </div>
-      </section>
-    </header>
-  );
-};
-
-export default Header;
+          <div className="signindiv">
+            <div className="cartround">
+              <BsCart2 className="carthead" />
+            </div>
+            <div className="cartround">
+              <BsPerson className="carthead" />
+            </div>
+          </div>
+        </section>
+      </header>
+    )
+}

@@ -21,4 +21,5 @@ function RestaurantCard(props) {
   )
 }
 
+
 export default RestaurantCard

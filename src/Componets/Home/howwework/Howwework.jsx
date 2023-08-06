@@ -8,39 +8,42 @@ import './Howwework.css'
 function Howwework() {
   return (
     <div className='Howwework'>
-      <h4>How We Work</h4>
-      <div className='Howwework-wrapper'>
-
-        <main className='about'>
+           <div className='Howwework-wrapper'>
+           <div className='how-we'><h4>How We Work</h4></div>
+      <div className='how-we-contains'>
+      <main className='about'>
           <article className='about-img'>< MdOutlineLocationOn size={50} color='#930F0F' /> </article>
           <article className='about-des'>
           <div className='how-des'><p>Select nearest Location</p></div>
           <div className='how-dir'><p>Use the select bar to explore various Location nearest to you.</p></div>
           </article>
         </main>
-        <main className='about'>
+
+         <main className='about'>
           <article className='about-img'>< IoRestaurantOutline size={50} color='#930F0F' /> </article>
           <article className='about-des'>
           <div className='how-des'><p>Find Restaurants</p></div>
-          <div className='how-dir'><p>Use the select bar to explore various restaurant options and pick restaurant names of choice</p></div>
+          <div className='how-dir'><p>Browse the select bar to discover and select preferred restaurant names.</p></div>
           </article>
         </main>
-        <main className='about'>
+
+          <main className='about'>
           <article className='about-img'><IoFastFoodOutline size={50} color='#930F0F' /></article>
           <article className='about-des'>
           <div className='how-des'><p>Order Your Food</p></div>
-          <div className='how-dir'><p> Select your desired items from the restaurant's menu, including starters, main courses, Protein and Drinks.</p></div>
+          <div className='how-dir'><p> 
+          Choose from the restaurant's menu: Meals, protein, and drinks.</p></div>
           </article>
         </main>
         <main className='about'>
           <article className='about-img'><MdOutlineDeliveryDining size={50} color='#930F0F' /></article>
           <article className='about-des'>
           <div className='how-des'><p>Delivery or Pickup</p></div>
-          <div className='how-dir'><p>Review your order summary, including the selected items and any charges.
-Choose between delivery or pickup options based on your preference.</p></div></article>
+          <div className='how-dir'><p>Review order, items, fees. Choose delivery or pickup, as preferred.</p></div></article>
                 </main>
-
-      </div>
+         </div>
+              
+            </div>
     </div>
   )
 }

@@ -4,32 +4,40 @@ import './Grow.css'
 function Grow() {
     return (
         <div className='Grow'>
-            
+
             <div className='grow-wrapper'>
-            <h1>Together, We Can grow Your Business...</h1>
-            <main className='group'>
-                <div className='group-image'><img src="./assets/grow.png" alt="" />
-                </div>
-                <div className='group-write'>
-                    <h4>Promote your business</h4>
-                    <p>Boost sales by increasing your visibility on the most popular online channels.
-                        Businesses large and small partner with ChowFinder to reach new customers, increase order volume, and drive more sales</p>
-                <span>Find out more about marketing</span>
+                <div className='grow-Together'><p>Grow Your Business With Us</p></div>
+                <main className='group'>
+                    <div className='group-image'><img src="/src/assets/business account.png" alt="" />
+                    </div>
+                    <div className='group-write'>
+                        <div className='grow-group-header'> <h4>Promote your <span className='business'>Business </span></h4></div>
+                        <div className='grow-group-content'><p>Boost sales by increasing your visibility on the most popular online channels.
+                            Businesses large and small partner with ChowFinder to reach new customers, increase order volume, and drive more sales</p>
+                        </div>
+                        <span className='grow-group-find'>Find out more about marketing</span>
+                    </div>
+                </main>
+            </div>
+            <main className='grow-gang'>
+                <div className='grow-gang-wrapper'>
+                    <div className='gang-write'>
+                        <div className='gang-write-header'><h4>Reach more <span className='business'>customers</span></h4></div>
+                        <div className='grow-group-content'><p>Attract new customers and keep them coming back for more with the delivery type that works for you.</p></div>
+                        <span className='grow-group-find'>Find out more about our delivery services</span>
+                    </div>
+                    <div className='group-image'><img src="/src/assets/bike.png" alt="" /></div>
+
                 </div>
             </main>
-            <main className='gang'>
-                <div className='group-write'>
-                <h4>Reach more customers</h4>
-                    <p>Attract new customers and keep them coming back for more with the delivery type that works for you.</p>
-                <span>Find out more about our delivery services</span>
+            <main className='grow-became'>
+                <div className='grow-became-wrapper'>
+                    <div className='grow-became-header'><p>Not yet a ChowFinder Partner yet?</p></div>
+                    <div grow-became-btn><button className='grow-became-button'>Create account </button></div>
+
                 </div>
-                <div className='group-image'><img src="./assets/guy.png" alt="guy" /></div>
             </main>
-            <main className='became'>
-                <h4>Not yet a ChowFinder Partner yet?</h4>
-                <button>Create account </button>
-            </main>
-        </div>
+
         </div>
     )
 }

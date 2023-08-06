@@ -1,151 +1,151 @@
 .Howwework {
-    height: 50vh;
-    width: 100%;
-    background-color: #fbfbfb;
-    display: flex;
-    align-items: center;
-    margin-top: 3%;
-    flex-direction: column;
-    gap: 20px;
+  width: 100%;
+  height: 500px;
+  background: #FDCCA4;
+  display: flex;
+  justify-content: center;
+}
+
+.Howwework-wrapper {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  /* background-color: aqua; */
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.how-we {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #212529;
+  font-family: Poppins;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.how-we-contains {
+  height: 77%;
+  width: 100%;
+  /* background-color: aliceblue; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.about {
+  height: 85%;
+  width: 24%;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+
+}
+
+.about-img {
+  width: 131px;
+  height: 134px;
+  border-radius: 50%;
+  background-color: #ffe479;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 8px;
+}
+
+.about-des {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.how-des {
+  color: #212529;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+
+.how-dir {
+  color: #76787B;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding-inline: 10px;
+}
+
+/* For devices with a width up to 767px (e.g., mobile devices) */
+@media (min-width: 100px) and (max-width: 767px) {
+  .how-we-contains {
+    overflow-X: scroll;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
-  
-  .Howwework-wrapper {
-    height: 85%;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .Howwework h4 {
-    font-weight: 600;
-    color: #212529;
-    font-size: 30px;
-  }
-  
+
   .about {
-    height: 100%;
-    width: 23%;
-    margin-right: 10px;
+    height: 50%;
+    width: 60%;
+    margin: 15px;
+  }
+
+  .about-img {
+    height: 40%;
+    width: 40%;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    /* background-color: aqua; */
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    flex-wrap: wrap;
   }
-  
+
+  .how-des {
+    font-size: 12px;
+  }
+
+}
+
+
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .how-we-contains {
+    height: 40vh;
+    justify-content: space-between;
+  }
+
+  .about {
+    width: 23%;
+    height: 70%;
+    text-align: center;
+  }
+
+  .about-des {
+    font-size: 17px;
+    /* Increase font size for tablets */
+  }
+
+
   .about-img {
     height: 45%;
     width: 45%;
     border-radius: 50%;
-    background-color: #FFDD55;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
-  
-  .about-des {
-    height: 55%;
-    width: 100%;
-    
-  }
-  
-  .how-des {
-    height: 15%;
-    width: 100%;
-    font-size: 28px;
-    color: #212529;
-    text-align: center;
-    font-weight: 600;
-    }
-  
-  .how-dir {
-    height: 85%;
-    width: 100%;
-    font-size: 20px;
-    color: #212529;
-    padding: 5%;
-    text-align:justify;
-  }
-  
-  /* For devices with a width up to 767px (e.g., mobile devices) */
-  @media (max-width: 767px) {
-    .Howwework-wrapper {
-      overflow-y: scroll;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-  
-    .about {
-      height: 50%;
-      width: 100%;
-      margin-right: 10px;
-    }
-  
-    .about-img {
-      height: 40%;
-      width: 40%;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-  
-    .about-des {
-      height: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      font-size: 15px;
-      flex-direction: column;
-    }
-    .about-des p {
-      font-size: 10px;
-      color: #212529
-    }
-    .Howwework h4 {
-       color: #212529;
-      font-size: 20px;
-    }
-  
-  }
-  
-  
-  
-  /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .Howwework {
-      height: 40vh;
-      justify-content: space-between;
-      overflow-y: scroll;
-    }
-  
-    .about {
-      width: 20%;
-      text-align: center;
-    }
-  
-    .about-des {
-      font-size: 17px;
-      /* Increase font size for tablets */
-    }
-  
-    .about-des h4 {
-      font-size: 16px;
-      color: #212529
-    }
-  
-    .about-img {
-      height: 45%;
-      width: 45%;
-      border-radius: 50%;
-    }
-  
-    .about-des p {
-      font-size: 10px;
-      color: #212529
-    }
-  }
+
+}
