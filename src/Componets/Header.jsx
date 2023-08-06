@@ -24,3 +24,6 @@ const Header = ({ Logo }) => {
       </header>
     )
 }
+
+
+export default Header

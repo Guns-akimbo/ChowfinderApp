@@ -6,15 +6,22 @@ import amaa from "../assets/amaa.jpg";
 import "./Pages.css";
 import { NavLink } from "react-router-dom";
 
+import DetailPage from "./DetailPage"
+import Detailpage from "./DetailPage";
+
 const Menu = () => {
+
+  
+
+
   return (
     <main className="Bigdiv">
       <header className="head">
         <section className="headwrap">
           <div className="Logodiv">
-            <div to="/">
+            <NavLink to="/">
               <img src={Logo} alt="" />
-            </div>
+            </NavLink>
           </div> 
           <div className="signindiv">
             <div className="cartround">
@@ -65,7 +72,7 @@ const Menu = () => {
             </span>
           </div>
           <section className="downmenusection">
-            <div className="foodcard">
+            <div className="foodcard" onClick={<Detailpage/>}>
               <div className="leftcard">
                 <h2>Food</h2>
                 <h4>
