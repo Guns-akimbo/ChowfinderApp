@@ -1,0 +1,28 @@
+
+.RestuarantsDash{
+    flex-direction: column;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+             
+.sidemenuAndPagecontent{
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* flex-direction: column; */
+    /* background-color: orange; */
+}
+
+
+.Pagecontent{
+    padding-left: 12px;
+}
+
+/* .sideMenu{
+
+  
+   
+} */

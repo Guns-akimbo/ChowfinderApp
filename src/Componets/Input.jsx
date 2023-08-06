@@ -1,20 +1,17 @@
 import { useState } from "react";
 import "../Onboarding/Onboard.css";
 
-const Input = (props) => {
-
-
-console.log(props)
+const Input = ({ name, type, icon, placeholder}) => {
+console.log(typeof register)
 
   return (
     <div className="field">
-      {props.icon}
+      {icon}
       <input
-        // {...props?.register(props.name)}
         
-        name={props.name}
-        type={props.type}
-        placeholder={props.placeholder}
+        name={name}
+        type={type}
+        placeholder={placeholder}
         className="input"
       />
     </div>
@@ -22,5 +19,3 @@ console.log(props)
 };
 
 export default Input;
-
-

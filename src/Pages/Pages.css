@@ -18,8 +18,8 @@
 
 
 .popwrap {
-    width: 30%;
-    height: 40%;
+    width: 40%;
+    height: 50%;
     background-color: white;
     display: flex;
 }
@@ -40,6 +40,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
+    gap: 20px;
 
 }
 
@@ -99,12 +100,12 @@
     align-items: center;
     gap: 10px; 
     /* background-color: aqua; */
-    margin-top: 15%;
+    /* margin-top: 15%; */
 }
 
 .Addtocart {
     width: 150px;
-    height: 50px;
+    height: 40px;
     border: 1px solid black;
     font-size: 18px;
     font-family: monospace;
@@ -117,12 +118,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 }
 
 .Viewcart {
     width: 200px;
-    height: 50px;
+    height: 40px;
     font-size: 18px;
     font-family: monospace;
     font-weight: 700;
@@ -141,7 +141,7 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   /* background-color:#FFEFD8; */
+
 }
 
 .head{
@@ -202,7 +202,6 @@
 .arrowback{
     width: 100%;
     height: 3vh;
-    /* background-color: red; */
     border-top: 1px solid rgb(234, 232, 232);
     display: flex;
     justify-content: center;
@@ -359,13 +358,13 @@
     height: 40%;
     padding: 8px;
     display: flex;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     justify-content: space-around;
     gap: 15px;    
 }
 
 .foodcard{
-    width:440px;
+    width:350px;
     height: 70%;
     display: flex;  
     /* border: 1px solid black; */
@@ -415,11 +414,12 @@
     width: 20%;
     height: 55vh;
     background-color:#FFEFD8;
+    border: 1px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    overflow-y:scroll;
+    overflow-y:hidden;
     /* border: 1px solid grey; */
     position: fixed;
     right: 170px;

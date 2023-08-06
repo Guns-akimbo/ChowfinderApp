@@ -11,14 +11,15 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../Componets/Header";
 import { Navigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+
 
 const Login = () => {
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [load, setLoad] = useState(false)
-  const { register, formState: { errors }, handleSubmit } = useForm();
+
+
 
   useEffect(() => {
     console.log(load);
@@ -149,11 +150,15 @@ const Login = () => {
             <h2>Login</h2>
             <form>
               {Values.map((e) => (
-                <Input {...e} key={e.id} 
+                <Input 
+                {...e} 
+                key={e.id} 
+                
                 name={e.name}
                 type={e.type}
                 placeholder={e.placeholder}
-                 icon={e.icon} />
+                 icon={e.icon}
+                  />
               ))}
               <div className="forget-link">
                 <a href="">Forgot Password</a>
