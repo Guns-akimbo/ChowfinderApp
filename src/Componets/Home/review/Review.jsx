@@ -4,155 +4,127 @@ import { VscArrowCircleLeft, VscArrowCircleRight } from 'react-icons/vsc';
 import ReviewCard from './reviewCard';
 
 function Review() {
-  const reviewsPerPage = 2; // Number of reviews to display per page
-  const [currentPage, setCurrentPage] = useState(1);
-
-  // Function to handle next page
-  const goToNextPage = () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  // Function to handle previous page
-  const goToPreviousPage = () => {
-    setCurrentPage((prevPage) => (prevPage === 1 ? prevPage : prevPage - 1));
-  };
-
-  const indexOfLastReview = currentPage * reviewsPerPage;
-  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
 
   // Sample review data (you can replace this with your actual data)
   const review = [
   {
     id: 1,
-    name: "Delicious Bistro",
-    cuisine: "Italian",
-    address: "123 Main Street",
-    city: "New York",
-    rating: 4.5,
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEjMwOIiug0sQ-DZRqS0rl0Sr_RoaDypfCQ&usqp=CAU",
+    name: "Oche Daniel",
+    cuisine: "Delicious food, fast delivery, loved it!",
+    imageUrl: "https://www.vokaal.com/cdn/shop/products/j7sK4578CI_360x.jpg?v=1688326105",
   },
 
   {
       id: 2,
-      name: "Delicious Bistro",
-      cuisine: "Italian",
-      address: "123 Main Street",
-      city: "New York",
-      rating: 4.5,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEjMwOIiug0sQ-DZRqS0rl0Sr_RoaDypfCQ&usqp=CAU",
+      name: "Faith jullian",
+      cuisine: "Great variety, excellent service, highly recommended.",
+      imageUrl: "https://www.vokaal.com/cdn/shop/products/c1DnUnXGdl_360x.jpg?v=1684719013",
     },
 
     {
       id: 3,
-      name: "Seafood Sensations",
-      cuisine: "Seafood",
-      address: "789 Elm Street",
-      city: "Orlando",
-      rating: 4.3,
-      imageUrl: "https://example.com/restaurant12.jpg",
+      name: "Victor Ezo",
+      cuisine: "Tasty dishes, reasonable prices, satisfied customer.",
+      imageUrl: "https://images.pexels.com/photos/2876486/pexels-photo-2876486.png",
     },
  
     {
       id: 4,
-      name: "Delicious Bistro",
-      cuisine: "Italian",
-      address: "123 Main Street",
-      city: "New York",
-      rating: 4.5,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEjMwOIiug0sQ-DZRqS0rl0Sr_RoaDypfCQ&usqp=CAU",
+      name: "Grace Ekele",
+      cuisine: "Quick search, convenient app, found nearby gems.",
+      imageUrl: "https://images.pexels.com/photos/7623432/pexels-photo-7623432.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
 
     {
       id: 5,
-      name: "Spicy Noodle House",
-      cuisine: "Asian",
-      address: "456 Elm Avenue",
-      city: "Los Angeles",
-      rating: 4.2,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEjMwOIiug0sQ-DZRqS0rl0Sr_RoaDypfCQ&usqp=CAU",
+      name: "Elizabeth Ene",
+      cuisine: "Yummy options, easy ordering, repeat customer.",
+      imageUrl: "https://images.pexels.com/photos/5622659/pexels-photo-5622659.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
 
   {
       id: 6,
-      name: "Delicious Bistro",
-      cuisine: "Italian",
-      address: "123 Main Street",
-      city: "New York",
-      rating: 4.5,
-      imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEjMwOIiug0sQ-DZRqS0rl0Sr_RoaDypfCQ&usqp=CAU",
+      name: "Deborah omechea",
+      cuisine: "Fast checkout, accurate orders, happy customer.",
+      imageUrl: "https://images.pexels.com/photos/10490281/pexels-photo-10490281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
 
    {
     id: 7,
-    name: "Sushi Haven",
-    cuisine: "Japanese",
-    address: "789 Oak Road",
-    city: "San Francisco",
-    rating: 4.8,
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEjMwOIiug0sQ-DZRqS0rl0Sr_RoaDypfCQ&usqp=CAU",
+    name: "Priscila Almeida",
+    cuisine: "Impressed with service, will order again.",
+    imageUrl: "https://images.pexels.com/photos/12812476/pexels-photo-12812476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 8,
-    name: "Taco Delight",
-    cuisine: "Mexican",
-    address: "10 Maple Lane",
-    city: "Chicago",
-    rating: 4.0,
-    imageUrl: "https://example.com/restaurant4.jpg",
+    name: "Isaac Innalegwu",
+    cuisine: "Fresh ingredients, flavorful dishes, top-notch quality.",
+    imageUrl: "https://media.wbur.org/wp/2020/07/Emmanuel-1000x776.jpg",
   },
   {
     id: 9,
-    name: "Gourmet Grill",
-    cuisine: "American",
-    address: "567 Pine Street",
-    city: "Miami",
-    rating: 4.7,
-    imageUrl: "https://example.com/restaurant5.jpg",
+    name: "Martin Luther",
+    cuisine: "Efficient delivery, consistent quality, value for money.",
+    imageUrl: "https://www.nobelprize.org/images/king-13174-content-portrait-mobile-tiny.jpg",
   },
   {
     id: 10,
-    name: "The Veggie Patch",
-    cuisine: "Vegetarian",
-    address: "321 Cedar Avenue",
-    city: "Seattle",
-    rating: 4.3,
-    imageUrl: "https://example.com/restaurant6.jpg",
+    name: "Monica Barnett",
+    cuisine: "Smooth delivery, great presentation, impressed with packaging.",
+    imageUrl: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/newscms/2020_52/3437201/utenzi.jpg",
   },
   {
     id: 11,
-    name: "Pasta Paradise",
-    cuisine: "Italian",
-    address: "789 Elm Street",
-    city: "Boston",
-    rating: 4.6,
-    imageUrl: "https://example.com/restaurant7.jpg",
+    name: "Nude Barre",
+    cuisine: "Extensive choices, user-friendly interface, love this app.",
+    imageUrl: "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-560w,f_auto,q_auto:best/newscms/2020_52/3437196/erin.jpg",
   },
   {
     id: 12,
-    name: "Thai Spice",
-    cuisine: "Thai",
-    address: "345 Oak Avenue",
-    city: "Houston",
-    rating: 4.4,
-    imageUrl: "https://example.com/restaurant8.jpg",
+    name: "Threasa Francis",
+    cuisine: "Reliable recommendations, satisfied taste buds, delightful experience.",
+    imageUrl: "https://www.telegraph.co.uk/content/dam/women/2021/10/28/C7A9898-Edit_trans_NvBQzQNjv4BqZgEkZX3M936N5BQK4Va8RWtT0gK_6EfZT336f62EI5U.jpg?imwidth=960",
   },]
+
+  const reviewsPerPage = 2; // Number of reviews to display per page
+  const [currentPage, setCurrentPage] = useState(1);
+  
+  const totalPageCount = Math.ceil(review.length / reviewsPerPage);
+
+// Function to handle next page
+const goToNextPage = () => {
+  setCurrentPage((prevPage) => (prevPage % totalPageCount) + 1);
+};
+
+// Function to handle previous page
+const goToPreviousPage = () => {
+  setCurrentPage((prevPage) => (prevPage === 1 ? totalPageCount : prevPage - 1));
+};
+
+
+
+  const indexOfLastReview = currentPage * reviewsPerPage;
+  const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+
   return (
     <div className='Review'>
       <div className='Review-header'>
         <h1>What our Customers say</h1>
       </div>
       <div className='Review-container'>
+       
+        <main className='main-reviewholder'>
         <main className='left-arrow' onClick={goToPreviousPage}>
           <VscArrowCircleLeft size={40} />
         </main>
-        <main className='main-reviewholder'>
           {review.slice(indexOfFirstReview, indexOfLastReview).map((review) => (
-            <ReviewCard name={review.name} imageUrl={review.imageUrl} key={review.id} />
+            <ReviewCard name={review.name} imageUrl={review.imageUrl} cuisine={review.cuisine} key={review.id} />
           ))}
-        </main>
-        <main className='right-arrow' onClick={goToNextPage}>
+           <main className='right-arrow' onClick={goToNextPage}>
           <VscArrowCircleRight size={40} />
         </main>
+        </main>
+       
       </div>
     </div>
   );

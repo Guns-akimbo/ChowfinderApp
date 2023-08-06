@@ -1,16 +1,15 @@
 .Grow {
-    height:130vh;
+    height: max-content;
     width: 100%;
     display: flex;
-   align-items: center;
-   flex-direction: column;
+    align-items: center;
+    flex-direction: column;
     margin-top: 5%;
     background-color: #fff;
-
 }
 
-.grow-wrapper{
-    height:100%;
+.grow-wrapper {
+    height: max-content;
     width: 90%;
     display: flex;
     flex-direction: column;
@@ -18,132 +17,269 @@
     align-items: center;
 }
 
-h1{
-    font-size: 32px;
-    text-align: center;
-}
-.group {
-    height: 30%;
-    width: 100%;
-    display: flex;
-}
-
-.became {
+.grow-Together {
     height: 10%;
     width: 100%;
-    background-color: #FDCCA4;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+
 }
 
-.became button{
-    height: 3rem;
-    width: 12rem;
-    font-size: 16px;
-    background-color: #FC8019;
-    color: #fff;
-    border-radius: 12px;
-    border: none;
+.grow-Together p {
+    color: #292D32;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.group {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 80px;
 }
 
 .group-image {
-    height: 100%;
-    width: 50%;
+    width: 479px;
+    height: 413px;
 }
 
 .group-image img {
-    height: 100%;
-    width: 100%;
+    width: 479px;
+    height: 413px;
+    flex-shrink: 0;
 }
 
-
-.group-write {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 40px;
-    gap: 15px;
-}
-
-.group-write h4 {
+.grow-group-header {
+    width: 381px;
+    height: 41px;
+    color: #212529;
+    font-family: Poppins;
     font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
-.group-write p {
-    font-size: 20px;
-}
-
-.group-write span {
-    font-size: 18px;
+.business {
     color: #FC8019;
 }
 
-.gang {
-    height: 40%;
-    width: 100%;
-    margin-top: 10px;
-    display: flex;
-    margin-bottom: 10px;
+.grow-group-content {
+    width: 493px;
+    height: 216px;
+    color: #76787B;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
-@media (max-width: 767px) {
-        /* CSS styles for mobile devices */
+.grow-group-find {
+    width: 260px;
+    height: 23px;
+    color: #FC8019;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
 
-        .Grow {
-            height: 83vh;
-        }
-    .group{
+.group-write {
+    height: 140px;
+}
+
+.grow-gang {
+    height: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.grow-gang-wrapper {
+    height: 100%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    /* background-color: rgb(97, 103, 103); */
+}
+
+.gang-write {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: #FC8019; */
+}
+
+.gang-write-header {
+    width: 381px;
+    height: 41px;
+    color: #212529;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.gang-write-content {
+    width: 81px;
+    height: 41px;
+    color: #212529;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.grow-became {
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    margin-block: 80px ;
+}
+
+.grow-became-wrapper {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FDCCA4;
+    border-radius: 15px;
+
+}
+
+.grow-became-header {
+    width: 60%;
+    height: 100%;
+    color: #222;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grow-became-button {
+    width: 200px;
+    height: 70px;
+    border-radius: 12px;
+    background: #FC8019;
+    border: none;
+    color: #FFF;
+    font-size: 20px;
+}
+
+.grow-became-btn {
+    width: 40%;
+    height: 100%;
+}
+
+@media  (min-width: 200px) and (max-width: 767px) {
+    /* CSS styles for mobile devices */
+
+    .grow-became {
+        width: 100%;
+        height: 15vh;
+    }
+
+    .grow-became-header {
+        width: 60%;
+        height: 100%;
+        font-size: 10px;
+    }
+
+    .grow-became-button {
+        width: 80px;
+        height: 35px;
+        border-radius: 12px;
+        font-size: 8px;
+    }
+
+    .grow-Together p {
+        font-size: 24px;
+    }
+
+    .group {
+        height: max-content;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        background-color: #fff;
+        justify-content: center;
+    }
+
+    .grow-gang {
+        height: max-content;
+        width: 100%;
+        display: flex;
+        background-color: antiquewhite;
     }
 
     .group-image {
-        height: 50%;
         width: 100%;
+    }
+
+    .gang-write-header {
+        width: 100%;
+        height: 41px;
+        font-size: 16px;
+    }
+
+    .grow-gang-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .gang-write {
+        width: 100%;
+    }
+
+    .group-image {
+        width: 100%;
+        height: 313px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .group-image img {
+        width: 250px;
+        height: 200px;
+        margin-bottom: 20px;
     }
 
     .group-write {
-        height: 35%;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        gap: 5px;
-      }
-    
-      .group-write h4 {
-        font-size: 20px;
-    }
-    
-    .group-write p {
-        font-size: 10px;
-    }
-    
-    .group-write span {
-        font-size: 10px;
-        color: #FC8019;
+        height: 206px;
     }
 
-    .gang{
-        display: flex;
-        flex-direction: column;
+    .grow-group-header {
+        width: 100%;
+        height: 41px;
+        font-size: 18px;
+
     }
 
-    .became{
-               font-size: 8px;
-          }
+    .grow-group-content {
+        width: 100%;
+        height: 116px;
+    }
 
-    .became button{
-        height: 2rem;
-        width: 6rem; 
-        font-size: 8px;     
+    .grow-group-find {
+        width: 100%;
+        height: 23px;
     }
 }
 
@@ -151,6 +287,79 @@ h1{
 @media (min-width: 768px) and (max-width: 991px) {
 
     /* CSS styles for tablets */
-   
-   
+    .grow-Together p {
+        font-size: 32px;
+    }
+
+    .group {
+        height: max-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .group-image {
+        width: 50%;
+        height: 413px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .group-image img {
+        width: 200px;
+        height: 313px;
+        flex-shrink: 0;
+    }
+
+    .group-write {
+        width: 40%;
+        height: 206px;
+    }
+
+    .grow-group-header {
+        width: 100%;
+        height: 41px;
+        font-size: 26px;
+
+    }
+
+    .grow-group-content {
+        width: 100%;
+        height: 116px;
+        text-align: justify;
+    }
+
+    .grow-group-find {
+        width: 100%;
+        height: 23px;
+    }
+
+    .grow-became {
+        width: 100%;
+        height: 10vh;
+        background-color: #e23232;
+    }
+
+    .grow-became-btn {
+        width: 30%;
+        height: 100%;
+     }
+
+    .grow-became-header {
+        width: 60%;
+        height: 100%;
+        font-size: 320px;
+    }
+
+    .grow-became-header p {
+        font-size: 24px;
+    }
+
+    .grow-became-button {
+        width: 200px;
+        height: 60px;
+        border-radius: 24px;
+            }
+
 }

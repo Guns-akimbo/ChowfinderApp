@@ -7,7 +7,7 @@ function Footer() {
             <div className='Footer-wrapper'>
                 <main className='footer-holders'>
                     <div className='logos'>
-                    <img src="./assets/logo.png" alt="" />
+                    <img src="./src/assets/Logo.png" alt=""/>
                     </div>
                     <div className='company-contact'><p>
                         UK Street,Green homecity<br/>
@@ -16,27 +16,27 @@ function Footer() {
                         info@Chowfinder.com<br/>
                         www.ChowFinder.com<br/>
                     </p></div>
-                    <div>
-                <img src="./assets/ICONS.svg" alt="social"/>
+                    <div className='social'>
+                    <img src="./src/assets/ICONS.png" alt=""/>
                     </div>
                 </main>
                 <main className='footer-holders'>
-                    {/* <div><p>Company</p>
+                    <div className='footer-holders-aboutus'><p>Company</p>
                     <p>About Us</p>
                     <p>Impacts</p>
-                   <p> Careers</p></div> */}
+                   <p> Careers</p></div>
                 </main>
                 <main className='footer-holders'>
-                    {/* <div><h4>Support </h4>
+                    <div className='footer-holders-aboutus'><p>Support </p>
                     <p>Contact Us </p>
                     <p>Support Center </p>
-                   <p>Request a Callback</p> </div> */}
+                   <p>Request a Callback</p> </div>
                 </main>
                 <main className='footer-holders'>
-                    {/* <p>Legal</p>
+                   <div className='footer-holders-aboutus'> <p>Legal</p>
                     <p>Terms and Conition</p>
                     <p>Cookie Policy</p>
-                    <p>Restaurants Terms</p> */}
+                    <p>Restaurants Terms</p></div>
                 </main>
                
             </div>

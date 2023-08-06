@@ -1,37 +1,44 @@
-.Restaurant{
-    height:410px ;
-    width:27% ;
+.Restaurant {
+    height: 410px;
+    width: 27%;
     background-color: rgb(255, 254, 253);
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     align-items: center;
     margin-top: 10px;
-    /* margin-left: 10px; */
+    margin-bottom: 40px;
 }
 
-.Restaurant-wrapper{
+
+.Restaurant:hover{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.Restaurant-wrapper {
     height: 90%;
     width: 90%;
     border-radius: 20px;
-    }
+}
 
-.Restaurant-image{
+.Restaurant-image {
     height: 50%;
     width: 100%;
-    background:linear-gradient(#fff,#fff,#FC8019);
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.Restaurant-image img{
+.Restaurant-image img {
     height: 60%;
     width: 60%;
 }
 
-.Restaurant-name{
+.Restaurant-name {
     height: 25%;
     width: 100%;
     text-align: center;
@@ -43,19 +50,20 @@
     justify-content: space-between;
 }
 
-.Restaurant-name h4{
-    font-size:24px ;
+.Restaurant-name h4 {
+    font-size: 24px;
 }
 
-.Restaurant-btn{
-    height: 25%;
+.Restaurant-btn {
     width: 100%;
-    display:flex ;
+    height: 30%;
+    display: flex;
     align-items: center;
     justify-content: center;
+    /* background-color: aqua; */
 }
 
-.Restaurant-btn button{
+.Restaurant-btn button {
     height: 3rem;
     width: 173px;
     border: none;
@@ -67,26 +75,27 @@
 @media (max-width: 767px) {
 
     /* CSS styles for mobile devices */
-    .Restaurant{
-        height:300px ;
-        width:45% ;
-          }
+    .Restaurant {
+        height: 300px;
+        width: 45%;
+    }
 
-          .Restaurant-name h4{
-            font-size:12px ;
-        }
-}    
+    .Restaurant-name h4 {
+        font-size: 12px;
+    }
+}
+
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 768px) and (max-width: 991px) {
 
     /* CSS styles for tablets */
-    .Restaurant{
-        height:300px ;
-        width:30% ;
-          }
+    .Restaurant {
+        height: 300px;
+        width: 30%;
+    }
 
-          .Restaurant-name h4{
-            font-size:20px ;
-        }
-   
+    .Restaurant-name h4 {
+        font-size: 20px;
+    }
+
 }
