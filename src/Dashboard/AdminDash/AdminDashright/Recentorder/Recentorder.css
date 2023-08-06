@@ -1,0 +1,73 @@
+
+.vendormain{
+    width: 100%;
+    height: 90.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5%;  
+}
+
+.vendorwrap{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;   
+}
+
+.vendorleft{
+    width: 18%;
+    height: 100%;
+    background-color: orange;
+    padding: 10px;
+}
+
+
+
+.vendorright{
+    width: 75%;
+    height: 100%;
+    background-color:white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.uppervend{
+ width: auto;    
+    gap: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.uppervend h2{
+   
+    font-size: 20px;
+    font-weight: 300;   
+}
+.uppervend p{
+   
+    font-size: 16px;
+    font-weight: 200;   
+}
+
+
+
+.lowvend{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lowvend h2{
+   
+    font-size: 20px;   
+    font-weight: 300;
+}
+.lowvend p{
+   
+    font-size: 13px;
+    font-weight: 200;   
+}

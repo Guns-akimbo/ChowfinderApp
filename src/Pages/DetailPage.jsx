@@ -26,7 +26,7 @@ const Detailpage = () => {
                  <p>+</p>
 
              </span>
-            <button className="Viewcart">Add item to order </button>
+            <button className="Viewcart">Add to order </button>
           </div>
         </div>
       </div>

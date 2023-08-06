@@ -1,0 +1,107 @@
+
+.Timelinemain{
+    width: 100%;
+    height: 90.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5%;
+    background-color: #FFEFD8;
+
+}
+
+.Timelinemainwap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.Timelineleft{
+    width: 18%;
+    height: 100%;
+    background-color: orange;
+    color: white;
+    padding: 10px;
+}
+
+.Timelineright{
+    width: 81%;
+    height: 100%;
+    background-color:#FFEFD8;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Timelinerightwrap{
+    width: 90%;
+    height: 100%;
+    /* background-color: yellow; */
+    padding: 20px; 
+    display: flex;  
+    flex-direction: column;
+    gap: 50px;
+    /* justify-content: space-evenly; */
+}
+
+.Timelinerightwrap h2{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.Timelinecard{
+    width: 400px;
+    height: 180px;
+    /* background-color: blue; */
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;;
+    display: flex;
+}
+
+.Timelinecardimg{
+    width: 30%;
+    height: 100%;
+    /* background-color: green; */
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    padding: 20px;
+}
+
+.imagecard{
+    width: 100%;
+    height: 60%;
+    background-color: red;
+}
+
+.Timelinetext{
+    width: 70%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.Timelinetext span{
+    display: flex;
+}
+
+.Timelinetext h2{
+    font-size: 18px;
+    font-family: 400;
+}
+
+.price{
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 10%; */
+    
+}
+
+.price p{
+    font-size: 12px;
+    font-family: 200;
+}

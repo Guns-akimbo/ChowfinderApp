@@ -12,9 +12,9 @@ const Menu = () => {
       <header className="head">
         <section className="headwrap">
           <div className="Logodiv">
-            <NavLink to="/">
+            <div to="/">
               <img src={Logo} alt="" />
-            </NavLink>
+            </div>
           </div> 
           <div className="signindiv">
             <div className="cartround">

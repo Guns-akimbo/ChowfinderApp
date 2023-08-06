@@ -1,30 +1,19 @@
- import { useState } from "react";
+import { useState } from "react";
 import "../Onboarding/Onboard.css";
 
-const Input = (props) => {
-  const { onChange, errorMessage } = props;
-  const [focused, setFocused] = useState(false);
-
-  const handleFocus = () => {
-   };
+const Input = ({ name, type, icon, placeholder}) => {
+console.log(typeof register)
 
   return (
     <div className="field">
-      {props.icon}
+      {icon}
       <input
-        name={props.name}
-        type={props.type}
-        placeholder={props.placeholder}
-        onChange={onChange}
+        
+        name={name}
+        type={type}
+        placeholder={placeholder}
         className="input"
-        onBlur={handleFocus}
-        // onFocus={() =>
-        //   inputProps.name === "confirmPassword" && setFocused(true)
-        // }
-        focused={focused.toString()}
-        // required
       />
-      {/* <span className="error-el">{errorMessage}</span> */}
     </div>
   );
 };
