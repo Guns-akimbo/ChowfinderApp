@@ -10,20 +10,69 @@ import Input from "../Componets/Input";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../Componets/Header";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
+const loginSchema = yup
+  .object({
+    email: yup.string().required("Email is required"),
+    password: yup
+      .string()
+      .required("Password is required")
+      .matches(
+        "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$",
+        "Password must contain at least 8 characters, one capital letter, and one special character (!@#$%^&*)."
+      ),
+  })
+  .required();
+
+const signupSchema = yup
+  .object({
+    fullName: yup.string().required("Fullname is required."),
+    email: yup.string().required("Email is required"),
+    phoneNumber: yup
+    .string()
+    .required("Phone number is required.")
+    .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
+    password: yup
+      .string()
+      .required("Password is required")
+      .matches(
+        "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$",
+        "Password must contain at least 8 characters, one capital letter, and one special character"
+      ),
+  })
+  .required();
 
 const Login = () => {
+  const navigate=useNavigate()
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
-  const [load, setLoad] = useState(false)
-
-
+  const [load, setLoad] = useState(false);
+  const {
+    register: loginRegister,
+    handleSubmit: LoginhandleSubmit,
+    watch,
+    formState: { errors: loginErrors },
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
+  const {
+    register: signupRegister,
+    handleSubmit: SignuphandleSubmit,
+    watch: Signupwatch,
+    formState: { errors: SignupErrors },
+  } = useForm({
+    resolver: yupResolver(signupSchema),
+  });
 
   useEffect(() => {
     console.log(load);
   }, [load]);
+
 
 
   const Values = [
@@ -79,65 +128,66 @@ const Login = () => {
       icon: (
         <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
       ),
-      
-
     },
-    {
-      id: 5,
-      name: "confirmPassword",
-      type: "password",
-      placeholder: "Confirm Password",
-      icon: <GiConfirmed className={`icon ${isActive ? "active" : ""}`} />,
-    },
+    // {
+    //   id: 5,
+    //   name: "confirmPassword",
+    //   type: "password",
+    //   placeholder: "Confirm Password",
+    //   icon: <GiConfirmed className={`icon ${isActive ? "active" : ""}`} />,
+    // },
   ];
 
-  const signupSubmit = async () => {
-    Swal.fire({
-      title: "Verify email address!",
-      text: "Kindly go to your mail and verify",
-      icon: "info",
-      confirmButtonText: "Ok",
-    });
+
+
+
+
+  const signupSubmit = async (data) => {
+
     try {
       setLoad(true);
       const res = await axios.post(
         "https://chowfinder.onrender.com/api/sign-up",
-        others
+        data
       );
       console.log(res);
       setLoad(false);
-      // navigate("/loginpage")
-    } catch (err) {
-      setValued({
-        fullName: "",
-        email: "",
-        password: "",
-        phoneNumber: "",
+      Swal.fire({
+        title: "Verify email address!",
+        text: "Kindly go to your mail and verify",
+        icon: "info",
+        confirmButtonText: "Ok",
       });
+      setTimeout(() => {
+        // console.log("call")
+        setShowSignUpForm(false)
+      }, 2000 );
+    } catch (err) {
       setLoad(false);
       console.log(err);
     }
   };
 
-  const loginSubmit = async () => {
+  const loginSubmit = async (data) => {
     try {
       setLoad(true);
       const res = await axios.post(
         "https://chowfinder.onrender.com/api/log-in",
-        others
+        data
       );
       console.log(res);
       setLoad(false);
       // navigate("/loginpage")
     } catch (err) {
-      setValued({
-        email: "",
-        password: "",
-      });
       setLoad(false);
       console.log(err);
     }
   };
+
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
 
   return (
     <>
@@ -148,17 +198,20 @@ const Login = () => {
             className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}
           >
             <h2>Login</h2>
-            <form>
+            <form onSubmit={LoginhandleSubmit((data) =>loginSubmit(data))}>
               {Values.map((e) => (
-                <Input 
-                {...e} 
-                key={e.id} 
-                
-                name={e.name}
-                type={e.type}
-                placeholder={e.placeholder}
-                 icon={e.icon}
-                  />
+                <Input
+                  {...e}
+                  // {...register(e.name)}
+                  register={loginRegister}
+                  errors={loginErrors}
+
+                  key={e.id}
+                  name={e.name}
+                  type={e.type}
+                  placeholder={e.placeholder}
+                  // icon={e.icon}      
+                />
               ))}
               <div className="forget-link">
                 <a href="">Forgot Password</a>
@@ -199,9 +252,21 @@ const Login = () => {
             className={`form-box sign-up ${showSignUpForm ? "show" : "hide"}`}
           >
             <h2>Sign Up </h2>
-            <form action="">
+            <form
+              action=""
+              onSubmit={SignuphandleSubmit((data) =>signupSubmit (data))}
+            >
               {Value.map((e) => (
-                <Input {...e} key={e.id} />
+                <Input
+                  {...e}
+                  key={e.id}
+                  register={signupRegister}
+                  errors={SignupErrors}
+                  name={e.name}
+                  type={e.type}
+                  placeholder={e.placeholder}
+                  icon={e.icon}
+                />
               ))}
 
               <input

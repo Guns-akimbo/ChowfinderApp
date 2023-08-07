@@ -3,10 +3,8 @@ import { BsCart2, BsPerson, BsArrowLeft } from "react-icons/bs";
 import bb from "../assets/bb.jpg";
 // import amaa from "../assets/amma.jpg"
 import amaa from "../assets/amaa.jpg";
-import "./Pages.css";
+import "./Menu.css";
 import { NavLink } from "react-router-dom";
-
-import DetailPage from "./DetailPage"
 import Detailpage from "./DetailPage";
 
 const Menu = () => {
