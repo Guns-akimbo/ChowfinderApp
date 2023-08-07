@@ -26,7 +26,7 @@ function Customer() {
     
       <Space size={20}
        direction="vertical">
-        <Typography.Title level={4}>Inventory</Typography.Title>
+        <Typography.Title level={4}>Customers</Typography.Title>
         <Table
         loading={loading}
         columns={[

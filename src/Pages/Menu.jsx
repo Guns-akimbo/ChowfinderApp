@@ -5,8 +5,6 @@ import bb from "../assets/bb.jpg";
 import amaa from "../assets/amaa.jpg";
 import "./Menu.css";
 import { NavLink } from "react-router-dom";
-
-import DetailPage from "./DetailPage"
 import Detailpage from "./DetailPage";
 import { useState } from "react";
 import Meals from "./Meals";
