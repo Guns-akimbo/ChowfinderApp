@@ -90,11 +90,11 @@ border: 1px solid #FC8019;
 background: #FFF;
 }
 
-.select-restaurant select {
+/* .select-restaurant select {
     border-radius: 8px;
-}
+} */
 
-.select-restaurant option {
+option {
     padding: 10px;
 }
 
