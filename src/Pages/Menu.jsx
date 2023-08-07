@@ -6,11 +6,15 @@ import amaa from "../assets/amaa.jpg";
 import "./Menu.css";
 import { NavLink } from "react-router-dom";
 import Detailpage from "./DetailPage";
+import { useState } from "react";
+import Meals from "./Meals";
+import Drinks from "./Drinks";
+import Proteins from "./Proteins";
 
 const Menu = () => {
-
-  
-
+  const [meal, setmeal] = useState(true)
+  const [drink, setdrink] = useState(false)
+  const [protein, setprotein] = useState(false)
 
   return (
     <main className="Bigdiv">
@@ -20,7 +24,7 @@ const Menu = () => {
             <NavLink to="/">
               <img src={Logo} alt="" />
             </NavLink>
-          </div> 
+          </div>
           <div className="signindiv">
             <div className="cartround">
               <BsCart2 className="carthead" />
@@ -64,132 +68,35 @@ const Menu = () => {
               Opening Time <br /> 1am-12pm
             </h3>
             <span className="foodcategory">
-              <h2>Meals</h2>
-              <h2>Proteins</h2>
-              <h2>Drinks</h2>
+              <h4 className={meal ? "Active" : null}
+                onClick={() => {
+                  setmeal(true)
+                  setdrink(false)
+                  setprotein(false)
+
+                }}>Meals</h4>
+
+              <h4 className={protein ? "Active" : null}
+                onClick={() => {
+                  setmeal(false)
+                  setdrink(false)
+                  setprotein(true)
+                }}> Proteins</h4>
+
+              <h4 className={drink ? "Active" : null}
+                onClick={() => {
+                  setmeal(false)
+                  setdrink(true)
+                  setprotein(false)
+                }}> Drinks</h4>
             </span>
           </div>
           <section className="downmenusection">
-            <div className="foodcard" onClick={<Detailpage/>}>
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
-            <div className="foodcard">
-              <div className="leftcard">
-                <h2>Food</h2>
-                <h4>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Neque, accusamus?
-                </h4>
-                <div className="pri">
-                  <p>Price:</p>
-                </div>
-              </div>
-              <div className="rightcard">
-                <img src={amaa} alt="" />
-              </div>
-            </div>
+            {
+              meal ? <Meals/> :
+                protein ? <Drinks/> :
+                  drink ? <Proteins/> : null
+            }
           </section>
         </div>
 

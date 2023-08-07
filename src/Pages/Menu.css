@@ -26,30 +26,29 @@
   .menulist {
     width: 90%;
     height: 100vh;
-    /* background-color: green; */
+    background-color: green;
     display: flex;
     gap: 10px;
     padding: 10px;
-    /* background-color: green; */
-    /* justify-content: space-between; */
+    justify-content: space-between;
   }
   
   .leftmenu {
     width: 70%;
-    height: max-content;
+    /* height: 100%; */
     background-color: #ffefd8;
     padding: 20px;
     color: black;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    /* background-color: blue; */
+    overflow-y: scroll;
   }
   
   .topmenusection {
     width: 50%;
     height: 30%;
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,6 +143,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    /* background-color: black; */
   }
   
   .foodcategory p {
@@ -170,6 +170,11 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: white;
     cursor: pointer;
+  }
+  .Active{
+    color:orange;
+    cursor: pointer;
+    
   }
   
   .leftcard {
@@ -211,14 +216,18 @@
   .rightmenu {
     width: 25%;
     height: 55vh;
-    background-color: whitesmoke;
+    background-color: red;
     border: 1px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     overflow-y: hidden;
-    position:sticky;
+    /* border: 1px solid grey; */
+    /* position:fixed;
+    top: 0;
+    left:70%; */
+    /* right: 15px; */
     border-radius: 8px;
   }
   
