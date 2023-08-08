@@ -8,6 +8,7 @@ import Review from "./review/Review";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import { NavLink } from "react-router-dom";
+import food from "../../assets/food.svg"
 
 
 function Home() {
@@ -143,7 +144,7 @@ function Home() {
               )}
             </div>
             <main className="bacckima">
-              <img src="/src/assets/food.svg" alt="" />
+              <img src={food}alt="" />
             </main>
           </div>
         </section>
