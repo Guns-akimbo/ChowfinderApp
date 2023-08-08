@@ -14,11 +14,12 @@ const myApp = () => {
       <Route path='/' element={<Home/>}/>
       <Route path='/About' element={<Aboutus/>}/>
       <Route path='/login' element={<Login/>}/>
-      <Route path='/cart' element={<Menu/>}/>
+      <Route path='/menu/:menuId' element={<Menu/>}/>
      </Routes>
     </div>
   )
 }
+
 
 export default myApp
 

@@ -1,207 +1,25 @@
-import React from 'react'
-import amaa from "../assets/amaa.jpg"
+import React from "react";
+import amaa from "../assets/amaa.jpg";
 
-function Meals() {
+function Meals({ meals }) {
   return (
     <>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div> 
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div> 
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div> 
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-    <div className="foodcard" >
-    <div className="leftcard">
-      <h2>Food</h2>
-      <h4>
-       john
-      </h4>
-      <div className="pri">
-        <p>Price:</p>
-      </div>
-    </div>
-    <div className="rightcard">
-      <img src={amaa} alt="" />
-    </div>
-  </div>
-  </> 
-  )
+      {meals?.map((i) => (
+        <div className="foodcard">
+          <div className="leftcard">
+            <h2>{i?.name}</h2>
+            <h4>{i?.description}</h4>
+            <div className="pri">
+              <p>Price:{i?.price}</p>
+            </div>
+          </div>
+          <div className="rightcard">
+            <img src={i?.itemImage} alt=""/>
+          </div>
+        </div>
+      ))}
+    </>
+  );
 }
 
-export default Meals
+export default Meals;

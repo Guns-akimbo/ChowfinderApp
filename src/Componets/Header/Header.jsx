@@ -66,7 +66,7 @@ function Header() {
                         </nav>
                          
                         <div className='Navsign'>
-                        <NavLink to="cart">
+                        <NavLink to="menu">
                             <BsCart4 size={20} />
                             <div className='cartlenght'>4</div>
                             </NavLink>
