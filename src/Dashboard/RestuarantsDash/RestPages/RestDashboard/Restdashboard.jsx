@@ -16,7 +16,6 @@ function Restdashboard() {
   const [revenue,setRevenue]=useState(0)
 
 
-
   useEffect(()=>{
     getOrders().then((res)=>{
       setOrders(res.total)
@@ -30,8 +29,6 @@ function Restdashboard() {
   
 
   },[])
-
-
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>

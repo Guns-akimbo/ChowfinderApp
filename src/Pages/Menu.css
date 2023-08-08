@@ -26,7 +26,7 @@
   .menulist {
     width: 90%;
     height: 100vh;
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     gap: 10px;
     padding: 10px;
@@ -216,18 +216,13 @@
   .rightmenu {
     width: 25%;
     height: 55vh;
-    background-color: red;
+    background-color:whitesmoke;
     border: 1px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     overflow-y: hidden;
-    /* border: 1px solid grey; */
-    /* position:fixed;
-    top: 0;
-    left:70%; */
-    /* right: 15px; */
     border-radius: 8px;
   }
   

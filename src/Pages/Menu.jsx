@@ -6,15 +6,47 @@ import amaa from "../assets/amaa.jpg";
 import "./Menu.css";
 import { NavLink } from "react-router-dom";
 import Detailpage from "./DetailPage";
-import { useState } from "react";
+import { useState,useEffect} from "react";
 import Meals from "./Meals";
 import Drinks from "./Drinks";
 import Proteins from "./Proteins";
+import { useParams } from "react-router-dom";
 
 const Menu = () => {
   const [meal, setmeal] = useState(true)
   const [drink, setdrink] = useState(false)
   const [protein, setprotein] = useState(false)
+  const { menuId } = useParams();
+  const [data,setData]=useState([])
+  
+
+  async function fetchMenu() {
+    try {
+      console.log("started");
+      console.log(menuId)
+      const response = await fetch(
+        `http://chowfinder.onrender.com/api/menu/getall/${menuId}`
+      );
+      const data = await response.json();
+      console.log(data?.menus);
+      console.log("ended");
+      setData(data?.menus)
+    } catch (error) {
+      console.error("Error fetching menu:", error);
+      console.log("error");
+    }
+  }
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
+
+
+ 
+
+
+
+
 
   return (
     <main className="Bigdiv">
@@ -93,7 +125,7 @@ const Menu = () => {
           </div>
           <section className="downmenusection">
             {
-              meal ? <Meals/> :
+              meal ? <Meals meals={data}/> :
                 protein ? <Drinks/> :
                   drink ? <Proteins/> : null
             }
