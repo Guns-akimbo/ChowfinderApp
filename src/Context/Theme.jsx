@@ -10,10 +10,6 @@ export const ThemeContext = createContext(null);
 
 const Theme = ({ children }) => {
 
-    
-  
-
-   
     return (
         <ThemeContext.Provider value={{}} >
             {children}

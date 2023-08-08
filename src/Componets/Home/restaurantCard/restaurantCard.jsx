@@ -9,8 +9,7 @@ function RestaurantCard(props) {
     <section className='Restaurant'>
         <main className='Restaurant-wrapper'>
             <div className='Restaurant-image'>
-            <img src={amaa} alt="food"/>
-            </div>
+            <img src={amaa}alt="food"/></div>
             <div className='Restaurant-name'>
                 <h4>{props.name}</h4>
                 <p>{props.address}</p>
