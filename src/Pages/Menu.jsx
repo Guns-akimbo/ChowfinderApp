@@ -19,6 +19,8 @@ const Menu = () => {
   const { menuId } = useParams();
   const [data,setData]=useState([])
   
+  
+
 
   async function fetchMenu() {
     try {
@@ -28,7 +30,7 @@ const Menu = () => {
         `http://chowfinder.onrender.com/api/menu/getall/${menuId}`
       );
       const data = await response.json();
-      console.log(data?.menus);
+      console.log(data);
       console.log("ended");
       setData(data?.menus)
     } catch (error) {
