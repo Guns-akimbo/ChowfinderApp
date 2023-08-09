@@ -1,5 +1,7 @@
 import React from 'react'
 import './Grow.css'
+import bike from "../../../assets/bike.png"
+import businessaccount from "../../../assets/business account.png"
 
 function Grow() {
     return (
@@ -8,7 +10,7 @@ function Grow() {
             <div className='grow-wrapper'>
                 <div className='grow-Together'><p>Grow Your Business With Us</p></div>
                 <main className='group'>
-                    <div className='group-image'><img src="/src/assets/business account.png" alt="" />
+                    <div className='group-image'><img src={businessaccount} alt="" />
                     </div>
                     <div className='group-write'>
                         <div className='grow-group-header'> <h4>Promote your <span className='business'>Business </span></h4></div>
@@ -26,7 +28,7 @@ function Grow() {
                         <div className='grow-group-content'><p>Attract new customers and keep them coming back for more with the delivery type that works for you.</p></div>
                         <span className='grow-group-find'>Find out more about our delivery services</span>
                     </div>
-                    <div className='group-image'><img src="/src/assets/bike.png" alt="" /></div>
+                    <div className='group-image'><img src={bike} alt="" /></div>
 
                 </div>
             </main>

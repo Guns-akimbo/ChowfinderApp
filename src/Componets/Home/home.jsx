@@ -8,6 +8,7 @@ import Review from "./review/Review";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import { NavLink } from "react-router-dom";
+import food from "../../assets/food.svg"
 
 
 function Home() {
@@ -90,7 +91,7 @@ function Home() {
                     onChange={handleLocationChange}
                   >
                     <option value="">All Locations</option>
-                    {locations.map((location) => (
+                    {locations?.map((location) => (
                       <option key={location} value={location}>
                         {location}
                       </option>
@@ -116,19 +117,19 @@ function Home() {
                         <AiFillCloseCircle onClick={handleClose} />
                       </main>
                       <main className="Restuarantlisting-holder">
-                        {filteredRestaurants.map((restaurant) => (
+                        {filteredRestaurants?.map((restaurant) => (
                           <NavLink
                             className="Restaurant"
                             key={restaurant._id}
-                            to={`/menu/${restaurant._id}`}
+                            to={`/menu/${restaurant?._id}`}
                           >
                             <main className="Restaurant-wrapper">
                               <div className="Restaurant-image">
-                                <img src={restaurant.profileImage} alt="food" />
+                                <img src={restaurant?.profileImage} alt="food" />
                               </div>
                               <div className="Restaurant-name">
-                                <h4>{restaurant.businessName}</h4>
-                                <p>{restaurant.address}</p>
+                                <h4>{restaurant?.businessName}</h4>
+                                <p>{restaurant?.address}</p>
                               </div>
                               <div className="Restaurant-btn">
                                 <button>See more</button>
@@ -143,7 +144,7 @@ function Home() {
               )}
             </div>
             <main className="bacckima">
-              <img src="/src/assets/food.svg" alt="" />
+              <img src={food}alt="" />
             </main>
           </div>
         </section>

@@ -25,12 +25,13 @@
   
   .menulist {
     width: 90%;
-    height: 100vh;
-    /* background-color: green; */
+    height: max-content;
+    background-color: green;
     display: flex;
     gap: 10px;
     padding: 10px;
     justify-content: space-between;
+    margin-bottom: 20px;
   }
   
   .leftmenu {
@@ -214,8 +215,8 @@
   }
   
   .rightmenu {
-    width: 25%;
-    height: 55vh;
+    width: 28%;
+    height: 70vh;
     background-color:whitesmoke;
     border: 1px;
     padding: 15px;
@@ -223,7 +224,7 @@
     flex-direction: column;
     gap: 5px;
     overflow-y: hidden;
-    border-radius: 8px;
+    /* border-radius: 3px; */
   }
   
   .rightmenu h3 {
@@ -270,9 +271,10 @@
     padding: 5px;
     display: flex;
     justify-content: space-between;
+    background-color:green;
   }
   .cartfiller h1 {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
   }
   .cartfiller p {
@@ -313,4 +315,38 @@
     justify-content: center;
     align-items: center;
   }
+
+  
+@media (max-width: 767px) {
+
+  /* CSS styles for mobile devices */
+  
+}
+
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+    
+  .menulist {
+    height:max-content;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between;
+  }
+
+.leftmenu{
+  width: 100%;
+}
+
+.rightmenu{
+  width: 100%;
+}
+
+.cartfiller{
+  background-color: aqua;
+}
+  
+ 
+}
   
