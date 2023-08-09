@@ -10,8 +10,8 @@ const ForgetPassword=(Logo)=>{
              <section className="forgetpasswordwrap">
                     <div className="cardforget">
                             <div className="imagelogo">
-                                <div className="looog">
-                                   
+                                <div className="looog"> 
+                                                             
                                 </div>
                             </div>
                             <div className="forgettext">

@@ -3,6 +3,9 @@ import React from 'react'
 import './about.css'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
+import team from "../../assets/team.png"
+import phonebag from "../../assets/phonebag.png"
+
 
 function Aboutus() {
   return (
@@ -13,7 +16,7 @@ function Aboutus() {
       <div className='aboutus-wrappper'>
 <main className='first-half'>
   <div className='first-half-image'>
-<img src="./src/assets/team.png" alt="teamphoto"/>
+<img src={team} alt="teamphoto"/>
   </div>
   <div className='first-half-text'>
     <span className='first-half-header'>About ChowFinder</span>
@@ -29,7 +32,7 @@ and most helpful food platform in existence.
 re-shaping the meaning of convenience. </span>
   </div>
   <div className='second-half-image'>
-<img src="./src/assets/phonebag.png" alt="teamphoto"/>
+<img src={phonebag} alt="teamphoto"/>
   </div>
 </main>
 </div>
