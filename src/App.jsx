@@ -4,6 +4,7 @@ import Aboutus from './Componets/AboutUs/About Us';
 import Login from './Onboarding/Login';
 import Menu from './Pages/Menu';
 import { Route, Routes } from 'react-router-dom';
+import Verification from "./Onboarding/Verfication/Verification"
 
 const myApp = () => {
   return (
@@ -14,7 +15,8 @@ const myApp = () => {
       <Route path='/' element={<Home/>}/>
       <Route path='/About' element={<Aboutus/>}/>
       <Route path='/login' element={<Login/>}/>
-      <Route path='/menu/:menuId' element={<Menu/>}/>
+      <Route path='/menu/:restaurantId/*' element={<Menu/>}/>
+      <Route path="/verification/:token" element ={<Verification/>}/>
      </Routes>
     </div>
   )

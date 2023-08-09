@@ -2,22 +2,22 @@ import "./Verification.css"
 import verified from "../.../../../assets/verified.png"
 import { useEffect,useState } from "react"
 import axios from "axios"
-import { useNavigate, useParams } from "react-router"
+import { useNavigate, useParams } from "react-router-dom"
 import { Link } from "react-router-dom"
 
 
 
 const Verification = () => {
 
- const {token}=useParams
- const [isVerified,setIsVerified]=useState(1)
+ const {token} = useParams()
+ const [isVerified,setIsVerified] = useState(1)
   console.log(token)
   const navigate=useNavigate()
 
        useEffect(() => {
             const verifyUser = () => {
                 axios
-                    .post(`http://chowfinder.onrender.com/api/users/verify-email/${token}`)
+                    .get(`https://chowfinder.onrender.com/api/users/verify-email/${token}`)
                     .then((res) => {
                         console.log(res);
                         setIsVerified(2)
