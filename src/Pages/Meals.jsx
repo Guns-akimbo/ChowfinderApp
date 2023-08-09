@@ -4,7 +4,7 @@ import amaa from "../assets/amaa.jpg";
 function Meals({ meals }) {
   return (
     <>
-      {meals?.map((i) => (
+      {/* {meals?.map((i) => (
         <div className="foodcard">
           <div className="leftcard">
             <h2>{i?.name}</h2>
@@ -17,7 +17,7 @@ function Meals({ meals }) {
             <img src={i?.itemImage} alt=""/>
           </div>
         </div>
-      ))}
+      ))} */}
     </>
   );
 }
