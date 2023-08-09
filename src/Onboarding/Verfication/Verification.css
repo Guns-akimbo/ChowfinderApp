@@ -1,0 +1,84 @@
+.Verification {
+    width: 100%;
+    height: 100vh;
+    /* background-color: green; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Verificationwrap {
+    width: 40%;
+    height: 70%;
+    /* background-color: orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cardforget {
+    width: 80%;
+    height: 80%;
+    background-color: orange;
+  }
+  
+  .imagelogo {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 20px;
+    margin-top: 5%;
+  }
+  
+  .looog {
+    width: 30%;
+    height: 100%;
+    background-color: white;
+  }
+
+  .looog img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .Verificationtext {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    justify-content: space-evenly;
+    color: white;
+  }
+
+  .Verificationtext span{
+    text-align: center;
+    gap: 15px;
+    display: flex;
+flex-direction: column;
+font-family: sans-serif;
+
+  }
+  
+  
+  
+  
+  .Verificationtext button {
+    width: 120px;
+    height: 40px;
+    font-size: 18px;
+    font-family: monospace;
+    font-weight: 700;
+    text-align: center;
+    background-color: white;
+    color: orange;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+  }
+  
