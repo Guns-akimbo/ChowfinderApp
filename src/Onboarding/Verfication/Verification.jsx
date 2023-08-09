@@ -17,7 +17,7 @@ const Verification = () => {
        useEffect(() => {
             const verifyUser = () => {
                 axios
-                    .post(`http://chowfinder.onrender.com/api/users/verify-email/${token}`)
+                    .post(`https://chowfinder.onrender.com/api/users/verify-email/${token}`)
                     .then((res) => {
                         console.log(res);
                         setIsVerified(2)
