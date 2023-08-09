@@ -38,7 +38,7 @@ const signupSchema = yup
     .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
     password: yup
       .string()
-      .required("Password is required")
+      // .required("Password is required")
       .matches(
         "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$",
         "Password must contain at least 8 characters, one capital letter, and one special character"
@@ -177,7 +177,7 @@ const Login = () => {
       );
       console.log(res);
       setLoad(false);
-      // navigate("/loginpage")
+      navigate("/")
     } catch (err) {
       setLoad(false);
       console.log(err);
