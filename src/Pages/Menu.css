@@ -26,7 +26,7 @@
   .menulist {
     width: 90%;
     height: max-content;
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     gap: 10px;
     padding: 10px;
@@ -75,12 +75,12 @@
   .leftmid {
     width: 47%;
     height: 100%;
-  }
+   }
   
   .leftmidder {
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  
   }
   .leftmid h1 {
     font-size: 24px;
@@ -224,6 +224,8 @@
     flex-direction: column;
     gap: 5px;
     overflow-y: hidden;
+    position: sticky;
+    top: 0;
     /* border-radius: 3px; */
   }
   
@@ -242,6 +244,10 @@
     overflow-y: scroll;
     /* border: 1px solid black; */
     gap: 10px;
+  }
+
+  .mobile-cartlink{
+    display: none;
   }
   
   .clearBtn {
@@ -271,7 +277,7 @@
     padding: 5px;
     display: flex;
     justify-content: space-between;
-    background-color:green;
+    /* background-color:green; */
   }
   .cartfiller h1 {
     font-size: 18px;
@@ -320,6 +326,57 @@
 @media (max-width: 767px) {
 
   /* CSS styles for mobile devices */
+  .rightmenu{
+    display: none;
+  }
+
+  .leftmenu{
+    width: 100%;
+    height: max-content;
+  }
+
+ .mobile-cartlink{
+    height: 7vh;
+    width: 100%;
+    background-color: #f9b657;
+    position: fixed;
+    bottom: 0;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #ffefd8;
+  }  
+
+  .topmenusection{
+    width: 100%;
+  }
+
+  .midmenusection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+     gap: 15px;
+    right: 0;
+    left: 0;
+
+  } 
+
+  .leftmid{
+    width: 100%;
+  }
+
+  .timesection{
+    width: 100%;
+  }
+
+  .rightmid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
   
 }
 
@@ -329,7 +386,6 @@
     
   .menulist {
     height:max-content;
-    background-color: blue;
     display: flex;
     flex-direction: column;
    justify-content: space-between;
@@ -341,11 +397,25 @@
 
 .rightmenu{
   width: 100%;
+  height: 70vh;
 }
 
 .cartfiller{
-  background-color: aqua;
+  width: 100%;
+  height: auto;
+  padding: 5px;
 }
+.foodcard{
+  width: 300px;
+    height: 100%;
+    display: flex;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: white;
+    cursor: pointer;
+} 
+
   
  
 }

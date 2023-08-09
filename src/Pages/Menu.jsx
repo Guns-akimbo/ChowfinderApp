@@ -43,13 +43,6 @@ const Menu = () => {
     fetchMenu();
   }, []);
 
-
- 
-
-
-
-
-
   return (
     <main className="Bigdiv">
       <header className="head">
@@ -128,8 +121,8 @@ const Menu = () => {
           <section className="downmenusection">
             {
               meal ? <Meals meals={data}/> :
-                protein ? <Drinks/> :
-                  drink ? <Proteins/> : null
+                protein ? <Proteins/> :
+                  drink ? <Drinks/> : null
             }
           </section>
         </div>
@@ -141,6 +134,70 @@ const Menu = () => {
           </span>
           <div className="cartcard">
             <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div>
+            <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div> <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div> <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div> <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div> <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div> <div className="cartfiller">
+              <h1>
+                Title:chivta <br /> <p>Price:2500</p>
+              </h1>
+              <span className="Addcartfiller">
+                <p>-</p>
+                <p>0</p>
+                <p>+</p>
+              </span>
+            </div> <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -193,7 +250,12 @@ const Menu = () => {
           </div>
         </div>
       </section>
+      <section className="mobile-cartlink">
+<p>proceed to order (three)item</p>
+<p>item total price</p>
+      </section>
     </main>
+    
   );
 };
 
