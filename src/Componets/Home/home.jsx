@@ -8,24 +8,24 @@ import Review from "./review/Review";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import { NavLink } from "react-router-dom";
-import food from "../../assets/food.svg"
-
+import food from "../../assets/food.svg";
 
 function Home() {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [locations, setLocations] = useState([]);
   const [locationRestaurants, setLocationRestaurants] = useState({});
   const [showPopup, setShowPopup] = useState(false);
-  // const [menuItems, setMenuItems] = useState([]);
- 
+  const [loading, setLoading] = useState(false);
 
   async function fetchData() {
     try {
+      setLoading(true);
       const response = await fetch(
         "https://chowfinder.onrender.com/api/locations/get-all/"
       );
       const data = await response.json();
       console.log(data);
+      setLoading(false);
       if (data && data.data && data.data.length > 0) {
         setLocations(data.data.map((item) => item.name));
         // Create an object to store restaurants for each location
@@ -36,18 +36,18 @@ function Home() {
         setLocationRestaurants(restaurantsByLocation);
       }
     } catch (error) {
+      setLoading(false);
       console.error("Error fetching data:", error);
     }
   }
-
-
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
-
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
 
   const handleLocationChange = (event) => {
     setSelectedLocation(event.target.value);
@@ -125,7 +125,10 @@ function Home() {
                           >
                             <main className="Restaurant-wrapper">
                               <div className="Restaurant-image">
-                                <img src={restaurant?.profileImage} alt="food" />
+                                <img
+                                  src={restaurant?.profileImage}
+                                  alt="food"
+                                />
                               </div>
                               <div className="Restaurant-name">
                                 <h4>{restaurant?.businessName}</h4>
@@ -144,7 +147,7 @@ function Home() {
               )}
             </div>
             <main className="bacckima">
-              <img src={food}alt="" />
+              <img src={food} alt="" />
             </main>
           </div>
         </section>

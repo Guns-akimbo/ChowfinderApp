@@ -10,38 +10,80 @@ import { useState,useEffect} from "react";
 import Meals from "./Meals";
 import Drinks from "./Drinks";
 import Proteins from "./Proteins";
-import { useParams } from "react-router-dom";
+import { useParams,Route, Routes } from "react-router-dom";
+
 
 const Menu = () => {
   const [meal, setmeal] = useState(true)
   const [drink, setdrink] = useState(false)
   const [protein, setprotein] = useState(false)
-  const { menuId } = useParams();
+  const { restaurantId } = useParams();
   const [data,setData]=useState([])
-  
-  
+  const [categoryload,setcategoryload]=useState(false)
 
+  
 
   async function fetchMenu() {
     try {
-      console.log("started");
-      console.log(menuId)
+      // console.log("started");
+      // console.log(restaurantId)
       const response = await fetch(
-        `http://chowfinder.onrender.com/api/menu/getall/${menuId}`
+        `http://chowfinder.onrender.com/api/rest/getone/${restaurantId}`
       );
       const data = await response.json();
+      // console.log(data?.restaurant);
+      // console.log("ended");
+      setData(data?.restaurant)
+    } catch (error) {
+      console.log("Error fetching menu:", error);
+      console.log("error");
+    }
+  }
+
+
+
+  async function getCategories() {
+    try {
+      setcategoryload(true)
+      console.log("started");
+      const response = await fetch(
+        "http://chowfinder.onrender.com/api/all-categories"
+      );
+      const data = await response.json();
+      setcategoryload(false)
       console.log(data);
       console.log("ended");
-      setData(data?.menus)
+      // setData(data?.restaurant)
     } catch (error) {
+      setcategoryload(false)
       console.error("Error fetching menu:", error);
       console.log("error");
     }
   }
 
+
+
+
+
   useEffect(() => {
     fetchMenu();
+    getCategories()
+
   }, []);
+
+  useEffect(() => {
+   console.log(categoryload)
+  }, [categoryload]);
+
+
+  
+
+
+ 
+
+
+
+
 
   return (
     <main className="Bigdiv">
@@ -69,17 +111,17 @@ const Menu = () => {
         </div>
       </div>
 
-      <section className="menulist">
+      <section className="menulist" >
         <div className="leftmenu">
           <section className="topmenusection">
-            <img src={bb} alt="" />
+            <img src={data?.profileImage} alt="" />
           </section>
           <section className="midmenusection">
             <div className="leftmid">
               <div className="leftmidder">
-                <h1>Ofada Joint</h1>
+                <h1>{data?.businessName}</h1>
                 <h4>
-                  The restaurant for your tasty ofada rice and stew and sauces{" "}
+                  {data?.description}{" "}
                 </h4>
               </div>
             </div>
@@ -102,28 +144,15 @@ const Menu = () => {
                   setprotein(false)
 
                 }}>Meals</h4>
-
-              <h4 className={protein ? "Active" : null}
-                onClick={() => {
-                  setmeal(false)
-                  setdrink(false)
-                  setprotein(true)
-                }}> Proteins</h4>
-
-              <h4 className={drink ? "Active" : null}
-                onClick={() => {
-                  setmeal(false)
-                  setdrink(true)
-                  setprotein(false)
-                }}> Drinks</h4>
             </span>
           </div>
           <section className="downmenusection">
-            {
-              meal ? <Meals meals={data}/> :
-                protein ? <Proteins/> :
-                  drink ? <Drinks/> : null
-            }
+            
+             <Routes>
+              <Route path="/" element ={ <Meals/> }/>
+              {/* <Route path="/" element ={ <Drinks/>}/> */}
+              {/* <Route path="/" element ={<Proteins/>}/> */}
+             </Routes>             
           </section>
         </div>
 
