@@ -10,7 +10,7 @@ import Input from "../Componets/Input";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../Componets/Header";
-import { Navigate, useNavigate } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -214,7 +214,7 @@ const Login = () => {
                 />
               ))}
               <div className="forget-link">
-                <a href="">Forgot Password</a>
+                <NavLink to ="/forgotpassward">Forgot Password ?</NavLink>
               </div>
               <input
                 disabled={load}

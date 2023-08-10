@@ -206,39 +206,24 @@
 }
  
 
-@media screen and (max-width: 735px) {
-  
-  .formcontainer{
-    flex-direction: column;
-    top: 0;
-    overflow: hidden;
-    padding: 30px;
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .sign-in,
+  .sign-up {
+    width: 100%; /* Make each form take up the full width */
   }
 
-  .form-box {
-    width: 350px;
-    height: 500px;
-    padding:0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  .sign-up {
+    display: none; /* Hide the sign-up form on mobile */
   }
-  
 
+  .hide.sign-up.show {
+    display: block; /* Show the sign-up form when needed */
+  }
 
+  .imgBox img {
+   display: none;
+   height: 1px;
+  }
 }
-
-
-
-
-
-/* 
-<div className="eye-btn" onClick={handleTogglePassword}>
-                {showPassword ? (
-                  <AiOutlineEye className="eyebtnopen" />
-                ) : (
-                  <AiOutlineEyeInvisible className="eyebtn" />
-                )}
-              </div>
-            </div> */

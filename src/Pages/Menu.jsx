@@ -119,7 +119,7 @@ const Menu = () => {
           <section className="midmenusection">
             <div className="leftmid">
               <div className="leftmidder">
-                <h1>{data?.businessName}</h1>
+                <h2>{data?.businessName}</h2>
                 <h4>
                   {data?.description}{" "}
                 </h4>
