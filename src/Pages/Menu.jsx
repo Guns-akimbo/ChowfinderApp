@@ -75,16 +75,6 @@ const Menu = () => {
    console.log(categoryload)
   }, [categoryload]);
 
-
-  
-
-
- 
-
-
-
-
-
   return (
     <main className="Bigdiv">
       <header className="head">

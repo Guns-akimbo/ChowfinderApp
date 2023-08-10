@@ -1,28 +1,19 @@
-import Header from "../../../../Componets/Header";
-import "./Recentvendor.css";
+import { Typography } from "antd";
 
 const Recentorder = () => {
   return (
     <>
-      <Header />
-      <main className="vendormain">
-        <div className="vendorwrap">
-          <section className="vendorleft"></section>
-          <section className="vendorright">
-            <div className="uppervend">
-              <h2>Recent Vendors</h2>
-              <p>Your recently seen vendors</p>
-            </div>
-            <div className="lowvend">
-              <h2> You haven't visited any vendors yet</h2>
-              <p>
-                You will see a list of vendors you visit as you start browsing
-                our amazing products
-              </p>
-            </div>
-          </section>
+      <div >
+        <Typography.Title level={4}>Recent Vendors </Typography.Title>
+        {/* <Typography.Text style={{fontSize:"14px"}}> Your recently seen vendor</Typography.Text> */}
+        <div style={{marginTop:"20px"}}>
+          <Typography.Text>You haven't visited any vendors yet</Typography.Text> <br />
+          <Typography.Text>
+            You will see a list of vendors you visit as you start browsing our
+            amazing restaurants 
+          </Typography.Text>
         </div>
-      </main>
+      </div>
     </>
   );
 };
