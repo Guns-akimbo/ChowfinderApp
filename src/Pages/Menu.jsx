@@ -22,7 +22,7 @@ const Menu = () => {
   async function fetchMenu() {
     try {
       // console.log("started");
-      console.log(restaurantId);
+      // console.log(restaurantId);
       const response = await axios.get(
         `${VITE_End_Point}/rest/getone/${restaurantId}`
       );
@@ -36,12 +36,14 @@ const Menu = () => {
     }
   }
 
+  // this api is to get one 
+
 
   const getCategories = async () => {
     try {
       setcategoryload(true);
-      const res = await axios.get(`${VITE_End_Point}/all-categories`);
-      console.log(res?.data);
+      const res = await axios.get(`${VITE_End_Point}/all-categories`); 
+      // console.log(res?.data);
       setcategoryload(false);
       setCategories(res?.data);
     } catch (err) {
@@ -58,25 +60,28 @@ const Menu = () => {
 
 
   useEffect(() => {
-    console.log(categoryload);
+    // console.log(categoryload);
   }, [categoryload]);
 
   const menuList = [
     {
-      path: `/menu/${restaurantId}/`,
+      path: `/menu/${restaurantId}`,
       ...categories[0],
     },
     {
-      path: `/menu/${restaurantId}/drinks`,
+      path: `/menu/${restaurantId}/proteins`,
       ...categories[1],
     },
     {
-      path: `/menu/${restaurantId}/proteins`,
+      path: `/menu/${restaurantId}/drinks`,
       ...categories[2],
     },
   ];
 
-  console.log(menuList)
+   // 
+
+
+  // console.log(menuList)
 
   return (
     <main className="Bigdiv">
@@ -128,24 +133,26 @@ const Menu = () => {
               Opening Time <br /> 1am-12pm
             </h3>
             <span className="foodcategory">
-              {menuList.map((i, index) => (
+             
+              {menuList.map((i) => (
                 <NavLink
-                  style={{ textDecoration: "red" }}
-                  to={`${i.path}/${i._id}/`}
+                style={{ textDecoration: "red" }}
+                  // we are sending  the id which is the category id {id} to the meals,proteins and drinks page 
+                  to={`${i.path}/${i._id}`}
                   className={({ isActive }) => (isActive ? "active" : null)}
                   key={`${restaurantId}_${index}`} // Use a unique key based on restaurantId and index
                 >
                   <h5>{i?.title}</h5>
                 </NavLink>
               ))}
-
+              
             </span>
           </div>
           <section className="downmenusection">
             <Routes>
-              <Route path="/:id" element={<Meals />} />
-              <Route path="/drinks/:id" element={<Drinks />} />
-              <Route path="/proteins/:id" element={<Proteins />} />
+              <Route path="/:categoryId" element={<Meals restaurantId={restaurantId}  />} />
+              <Route path="/proteins/:categoryId" element={<Proteins  restaurantId={restaurantId} />} />
+              <Route path="/drinks/:categoryId" element={<Drinks  restaurantId={restaurantId} />} />          
             </Routes>
           </section>
         </div>

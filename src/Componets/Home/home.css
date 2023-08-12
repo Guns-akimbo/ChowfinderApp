@@ -1,93 +1,97 @@
 .home {
-    height: max-content;
-    width: 100%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 70px;
+  height: 100vh;
+  width: 100%;
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 70px;
+  /* background-color: red; */
 }
 
 .home-wrapper {
-    height: max-content;
-    width: 90%;
-    /* background-color: #ffdf8f; */
-    display: flex;
-    flex-direction: column;
-    gap: 70px;
+  height: max-content;
+  width: 90%;
+  /* background-color: #ffdf8f; */
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
 }
 
 .firstview {
-    height: 93vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* background-color: green; */
 }
 
 .search {
-    height: 100%;
-    width: 60%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  height: 100%;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: green; */
 }
 
 .bacckima {
-    height: 100%;
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   padding-top: 25px;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+  margin-top: 9%;
+  /* background-color: red; */
 }
 
-
 .bacckima img {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .slogan {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  /* background-color: red; */
+}
 
 .slogan h4 {
-    color: #FC8019;
-    font-size: 52px;
-    font-weight: 900;
+  color: #fc8019;
+  font-size: 52px;
+  font-weight: 900;
 }
 
 .slogan h4 span {
-    color: #292D32;
+  color: #292d32;
 }
 
-
 .slogan p {
-    font-size: 32px;
-    color: #76787B;
+  font-size: 32px;
+  color: #76787b;
 }
 
 .search-restaurant {
-    height: 30%;
-    width: 100%;
-    display: flex;
-    gap: 10px;
-   align-items: center;
+  height: 30%;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .select-restaurant {
-    display: flex;
-    width: 372px;
-    height: 75px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 120px;
-    border-radius: 10px;
-border: 1px solid #FC8019;
-background: #FFF;
+  display: flex;
+  width: 372px;
+  height: 60px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  border-radius: 5px;
+  border: 1px solid #fc8019;
+  background: #fff;
 }
 
 /* .select-restaurant select {
@@ -95,204 +99,193 @@ background: #FFF;
 } */
 
 option {
-    padding: 10px;
+  padding: 10px;
 }
 
 .select-restaurant select {
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
-   padding: 0 10px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0 10px;
 }
 
 .select-restaurant select option {
-    background-color: rgb(255, 220, 123);
-
+  background-color: rgb(247, 243, 243);
 }
 
-.Restuarantlisting1{
-    height: 100vh;
-    width: 100%;
-    background-color: rgb(247, 243, 243);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
+.Restuarantlisting1 {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(247, 243, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-.Restuarantlistingll-wrapper{
-    width: 65%;
-    height: 90%;
-    border-radius: 8px;
-    background-color: #FFA75F;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.Restuarantlistingll-wrapper {
+  width: 65%;
+  height: 90%;
+  border-radius: 8px;
+  background-color: #ffa75f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.rap{
-    width: 100%;
-    height: 100%;
-    /* background-color: rgb(58, 21, 191); */
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.rap {
+  width: 100%;
+  height: 100%;
+  /* background-color: rgb(58, 21, 191); */
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
-.Restuarantlisting-holder{
-    width: 100%;
-    height: 80%;
-    border-radius: 8px;
-    /* background-color: rgb(40, 20, 128); */
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    justify-content: space-around;
+.Restuarantlisting-holder {
+  width: 100%;
+  height: 80%;
+  border-radius: 5px;
+  /* background-color: rgb(40, 20, 128); */
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  justify-content: space-around;
 }
 
-.Restuarantlisting-header{
-    width: 100%;
-    height: 15%;
-   /* background-color: rgb(25, 26, 25); */
-   display: flex;
-    justify-content: space-between;
-    padding-inline: 40px;
-    align-items: center;
-    font-size: 24px;
-    color: #292D32;
+.Restuarantlisting-header {
+  width: 100%;
+  height: 15%;
+  /* background-color: rgb(25, 26, 25); */
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 40px;
+  align-items: center;
+  font-size: 24px;
+  color: #292d32;
 }
-
 
 .select-search {
-    height: 5rem;
-    width: 15rem;
-    background-color: #FC8019;
-    border: none;
-    font-size: 17px;
-    border-radius: 8px;
-    color: #fff;
+  height: 3.9rem;
+  width: 15rem;
+  background-color: #fc8019;
+  border: none;
+  font-size: 17px;
+  border-radius: 5px;
+  color: #fff;
 }
-
-
 
 @media (max-width: 767px) {
-
-    /* CSS styles for mobile devices */
-    .firstview {
-        height: 70vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .select-restaurant {
-        width: 100%;
-        margin-bottom: 10px;
-        }
-
-        .select-search {
-        width: 100%;
-        font-size: 12px;
-    }
-
-   
-
-    .slogan h4 {
-        color: #FC8019;
-        font-size: 24px;
-    }
-
-    .slogan p {
-          font-size: 12px;
-    }
-
-     p {
-        font-size: 12px;
+  /* CSS styles for mobile devices */
+  .firstview {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
-    .search {
-        width: 50%;
-        height: 100%;
-        padding-inline:30px ;
+  .select-restaurant {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 
-    }
-.bacckima{
+  .select-search {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .slogan h4 {
+    color: #fc8019;
+    font-size: 24px;
+  }
+
+  .slogan p {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .search {
     width: 50%;
     height: 100%;
-    }
+    padding-inline: 30px;
+  }
+  .bacckima {
+    width: 50%;
+    height: 100%;
+  }
 
-    .bacckima img{
-        width: 100%;
-        height: 100%;
-        }
-    .select-restaurant {
-        height: 3rem;
-        width: 8rem;
-    }
+  .bacckima img {
+    width: 100%;
+    height: 100%;
+  }
+  .select-restaurant {
+    height: 3rem;
+    width: 8rem;
+  }
 
-    .search {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        flex-direction: column;
-    }
-  
-    .select-search {
-        height: 3rem;
-        width: 8rem;
-        font-size: 12px;
-    }
+  .search {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .select-search {
+    height: 3rem;
+    width: 8rem;
+    font-size: 12px;
+  }
 }
-
 
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 768px) and (max-width: 991px) {
-    .firstview {
-        height: 50vh;
-        width: 100%;
-        display: flex;
-    }
-
-    .select-restaurant {
-        height: 5rem;
-        width: 10rem;
-    }
-
-    .select-search {
-        height: 5rem;
-        width: 10rem;
-        font-size: 12px;
-    }
-
-    
-    .slogan h4 {
-        color: #FC8019;
-        font-size: 24px;
-    }
-
-    .slogan p {
-          font-size: 12px;
-    }
-
-     p {
-        font-size: 12px;
+  .firstview {
+    height: 50vh;
+    width: 100%;
+    display: flex;
   }
 
-  .search{
+  .select-restaurant {
+    height: 5rem;
+    width: 10rem;
+  }
+
+  .select-search {
+    height: 5rem;
+    width: 10rem;
+    font-size: 12px;
+  }
+
+  .slogan h4 {
+    color: #fc8019;
+    font-size: 24px;
+  }
+
+  .slogan p {
+    font-size: 12px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .search {
     height: 100%;
     width: 50%;
     display: flex;
-   justify-self:end;
+    justify-self: end;
     flex-direction: column;
   }
 
-  .bacckima{
+  .bacckima {
     width: 50%;
     height: 100%;
-    }
-    
+  }
 }
