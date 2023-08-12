@@ -1,39 +1,35 @@
+const { VITE_End_Point } = import.meta.env;
 import Logo from "../assets/Logo.jpg";
 import { BsCart2, BsPerson, BsArrowLeft } from "react-icons/bs";
 import bb from "../assets/bb.jpg";
-// import amaa from "../assets/amma.jpg"
-import amaa from "../assets/amaa.jpg";
 import "./Menu.css";
 import { NavLink } from "react-router-dom";
 import Detailpage from "./DetailPage";
-import { useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 import Meals from "./Meals";
 import Drinks from "./Drinks";
 import Proteins from "./Proteins";
-import { useParams,Route, Routes } from "react-router-dom";
-
+import { useParams, Route, Routes } from "react-router-dom";
+import axios from "axios";
 
 const Menu = () => {
-  const [meal, setmeal] = useState(true)
-  const [drink, setdrink] = useState(false)
-  const [protein, setprotein] = useState(false)
+  const [meal, setmeal] = useState(true);
   const { restaurantId } = useParams();
-  const [data,setData]=useState([])
-  const [categoryload,setcategoryload]=useState(false)
-
-  
+  const [data, setData] = useState([]);
+  const [categoryload, setcategoryload] = useState(false);
+  const [categories, setCategories] = useState([]);
 
   async function fetchMenu() {
     try {
       // console.log("started");
-      // console.log(restaurantId)
-      const response = await fetch(
-        `http://chowfinder.onrender.com/api/rest/getone/${restaurantId}`
+      console.log(restaurantId);
+      const response = await axios.get(
+        `${VITE_End_Point}/rest/getone/${restaurantId}`
       );
-      const data = await response.json();
-      // console.log(data?.restaurant);
+
+      // console.log(response?.data.restaurant);
       // console.log("ended");
-      setData(data?.restaurant)
+      setData(response?.data.restaurant);
     } catch (error) {
       console.log("Error fetching menu:", error);
       console.log("error");
@@ -41,49 +37,46 @@ const Menu = () => {
   }
 
 
-
-  async function getCategories() {
+  const getCategories = async () => {
     try {
-      setcategoryload(true)
-      console.log("started");
-      const response = await fetch(
-        "http://chowfinder.onrender.com/api/all-categories"
-      );
-      const data = await response.json();
-      setcategoryload(false)
-      console.log(data);
-      console.log("ended");
-      // setData(data?.restaurant)
-    } catch (error) {
-      setcategoryload(false)
-      console.error("Error fetching menu:", error);
-      console.log("error");
+      setcategoryload(true);
+      const res = await axios.get(`${VITE_End_Point}/all-categories`);
+      console.log(res?.data);
+      setcategoryload(false);
+      setCategories(res?.data);
+    } catch (err) {
+      console.log(err);
+      setcategoryload(false);
     }
-  }
-
-
-
-
+  };
 
   useEffect(() => {
     fetchMenu();
-    getCategories()
-
+    getCategories();
   }, []);
 
+
+
   useEffect(() => {
-   console.log(categoryload)
+    console.log(categoryload);
   }, [categoryload]);
 
+  const menuList = [
+    {
+      path: `/menu/${restaurantId}/`,
+      ...categories[0],
+    },
+    {
+      path: `/menu/${restaurantId}/drinks`,
+      ...categories[1],
+    },
+    {
+      path: `/menu/${restaurantId}/proteins`,
+      ...categories[2],
+    },
+  ];
 
-  
-
-
- 
-
-
-
-
+  console.log(menuList)
 
   return (
     <main className="Bigdiv">
@@ -95,9 +88,9 @@ const Menu = () => {
             </NavLink>
           </div>
           <div className="signindiv">
-            <div className="cartround">
+            <NavLink to="/Cart" className="cartround">
               <BsCart2 className="carthead" />
-            </div>
+            </NavLink>
             <div className="cartround">
               <BsPerson className="carthead" />
             </div>
@@ -111,7 +104,7 @@ const Menu = () => {
         </div>
       </div>
 
-      <section className="menulist" >
+      <section className="menulist">
         <div className="leftmenu">
           <section className="topmenusection">
             <img src={data?.profileImage} alt="" />
@@ -119,10 +112,8 @@ const Menu = () => {
           <section className="midmenusection">
             <div className="leftmid">
               <div className="leftmidder">
-                <h2>{data?.businessName}</h2>
-                <h4>
-                  {data?.description}{" "}
-                </h4>
+                <h1>{data?.businessName}</h1>
+                <h4>{data?.description} </h4>
               </div>
             </div>
             <div className="rightmid">
@@ -137,22 +128,25 @@ const Menu = () => {
               Opening Time <br /> 1am-12pm
             </h3>
             <span className="foodcategory">
-              <h4 className={meal ? "Active" : null}
-                onClick={() => {
-                  setmeal(true)
-                  setdrink(false)
-                  setprotein(false)
+              {menuList.map((i, index) => (
+                <NavLink
+                  style={{ textDecoration: "red" }}
+                  to={`${i.path}/${i._id}/`}
+                  className={({ isActive }) => (isActive ? "active" : null)}
+                  key={`${restaurantId}_${index}`} // Use a unique key based on restaurantId and index
+                >
+                  <h5>{i?.title}</h5>
+                </NavLink>
+              ))}
 
-                }}>Meals</h4>
             </span>
           </div>
           <section className="downmenusection">
-            
-             <Routes>
-              <Route path="/" element ={ <Meals/> }/>
-              {/* <Route path="/" element ={ <Drinks/>}/> */}
-              {/* <Route path="/" element ={<Proteins/>}/> */}
-             </Routes>             
+            <Routes>
+              <Route path="/:id" element={<Meals />} />
+              <Route path="/drinks/:id" element={<Drinks />} />
+              <Route path="/proteins/:id" element={<Proteins />} />
+            </Routes>
           </section>
         </div>
 
@@ -181,7 +175,8 @@ const Menu = () => {
                 <p>0</p>
                 <p>+</p>
               </span>
-            </div> <div className="cartfiller">
+            </div>{" "}
+            <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -190,7 +185,8 @@ const Menu = () => {
                 <p>0</p>
                 <p>+</p>
               </span>
-            </div> <div className="cartfiller">
+            </div>{" "}
+            <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -199,7 +195,8 @@ const Menu = () => {
                 <p>0</p>
                 <p>+</p>
               </span>
-            </div> <div className="cartfiller">
+            </div>{" "}
+            <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -208,7 +205,8 @@ const Menu = () => {
                 <p>0</p>
                 <p>+</p>
               </span>
-            </div> <div className="cartfiller">
+            </div>{" "}
+            <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -217,7 +215,8 @@ const Menu = () => {
                 <p>0</p>
                 <p>+</p>
               </span>
-            </div> <div className="cartfiller">
+            </div>{" "}
+            <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -226,7 +225,8 @@ const Menu = () => {
                 <p>0</p>
                 <p>+</p>
               </span>
-            </div> <div className="cartfiller">
+            </div>{" "}
+            <div className="cartfiller">
               <h1>
                 Title:chivta <br /> <p>Price:2500</p>
               </h1>
@@ -280,11 +280,10 @@ const Menu = () => {
         </div>
       </section>
       <section className="mobile-cartlink">
-<p>proceed to order (three)item</p>
-<p>item total price</p>
+        <p>proceed to order (three)item</p>
+        <p>item total price</p>
       </section>
     </main>
-    
   );
 };
 

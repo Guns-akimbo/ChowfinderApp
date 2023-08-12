@@ -6,16 +6,17 @@
     justify-content: center;
     align-items: center;
     margin-top: 0.5%;
-    background-color: #FFEFD8;
+    /* background-color: #FFEFD8; */
+    
 
 }
 
 .Timelinemainwap{
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
     display: flex;
     justify-content: space-between;
-    
+    /* background-color: black; */
 }
 
 .Timelineleft{
@@ -29,7 +30,7 @@
 .Timelineright{
     width: 81%;
     height: 100%;
-    background-color:#FFEFD8;
+    /* background-color:#FFEFD8; */
     display: flex;
     justify-content: flex-end;
 }

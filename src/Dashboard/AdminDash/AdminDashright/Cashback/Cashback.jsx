@@ -1,36 +1,46 @@
-import Header from "../../../../Componets/Header";
-import "./Cashback.css";
+import { Space, Table, Typography } from "antd";
+// import { url } from "inspector";
+import "./Cashback.css"
+
 
 const Cashback = () => {
   return (
     <>
-      <Header />
-      <main className="vendormain">
-        <div className="vendorwrap">
-          <section className="vendorleft"></section>
-          <section className="vendorright">
-            <div className="uppervend">
-              <h2>Cashback</h2>
-              <p>Let's see how your doing </p>
-            </div>
-            <div className="lowvend">
-              <div className="leftlowvend">
-                <div className="cardbalance">
-                  <div className="leftcard">
-                    <h2>Total Balance</h2>
-                    <h4>#2,000</h4>
-                  </div>
-                </div>
-              </div>
-              <div className="rightlowvend">
-                <img src="./src/assets/cashback.svg" alt="" />
-              </div>
-            </div>
-          </section>
-        </div>
-      </main>
+       <div   className="cashy"  style={{ display: "flex", flexDirection:"column", gap:"20px" }}>
+        <Typography.Title style={{fontSize:"20px"}}> Cashback Reward on orders above #2000</Typography.Title>
+        <Space direction="horizontal" >
+        </Space>
+        <Space>            
+        </Space>
+        <RecentOrders/>
+      </div>
     </>
   );
 };
+
+
+function RecentOrders() {
+  return (
+    <>
+     
+      <Table
+        columns={[
+          {
+            title: "Total Orders",
+            dataIndex: "total",
+          },
+
+          {
+            title: "Cashback ",
+            dataIndex: "cashback",
+          },
+        
+        ]}
+        style={{ display: "flex", flexDirection:"column", width:"65vw",}} 
+          pagination={false}
+      ></Table>
+    </>
+  );
+}
 
 export default Cashback;

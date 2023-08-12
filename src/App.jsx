@@ -6,22 +6,19 @@ import Menu from './Pages/Menu';
 import { Route, Routes } from 'react-router-dom';
 import Verification from "./Onboarding/Verfication/Verification"
 import ForgetPassword from './Onboarding/Forgetpassword/ForgetPassword';
-import ResetPassword from './Onboarding/Forgetpassword/ResetPassword';
-
 const myApp = () => {
   return (
 
 
     <div>
-     <Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route path='/About' element={<Aboutus/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/forgotpassward' element={<ForgetPassword/>}/>
-      <Route path='/resetpassward/:token' element={<ResetPassword/>}/>
-      <Route path='/menu/:restaurantId/*' element={<Menu/>}/>
-      <Route path="/verification/:token" element ={<Verification/>}/>
-          </Routes>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/About' element={<Aboutus />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/forgotpassward' element={<ForgetPassword />} />
+        <Route path='/menu/:restaurantId/*' element={<Menu />} />
+        <Route path="/verification/:token" element={<Verification />} />
+      </Routes>
     </div>
   )
 }

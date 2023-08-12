@@ -1,13 +1,13 @@
 import "./Accountsettings.css";
 import Header from "../../../../Componets/Header";
+import { Typography } from "antd";
 
 const Accountsettings = () => {
   return (
     <>
-      <Header />
-      <main className="Timelinemain">
-        <div className="Timelinemainwap">
-          <section className="Timelineleft"></section>
+      <main className="accountsetings">
+        {/* <Typography.Text> Account Settings</Typography.Text> */}
+        <div className="accountsetings">
           <section className="Timelineright">
             <div className="Timelinerightwrap">
               <span className="Timelinerightwrapspan">
@@ -17,10 +17,7 @@ const Accountsettings = () => {
                   date.
                 </h4>
               </span>
-              <span className="personal">
-                {" "}
-                <h3>Personal Information</h3>
-              </span>
+
               <div className="middleinput">
                 <div className="middleinputwrap">
                   <section className="formcards">
@@ -34,12 +31,10 @@ const Accountsettings = () => {
                     <input type="text" />
                     <label htmlFor="">Address</label>
                     <input type="text" />
-                  </section>               
+                  </section>
                 </div>
                 <button className="Addbtn"> Save Changes.</button>
               </div>
-            
-              
             </div>
           </section>
         </div>
