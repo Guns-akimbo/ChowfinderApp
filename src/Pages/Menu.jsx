@@ -140,7 +140,7 @@ const Menu = () => {
                   // we are sending  the id which is the category id {id} to the meals,proteins and drinks page 
                   to={`${i.path}/${i._id}`}
                   className={({ isActive }) => (isActive ? "active" : null)}
-                  key={`${restaurantId}_${index}`} // Use a unique key based on restaurantId and index
+                  key={i._id}
                 >
                   <h5>{i?.title}</h5>
                 </NavLink>
