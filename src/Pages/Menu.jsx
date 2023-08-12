@@ -93,9 +93,9 @@ const Menu = () => {
             </NavLink>
           </div>
           <div className="signindiv">
-            <div className="cartround">
+            <NavLink to="/Cart" className="cartround">
               <BsCart2 className="carthead" />
-            </div>
+            </NavLink>
             <div className="cartround">
               <BsPerson className="carthead" />
             </div>
