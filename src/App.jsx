@@ -8,6 +8,7 @@ import Verification from "./Onboarding/Verfication/Verification";
 import Detailpage from "./Pages/DetailPage";
 import Cart from "./Componets/Cart/Cart";
 import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
+import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword"
 
 const myApp = () => {
   return (
@@ -24,6 +25,7 @@ const myApp = () => {
         />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/resetpassward/:token" element={<ResetPassword />} />
+        <Route path='/forgotpassward' element={<ForgetPassword/>}/>
       </Routes>
     </div>
   );
