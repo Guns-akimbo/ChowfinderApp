@@ -1,33 +1,61 @@
-import React from "react";
+const { VITE_End_Point } = import.meta.env;
+import React, { useState, useEffect } from "react";
 import amaa from "../assets/amaa.jpg";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
+// import { Color } from "@rc-component/color-picker";
 
+function Meals({ restaurantId }) {
+  const { categoryId } = useParams();
+  const [loading, setloading] = useState(false);
+  const [meal, setmeals] = useState([]);
 
-function Meals({  }) {
+  console.log(categoryId, restaurantId);
+  // console.log("meals")
 
-  const{id}=useParams()
+  const meals = async () => {
+    try {
+      setloading(true);
+      // catId/category-specific/:id
+      // To get all food for a specific category by a specific restaurant
+      const res = await axios.get(
+        `${VITE_End_Point}/${categoryId}/category-specific/${restaurantId}`
+      );
+      console.log(res?.data);
+      setloading(false);
+      setmeals(res?.data);
+    } catch (err) {
+      console.log(err);
+      setloading(false);
+    }
+  };
 
-  console.log(id)
-
-
-
+  useEffect(() => {
+    meals();
+  }, []);
 
   return (
     <>
-      {/* {meals?.map((i) => ( */}
-        {/* <div className="foodcard">
+      {meal?.map((i) => (
+        <Link
+          to={`/detail/${categoryId}/${restaurantId}/${i._id}`}
+          className="foodcard"
+          key={i._id}
+          style={{ textDecoration: "none", color: "black" }}
+        >
           <div className="leftcard">
             <h2>{i?.name}</h2>
-            <h4>{i?.description}</h4>
+            {/* <h4>{i?.foodDesc}</h4> */}
             <div className="pri">
               <p>Price:{i?.price}</p>
             </div>
           </div>
           <div className="rightcard">
-            <img src={i?.itemImage} alt=""/>
+            <img src={i?.itemImage} alt="" />
           </div>
-        </div> */}
-       {/* ))} */}
+        </Link>
+      ))}
     </>
   );
 }

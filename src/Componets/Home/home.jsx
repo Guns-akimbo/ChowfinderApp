@@ -89,8 +89,9 @@ function Home() {
                     id="location"
                     value={selectedLocation}
                     onChange={handleLocationChange}
+                    placeholder="select Location"
                   >
-                    <option value="">All Locations</option>
+                    <option value="" disabled selected hidden>Select Location</option>
                     {locations?.map((location) => (
                       <option key={location} value={location}>
                         {location}
@@ -105,6 +106,7 @@ function Home() {
                   Select Restaurant
                 </button>
               </div>
+              <p style={{fontSize:"24px",color: "orange"}}>Trusted by our various Customers in Lagos </p>
             </main>
             <div>
               {/* Restuarant Popup */}
@@ -119,6 +121,7 @@ function Home() {
                       <main className="Restuarantlisting-holder">
                         {filteredRestaurants?.map((restaurant) => (
                           <NavLink
+                          style={{ textDecoration: "none",color:"76787b"}}
                             className="Restaurant"
                             key={restaurant._id}
                             to={`/menu/${restaurant?._id}`}
