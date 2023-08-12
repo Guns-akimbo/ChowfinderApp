@@ -38,11 +38,17 @@ const Detailpage = ({}) => {
     getDetail();
   }, []);
 
-  const remove=(id)=>{
-    // return .filter((t) => t._id !== i._id);
-  }
+  // const remove=(id)=>{
+  //   // return .filter((t) => t._id !== i._id);
+  // }
 
+  const remove = (id) => {
 
+    let filtArray = mealData.filter((item) => item.id !== id)
+
+    setMealData(filtArray) 
+
+}
 
   return (
     <div className="popup">

@@ -21,10 +21,7 @@ const myApp = () => {
       {/* <Route path="/detail/:categoryId/:restaurantId" element ={<Detailpage/>}/> */}
       {/* <Route path="/detail/:categoryId/:restaurantId" element={<Detailpage />} /> */}
       {/* <Route path="/detail/:categoryId/:restaurantId/:mealId" element={<Detailpage />} /> */}
-      <Route path="/detail/:categoryId/:restaurantId/:mealId" element={<Detailpage />} />
-
-
-
+      <Route path="/detail/:categoryId/:restaurantId/:mealId" element={<Detailpage />} />    
      </Routes>
     </div>
   )
