@@ -24,8 +24,8 @@ const myApp = () => {
           element={<Detailpage />}
         />
         <Route path="/Cart" element={<Cart />} />
-        <Route path="/resetpassward/:token" element={<ResetPassword />} />
-        <Route path='/forgotpassward' element={<ForgetPassword/>}/>
+        <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        <Route path='/forgotpassword' element={<ForgetPassword/>}/>
       </Routes>
     </div>
   );
