@@ -3,7 +3,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 import slogan from "../assets/slogan.jpeg";
 import { GiConfirmed } from "react-icons/gi";
 import Input from "../Componets/Input";

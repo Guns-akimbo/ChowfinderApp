@@ -60,7 +60,7 @@ const Detailpage = ({}) => {
                 <p>0</p>
                 <p>+</p>
               </span>
-              <button className="Viewcart">Add to order </button>
+              <button className="Viewcart" onClick={addToCart} >Add to order </button>
             </div>
           </div>
         </div>

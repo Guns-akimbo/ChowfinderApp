@@ -9,7 +9,7 @@ function ResetPassword() {
 
   const handleResetPassword = async () => {
     try {
-      // Send request to update password using the token
+    
       await axios.post(`http://chowfinder.onrender.com/api/users/reset-password//${token}`, {
         newPassword
       });
