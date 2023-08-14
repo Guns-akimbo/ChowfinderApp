@@ -3,7 +3,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { useEffect, useState, } from "react";
 import slogan from "../assets/slogan.jpeg";
 import { GiConfirmed } from "react-icons/gi";
 import Input from "../Componets/Input";
@@ -14,6 +14,9 @@ import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+
+
+
 
 const loginSchema = yup
   .object({
@@ -33,9 +36,9 @@ const signupSchema = yup
     fullName: yup.string().required("Fullname is required."),
     email: yup.string().required("Email is required"),
     phoneNumber: yup
-    .string()
-    .required("Phone number is required.")
-    .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
+      .string()
+      .required("Phone number is required.")
+      .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
     password: yup
       .string()
       // .required("Password is required")
@@ -47,7 +50,7 @@ const signupSchema = yup
   .required();
 
 const Login = () => {
-  const navigate=useNavigate()
+  const Navigate = useNavigate()
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -161,7 +164,7 @@ const Login = () => {
       setTimeout(() => {
         // console.log("call")
         setShowSignUpForm(false)
-      }, 2000 );
+      }, 2000);
     } catch (err) {
       setLoad(false);
       console.log(err);
@@ -177,12 +180,19 @@ const Login = () => {
       );
       console.log(res);
       setLoad(false);
-      navigate("/")
+
+      const token = res.data.token; 
+      localStorage.setItem("access_token", token);
+
+           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+      Navigate("/");
     } catch (err) {
       setLoad(false);
       console.log(err);
     }
   };
+
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -197,8 +207,8 @@ const Login = () => {
           <div
             className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}
           >
-            <h2>Login</h2>
-            <form onSubmit={LoginhandleSubmit((data) =>loginSubmit(data))}>
+            tg  <h2>Login</h2>
+            <form onSubmit={LoginhandleSubmit((data) => loginSubmit(data))}>
               {Values.map((e) => (
                 <Input
                   {...e}
@@ -210,11 +220,11 @@ const Login = () => {
                   name={e.name}
                   type={e.type}
                   placeholder={e.placeholder}
-                  // icon={e.icon}      
+                // icon={e.icon}      
                 />
               ))}
               <div className="forget-link">
-                <NavLink to ="/forgotpassward">Forgot Password ?</NavLink>
+                <NavLink to="/forgotpassward">Forgot Password ?</NavLink>
               </div>
               <input
                 disabled={load}
@@ -254,7 +264,7 @@ const Login = () => {
             <h2>Sign Up </h2>
             <form
               action=""
-              onSubmit={SignuphandleSubmit((data) =>signupSubmit (data))}
+              onSubmit={SignuphandleSubmit((data) => signupSubmit(data))}
             >
               {Value.map((e) => (
                 <Input
