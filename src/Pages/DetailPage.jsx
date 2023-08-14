@@ -20,14 +20,12 @@ const Detailpage = ({}) => {
       setloading(true);
       // catId/category-specific/:id
       const res = await axios.get(
-        // `${VITE_End_Point}/${categoryId}/category-specific/${restaurantId}`
         `${VITE_End_Point}/${categoryId}/category-specific/${restaurantId}`
       );
       // console.log(res?.data);
       setloading(false);
       const selectedMeal = res?.data.find((meal) => meal._id === mealId);
       setMealData(selectedMeal);
-      // setdata(res?.data);
     } catch (err) {
       console.log(err);
       setloading(false);
@@ -37,19 +35,6 @@ const Detailpage = ({}) => {
   useEffect(() => {
     getDetail();
   }, []);
-
-  // const remove=(id)=>{
-  //   // return .filter((t) => t._id !== i._id);
-  // }
-
-  const remove = (id) => {
-
-    let filtArray = mealData.filter((item) => item.id !== id)
-
-    setMealData(filtArray) 
-
-}
-
   return (
     <div className="popup">
       {mealData && (
@@ -60,13 +45,13 @@ const Detailpage = ({}) => {
           <div className="poptext">
             <div className="poptextup">
               <span className="deleteBtn">
-                <p onClick={()=> remove(mealData?._id)} >X</p>
+                <p>X</p>              
               </span>
               <span className="text">
                 <h3>Meal: {mealData?.name}</h3>
-               
+
                 <h4>Description: {mealData?.foodDesc}</h4>
-                <h5>  ₦{mealData?.price}</h5>
+                <h5> ₦{mealData?.price}</h5>
               </span>
             </div>
             <div className="popupBtn">

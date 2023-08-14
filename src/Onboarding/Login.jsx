@@ -10,6 +10,8 @@ import Input from "../Componets/Input";
 import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../Componets/Header";
+// import HashLoader from "react-spinners/ClipLoader";
+import HashLoader from "react-spinners/HashLoader";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -33,9 +35,9 @@ const signupSchema = yup
     fullName: yup.string().required("Fullname is required."),
     email: yup.string().required("Email is required"),
     phoneNumber: yup
-    .string()
-    .required("Phone number is required.")
-    .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
+      .string()
+      .required("Phone number is required.")
+      .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
     password: yup
       .string()
       // .required("Password is required")
@@ -47,7 +49,7 @@ const signupSchema = yup
   .required();
 
 const Login = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
@@ -70,10 +72,11 @@ const Login = () => {
   });
 
   useEffect(() => {
-    console.log(load);
-  }, [load]);
-
-
+    setLoad(true);
+    setTimeout(() => {
+      setLoad(false);
+    }, 5000);
+  }, []);
 
   const Values = [
     {
@@ -138,12 +141,7 @@ const Login = () => {
     // },
   ];
 
-
-
-
-
   const signupSubmit = async (data) => {
-
     try {
       setLoad(true);
       const res = await axios.post(
@@ -160,8 +158,8 @@ const Login = () => {
       });
       setTimeout(() => {
         // console.log("call")
-        setShowSignUpForm(false)
-      }, 2000 );
+        setShowSignUpForm(false);
+      }, 2000);
     } catch (err) {
       setLoad(false);
       console.log(err);
@@ -177,107 +175,130 @@ const Login = () => {
       );
       console.log(res);
       setLoad(false);
-      navigate("/")
+
+      const token = res.data.token; 
+      localStorage.setItem("access_token", token);
+
+           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
+      Navigate("/");
     } catch (err) {
       setLoad(false);
       console.log(err);
     }
   };
-
+  
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
 
   return (
     <>
       <Header />
       <section className="bigcontainer">
-        <div className="formcontainer">
-          <div
-            className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}
-          >
-            <h2>Login</h2>
-            <form onSubmit={LoginhandleSubmit((data) =>loginSubmit(data))}>
-              {Values.map((e) => (
-                <Input
-                  {...e}
-                  // {...register(e.name)}
-                  register={loginRegister}
-                  errors={loginErrors}
+        {load ? (
+          <HashLoader
 
-                  key={e.id}
-                  name={e.name}
-                  type={e.type}
-                  placeholder={e.placeholder}
-                  // icon={e.icon}      
-                />
-              ))}
-              <div className="forget-link">
-                <NavLink to ="/forgotpassward">Forgot Password ?</NavLink>
-              </div>
-              <input
-                disabled={load}
-                type="submit"
-                className="submit-btn"
-                value="Login"
-              />
-            </form>
-          </div>
-
-          <div className={`imgBox sign-in ${showSignUpForm ? "hide" : "show"}`}>
-            <div className="sliding-link">
-              <p>Don't have an account yet ?</p>
-              <span className="signup" onClick={() => setShowSignUpForm(true)}>
-                SignUp
-              </span>
-            </div>
-            <div>
-              <img src={slogan} alt="" />
-            </div>
-          </div>
-
-          <div className={`imgBox sign-up ${showSignUpForm ? "show" : "hide"}`}>
-            <div className="sliding-link">
-              <p>Already a member?</p>
-              <span className="signup" onClick={() => setShowSignUpForm(false)}>
-                Sign In
-              </span>
-            </div>
-            <div>
-              <img src={slogan} alt="" />
-            </div>
-          </div>
-          <div
-            className={`form-box sign-up ${showSignUpForm ? "show" : "hide"}`}
-          >
-            <h2>Sign Up </h2>
-            <form
-              action=""
-              onSubmit={SignuphandleSubmit((data) =>signupSubmit (data))}
+            color={"#F6F5F5"}
+            load={load}         
+            size={130}
+          />
+        ) : (
+          <div className="formcontainer">
+            <div
+              className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}
             >
-              {Value.map((e) => (
-                <Input
-                  {...e}
-                  key={e.id}
-                  register={signupRegister}
-                  errors={SignupErrors}
-                  name={e.name}
-                  type={e.type}
-                  placeholder={e.placeholder}
-                  icon={e.icon}
+              <h2>Login</h2>
+              <form onSubmit={LoginhandleSubmit((data) => loginSubmit(data))}>
+                {Values.map((e) => (
+                  <Input
+                    {...e}
+                    // {...register(e.name)}
+                    register={loginRegister}
+                    errors={loginErrors}
+                    key={e.id}
+                    name={e.name}
+                    type={e.type}
+                    placeholder={e.placeholder}
+                    // icon={e.icon}
+                  />
+                ))}
+                <div className="forget-link">
+                  <NavLink to="/forgotpassward">Forgot Password ?</NavLink>
+                </div>
+                <input
+                  disabled={load}
+                  type="submit"
+                  className="submit-btn"
+                  value="Login"
                 />
-              ))}
+              </form>
+            </div>
 
-              <input
-                disabled={load}
-                type="submit"
-                className="submit-btn"
-                value="Sign Up"
-              />
-            </form>
+            <div
+              className={`imgBox sign-in ${showSignUpForm ? "hide" : "show"}`}
+            >
+              <div className="sliding-link">
+                <p>Don't have an account yet ?</p>
+                <span
+                  className="signup"
+                  onClick={() => setShowSignUpForm(true)}
+                >
+                  SignUp
+                </span>
+              </div>
+              <div>
+                <img src={slogan} alt="" />
+              </div>
+            </div>
+
+            <div
+              className={`imgBox sign-up ${showSignUpForm ? "show" : "hide"}`}
+            >
+              <div className="sliding-link">
+                <p>Already a member?</p>
+                <span
+                  className="signup"
+                  onClick={() => setShowSignUpForm(false)}
+                >
+                  Sign In
+                </span>
+              </div>
+              <div>
+                <img src={slogan} alt="" />
+              </div>
+            </div>
+            <div
+              className={`form-box sign-up ${showSignUpForm ? "show" : "hide"}`}
+            >
+              <h2>Sign Up </h2>
+              <form
+                action=""
+                onSubmit={SignuphandleSubmit((data) => signupSubmit(data))}
+              >
+                {Value.map((e) => (
+                  <Input
+                    {...e}
+                    key={e.id}
+                    register={signupRegister}
+                    errors={SignupErrors}
+                    name={e.name}
+                    type={e.type}
+                    placeholder={e.placeholder}
+                    icon={e.icon}
+                  />
+                ))}
+
+                <input
+                  disabled={load}
+                  type="submit"
+                  className="submit-btn"
+                  value="Sign Up"
+                />
+              </form>
+            </div>
           </div>
-        </div>
+        )}
       </section>
     </>
   );
