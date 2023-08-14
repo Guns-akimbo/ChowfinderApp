@@ -25,7 +25,7 @@ const loginSchema = yup
       .required("Password is required")
       .matches(
         "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$",
-        "Password must contain at least 8 characters, one capital letter, and one special character (!@#$%^&*)."
+        "8 characters, 1 capital, 1 special eg:@."
       ),
   })
   .required();
@@ -37,18 +37,20 @@ const signupSchema = yup
     phoneNumber: yup
       .string()
       .required("Phone number is required.")
-      .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
+      .matches(/^\d{11}$/,
+       "Phone number must be a 11-digit numeric value."),
     password: yup
       .string()
-      // .required("Password is required")
-      .matches(
-        "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$",
-        "Password must contain at least 8 characters, one capital letter, and one special character"
+      .required("Password is required")
+      .matches( "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$", 
+      "8 characters, 1 capital, 1 special eg:@."
+
       ),
   })
   .required();
 
 const Login = () => {
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -162,7 +164,8 @@ const Login = () => {
       }, 2000);
     } catch (err) {
       setLoad(false);
-      console.log(err);
+      console.log(err); 
+      setErrorMessage(err.response.data.message)
     }
   };
 
@@ -181,7 +184,7 @@ const Login = () => {
 
            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-      Navigate("/");
+      navigate("/");
     } catch (err) {
       setLoad(false);
       console.log(err);
@@ -295,6 +298,7 @@ const Login = () => {
                   className="submit-btn"
                   value="Sign Up"
                 />
+                <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
               </form>
             </div>
           </div>
