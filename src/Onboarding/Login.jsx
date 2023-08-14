@@ -227,7 +227,7 @@ const Login = () => {
                   />
                 ))}
                 <div className="forget-link">
-                  <NavLink to="/forgotpassward">Forgot Password ?</NavLink>
+                  <NavLink to="/forgotpassword">Forgot Password ?</NavLink>
                 </div>
                 <input
                   disabled={load}
@@ -236,6 +236,7 @@ const Login = () => {
                   value="Login"
                 />
               </form>
+              <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
             </div>
 
             <div
