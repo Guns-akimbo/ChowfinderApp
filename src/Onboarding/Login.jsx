@@ -11,6 +11,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../Componets/Header";
 // import HashLoader from "react-spinners/ClipLoader";
+import rightlogin from "../assets/rightlogin.jpg"
+import leftlogin from "../assets/leftlogin.jpg"
 import HashLoader from "react-spinners/HashLoader";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -151,6 +153,7 @@ const Login = () => {
         data
       );
       console.log(res);
+     
       setLoad(false);
       Swal.fire({
         title: "Verify email address!",
@@ -168,7 +171,6 @@ const Login = () => {
       setErrorMessage(err.response.data.message)
     }
   };
-
   const loginSubmit = async (data) => {
     try {
       setLoad(true);
@@ -176,20 +178,21 @@ const Login = () => {
         "https://chowfinder.onrender.com/api/log-in",
         data
       );
-      console.log(res);
+      console.log("Login response:", res);
       setLoad(false);
-
-      const token = res.data.token; 
-      localStorage.setItem("access_token", token);
-
-           axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
+  
+      const { token } = res.data; // Access token directly
+      // user token is stored in localStorage using the setItem 
+    localStorage.setItem("User", JSON.stringify({ token }));  
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;  
+      console.log("Token stored:", token);
       navigate("/");
     } catch (err) {
       setLoad(false);
-      console.log(err);
+      console.log("Error:", err);
     }
   };
+  
   
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -227,7 +230,7 @@ const Login = () => {
                   />
                 ))}
                 <div className="forget-link">
-                  <NavLink to="/forgotpassward">Forgot Password ?</NavLink>
+                  <NavLink to="/forgotpassword">Forgot Password ?</NavLink>
                 </div>
                 <input
                   disabled={load}
@@ -236,6 +239,7 @@ const Login = () => {
                   value="Login"
                 />
               </form>
+              <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
             </div>
 
             <div
@@ -251,7 +255,7 @@ const Login = () => {
                 </span>
               </div>
               <div>
-                <img src={slogan} alt="" />
+                <img src={rightlogin} alt="" />
               </div>
             </div>
 
@@ -268,7 +272,7 @@ const Login = () => {
                 </span>
               </div>
               <div>
-                <img src={slogan} alt="" />
+                <img src={leftlogin} alt="" />
               </div>
             </div>
             <div
