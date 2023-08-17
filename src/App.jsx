@@ -8,7 +8,7 @@ import Verification from "./Onboarding/Verfication/Verification";
 import Detailpage from "./Pages/DetailPage";
 import Cart from "./Componets/Cart/Cart";
 import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
-import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword"
+import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
 
 const myApp = () => {
   return (
@@ -23,9 +23,10 @@ const myApp = () => {
           path="/detail/:categoryId/:restaurantId/:mealId"
           element={<Detailpage />}
         />
-        <Route path="/Cart" element={<Cart />} />
+        <Route path="/Cart" element={<Cart/>} />
+
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
-        <Route path='/forgotpassword' element={<ForgetPassword/>}/>
+        <Route path="/forgotpassword" element={<ForgetPassword />} />
       </Routes>
     </div>
   );

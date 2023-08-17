@@ -75,6 +75,7 @@
     align-items: center;
     gap: 5px;
     padding-inline: 3px;
+    cursor: pointer;
 }
 
 .Cart-itemHeaderprice {
@@ -111,6 +112,9 @@
     overflow-y: scroll;
     color: #76787B;
 
+    /* flex-wrap: wrap; */
+    /* background-color: red; */
+
 }
 
 .Cart-itemHoldereach {
@@ -120,6 +124,7 @@
     display: flex;
     justify-content: space-between;
     padding-block: 5px;
+    /* background-color: red; */
 
 }
 
@@ -189,6 +194,7 @@
     justify-content: center;
     align-items: center;
     color: red;
+    cursor: pointer;
 }
 
 .Cart-detailactionholder {
