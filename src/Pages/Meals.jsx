@@ -46,7 +46,7 @@ function Meals({ restaurantId }) {
         >
           <div className="leftcard">
             <h2>{i?.name}</h2>
-            {/* <h4>{i?.foodDesc}</h4> */}
+            <h4>{i?.foodDesc}</h4>
             <div className="pri">
               <p>Price:{i?.price}</p>
             </div>

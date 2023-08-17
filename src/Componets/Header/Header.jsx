@@ -7,16 +7,16 @@ import "./Header.css";
 import { NavLink, Link } from "react-router-dom";
 
 function Header() {
-  const [menu, setMenu] = useState(false);
-  // const [activeIndex, setActiveIndex] = useState(0);
+    const [menu, setMenu] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0);
 
-  const toggleMenu = () => {
-    setMenu(!menu);
-  };
+    const toggleMenu = () => {
+        setMenu(!menu);
+    };
 
-  const hideMenu = () => {
-    setMenu(false);
-  };
+    const hideMenu = () => {
+        setMenu(false);
+    };
 
   const handleNavItemClick = (index) => {
     setActiveIndex(index);

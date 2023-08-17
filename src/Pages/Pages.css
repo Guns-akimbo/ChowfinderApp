@@ -1,25 +1,17 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  box-sizing: 0;
-}
-
 .popup {
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.701);
-  position: fixed;
-  top: 0;
-  backdrop-filter: 5px;
+   backdrop-filter: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .popwrap {
-  width: 60%;
-  height: 60%;
-  background-color: white;
+  width: 50%;
+  height: 70%;
+  /* background-color: rgb(218, 10, 10); */
   display: flex;
 }
 
@@ -27,10 +19,11 @@
   width: 50%;
   height: 100%;
 }
+
 .popimage img {
   width: 100%;
   height: 100%;
-  background-size: contain;
+  /* background-size: contain; */
 }
 
 .poptext {
@@ -123,7 +116,7 @@
   font-family: monospace;
   font-weight: 700;
   text-align: center;
-  background-color: orange;
+  background-color: #FC8019;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -183,7 +176,7 @@
   width: 35px;
   height: 35px;
   border-radius: 100%;
-  background-color: orange;
+  background-color: #FFA75F;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,4 +189,41 @@
 
 
 
+@media (max-width: 767px) {
+  /* CSS styles for mobile devices */
+  .popwrap {
+    width: 90%;
+    height: 85%;
+    /* background-color: rgb(218, 10, 10); */
+    display: flex;
+    flex-direction: column;
+  }
 
+  .popimage {
+    width: 100%;
+    height: 50%;
+  }
+
+  .poptext {
+    width: 100%;
+    height: 50%;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+}
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .popwrap {
+    width: 80%;
+    height: 65%;
+    /* background-color: rgb(218, 10, 10); */
+    display: flex;
+      }
+  
+  }

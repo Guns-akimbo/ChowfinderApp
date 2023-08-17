@@ -58,6 +58,7 @@
   color: #fc8019;
   font-weight: 500;
 }
+
 .Navmenu p:hover {
   color: #fc8019;
   font-weight: 500;
@@ -73,9 +74,13 @@
   position: relative;
 }
 
-.active {
-  color: orange;
-  width: 500;
+.custom-link {
+  color: inherit;
+  text-decoration: none; 
+}
+
+.active{
+  color: red;
 }
 
 .Navsign:hover {
@@ -112,10 +117,13 @@
   display: none;
   width: 100%;
   height: 100vh;
-  background-color: #f8a866;
+  background-color: rgba(132, 123, 112, 0.555);
   position: fixed;
   top: 0;
+  left: 0;
+  pointer-events: none;
 }
+
 
 .caCircle {
   width: 100%;
@@ -124,7 +132,16 @@
   justify-content: end;
   cursor: pointer;
   align-items: center;
+  margin: 15px 0px 0px 0px;
+
 }
+
+.custom-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+
 
 .dropMenu {
   width: 100%;
@@ -133,8 +150,10 @@
 }
 
 .gridmenu {
-  width: 90%;
+  width: 50%;
   height: 100%;
+  background-color: #f8a866;
+
 }
 
 .dropMenu li {
@@ -154,6 +173,7 @@
 }
 
 @media (max-width: 767px) {
+
   /* CSS styles for mobile devices */
   .logo {
     height: 100%;
@@ -163,6 +183,8 @@
     align-items: center;
   }
 
+
+
   .HiMenuAlt2 {
     display: block;
   }
@@ -174,8 +196,7 @@
   .showmenu {
     display: block;
     display: flex;
-    align-items: center;
-    justify-content: center;
+
   }
 
   .cartlenght {
@@ -183,10 +204,24 @@
     left: 6px;
     top: 15px;
   }
+
+  .dropMenu{
+    height: 50%;
+   
+    }
+
+  .dropMenu li{
+     height: 10%;
+    width: 100%;
+    background-color: aquamarine;
+  }
+
+
 }
 
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 768px) and (max-width: 991px) {
+
   /* CSS styles for tablets */
   .HiMenuAlt2 {
     display: block;
@@ -195,7 +230,7 @@
 
   .Navmenu {
     display: none;
-    align-items: center;
+    /* align-items: center; */
   }
 
   .logo {
@@ -206,8 +241,8 @@
   .showmenu {
     display: block;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
   }
 
   .cartlenght {

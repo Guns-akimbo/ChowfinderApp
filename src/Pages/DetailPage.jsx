@@ -1,7 +1,7 @@
 const { VITE_End_Point } = import.meta.env;
 import "./Pages.css";
 import amaa from "../assets/amaa.jpg";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
