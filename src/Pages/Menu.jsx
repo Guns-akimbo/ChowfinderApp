@@ -84,55 +84,42 @@ const Menu = () => {
   // console.log(menuList)
 
   return (
-    <main className="Bigdiv">
-      <header className="head">
-        <section className="headwrap">
-          <div className="Logodiv">
-            <NavLink to="/">
-              <img src={Logo} alt="" />
-            </NavLink>
-          </div>
-          <div className="signindiv">
-            <NavLink to="/Cart" className="cartround">
-              <BsCart2 className="carthead" />
-            </NavLink>
-            <div className="cartround">
-              <BsPerson className="carthead" />
-            </div>
-          </div>
-        </section>
-      </header>
-      <div className="arrowback">
-        <div className="arr">
-          <BsArrowLeft className="arrowleft" />
+    
+    <main className="menu">
+          <div className="arrowback">
+        <NavLink to ="/" className="arr">
+                  <BsArrowLeft className="arrowleft" />
           <p>Resturants</p>
-        </div>
+        </NavLink>
+        
       </div>
 
-      <section className="menulist">
-        <div className="leftmenu">
-          <section className="topmenusection">
-            <img src={data?.profileImage} alt="" />
-          </section>
-          <section className="midmenusection">
-            <div className="leftmid">
-              <div className="leftmidder">
+      <section className="menulist-lord">
+        <div className='menulist-lordholder'>
+             <main className="restuarant-lord">
+            <img src={data?.profileImage} alt=""/>
+            </main>
+        
+                    <div className="restuarant-lordname">
+                      <div className="restuarant-lordname1">
                 <h1>{data?.businessName}</h1>
                 <h4>{data?.description} </h4>
+                </div>
+                <div className="rightermid">
+                <p className='delivery'>Delivery</p>
+                <p className='pickup'>Pickup</p>
               </div>
-            </div>
-            <div className="rightmid">
-              <div className="rightermid">
-                <h4>Delivery</h4>
-                <p>Pickup</p>
               </div>
-            </div>
-          </section>
+             
+             
+          
+
           <div className="timesection">
             <h3>
-              Opening Time <br /> 1am-12pm
+              Opening Time :1am-12pm
             </h3>
-            <span className="foodcategory">
+            </div>
+                      <span className="foodcategory">
              
               {menuList.map((i) => (
                 <NavLink
@@ -147,149 +134,18 @@ const Menu = () => {
               ))}
               
             </span>
-          </div>
-          <section className="downmenusection">
+                <section className="downmenusection">
             <Routes>
               <Route path="/:categoryId" element={<Meals restaurantId={restaurantId}  />} />
               <Route path="/proteins/:categoryId" element={<Proteins  restaurantId={restaurantId} />} />
               <Route path="/drinks/:categoryId" element={<Drinks  restaurantId={restaurantId} />} />          
-            </Routes>
-          </section>
-        </div>
-
-        <div className="rightmenu">
-          <h3>Your Order</h3>
-          <span className="clearBtn">
-            <p>X</p>
-          </span>
-          <div className="cartcard">
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>{" "}
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>{" "}
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>{" "}
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>{" "}
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>{" "}
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>{" "}
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>
-            <div className="cartfiller">
-              <h1>
-                Title:chivta <br /> <p>Price:2500</p>
-              </h1>
-              <span className="Addcartfiller">
-                <p>-</p>
-                <p>0</p>
-                <p>+</p>
-              </span>
-            </div>
-          </div>
-          <div className="delivery">
-            <h2>Choose Address</h2>
-          </div>
-          <div className="totalorder">
-            <h2>Sub total(1 item)</h2>
-            <h2>Total: 2500</h2>
-          </div>
-          <div className="orderBtn">
-            <button className="Viewcart">Place your order</button>
-          </div>
-        </div>
+              </Routes>
+                   
       </section>
-      <section className="mobile-cartlink">
-        <p>proceed to order (three)item</p>
-        <p>item total price</p>
-      </section>
+             
+            
+          </div>
+    </section>
     </main>
   );
 };

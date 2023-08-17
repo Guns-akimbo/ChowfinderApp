@@ -84,6 +84,26 @@ gap: 20px;
 @media (max-width: 767px) {
 
     /* CSS styles for mobile devices */
+
+    .Footer{
+        height: 40vh;
+        width: 100%;
+        background-color:#FDCCA4;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 80px;
+        }
+    
+    .Footer-wrapper{
+        height: 90%;
+        width: 90%;
+        /* background-color: #fbb2b2; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+     
+    }
     .company-contact p{
             font-size: 8px;
        

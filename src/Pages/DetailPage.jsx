@@ -1,7 +1,7 @@
 const { VITE_End_Point } = import.meta.env;
 import "./Pages.css";
 import amaa from "../assets/amaa.jpg";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -32,9 +32,13 @@ const Detailpage = ({}) => {
     }
   };
 
+  
   useEffect(() => {
     getDetail();
   }, []);
+
+
+
   return (
     <div className="popup">
       {mealData && (
@@ -44,9 +48,9 @@ const Detailpage = ({}) => {
           </div>
           <div className="poptext">
             <div className="poptextup">
-              <span className="deleteBtn">
-                <p>X</p>              
-              </span>
+            <span className="deleteBtn" onClick={handleClose}>
+              <p>X</p>
+            </span>
               <span className="text">
                 <h3>Meal: {mealData?.name}</h3>
 
@@ -60,7 +64,7 @@ const Detailpage = ({}) => {
                 <p>0</p>
                 <p>+</p>
               </span>
-              <button className="Viewcart" onClick={addToCart} >Add to order </button>
+              <button className="Viewcart"  >Add to order </button>
             </div>
           </div>
         </div>

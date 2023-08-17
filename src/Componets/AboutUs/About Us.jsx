@@ -36,7 +36,7 @@ re-shaping the meaning of convenience. </span>
   </div>
 </main>
 </div>
-<Footer/>
+{/* <Footer/> */}
     </div>
     </>
   )

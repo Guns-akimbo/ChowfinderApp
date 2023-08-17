@@ -53,15 +53,15 @@
 
 
 .first-half-image img {
-    width: 641px;
-    height: 384px;
+    width: 100%;
+    height:100%;
     flex-shrink: 0;
     border-radius: 8px;
 }
 
 .first-half-header {
-    width: 337px;
-    height: 39px;
+    width: 100%;
+    height: 50%;
     flex-shrink: 0;
     color: #000;
     font-family: Poppins;
@@ -72,8 +72,8 @@
 }
 
 .first-half-content-text {
-    width: 477px;
-    height: 71px;
+    width: 100%;
+    height:100%;
     flex-shrink: 0;
     color: #000;
     font-family: Poppins;
@@ -101,15 +101,15 @@
 }
 
 .second-half-image img {
-    width: 600px;
-    height: 384px;
+    width: 100%;
+    height:100%;
     flex-shrink: 0;
     border-radius: 8px;
 }
 
 .second-half-text-header {
-    width: 587px;
-    height: 43px;
+    width: 100%;
+    height:100%;
     flex-shrink: 0;
     color: #000;
     font-family: Poppins;
@@ -119,199 +119,177 @@
     line-height: normal;
 }
 
-.second-half-text-content{
+.second-half-text-content {
     color: #000;
-font-family: Poppins;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 389px;
-height: 93px;
-flex-shrink: 0;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 100%;
+    height:100%;
+    flex-shrink: 0;
 }
 
 @media (max-width: 767px) {
 
     /* CSS styles for mobile devices */
-    .aboutus-wrappper{
+
+    .About-us {
+        height: max-content;
+        width: 100%;
+    }
+
+    .aboutus-wrappper {
         height: max-content;
         width: 90%;
     }
 
     .first-half {
+        height: max-content;
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
 
+    .first-half-image {
+        height: 50%;
+        width: 100%;
+        /* background-color: rgb(200, 116, 228); */
+    }
 
-    .first-half-image img{
-        width: 300px;
-        height: 184px;
+         .first-half-image img {
+        width: 100%;
+        height: 100%;
         flex-shrink: 0;
         border-radius: 8px;
     }
+
+    .first-half-text {
+        height: 50%;
+        width: 100%;
+    }
+
+    .first-half-content-text {
+        width: 100%;
+        height: 100%;
+    }
+
+
     .second-half {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column-reverse;
     }
 
+    .second-half-image {
+        height: 50%;
+        width: 100%;
+    }
+
     .second-half-image img {
-        width: 300px;
-        height: 184px;
+        width: 100%;
+        height: 100%;
         flex-shrink: 0;
         border-radius: 8px;
     }
 
     .second-half-text-header {
-        width: 280px;
-        height: 73px;
+        width: 100%;
+        height: 100px;
         text-align: left;
-           }
-    
-    .second-half-text-content{
-    width: 309px;
-    height: 93px;
     }
 
-    .first-half-content-text {
-        width: 309px;
-        height: 93px;
-        margin-bottom: 80px;
+    .second-half-text-content {
+        width: 100%;
+        height: max-content;
     }
+
+    .second-half-text {
+        height: 50%;
+        width: 100%;
+           }
+
 }
 
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 768px) and (max-width: 991px) {
 
     /* CSS styles for tablets */
-    .aboutus-wrappper{
+    .About-us {
+        height: max-content;
+        width: 100%;
+    }
+
+    .aboutus-wrappper {
         height: max-content;
         width: 90%;
-        
     }
 
     .first-half {
+        height: max-content;
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
 
-    .first-half-image img{
-        width: 641px;
-        height: 384px;
+    .first-half-image {
+        height: 50%;
+        width: 100%;
+        /* background-color: rgb(200, 116, 228); */
+    }
+
+         .first-half-image img {
+        width: 100%;
+        height: 100%;
         flex-shrink: 0;
         border-radius: 8px;
     }
+
+    .first-half-text {
+        height: 50%;
+        width: 100%;
+    }
+
+    .first-half-content-text {
+        width: 100%;
+        height: 100%;
+    }
+
+
     .second-half {
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column-reverse;
     }
 
+    .second-half-image {
+        height: 50%;
+        width: 100%;
+    }
+
     .second-half-image img {
-        width: 641px;
-        height: 384px;
+        width: 100%;
+        height: 100%;
         flex-shrink: 0;
         border-radius: 8px;
     }
 
     .second-half-text-header {
-        width: 600px;
-        height: 73px;
+        width: 100%;
+        height: 100px;
         text-align: left;
-           }
-    
-    .second-half-text-content{
-    width: 639px;
-    height: 93px;
     }
 
-    .first-half-content-text {
-        width: 639px;
-        height: 93px;
-    }
-}
-
-@media (min-width: 991px) and (max-width: 1360px) {
-
-    /* CSS styles for small screen laptop */
-         
-    .first-half {
-        height: 48%;
+    .second-half-text-content {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
+        height: max-content;
     }
-    
-    .second-half {
-        height: 48%;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .first-half-image {
-        height: 100%;
-        width: 49%;
-    }
-    
-    .first-half-text {
-        height: 100%;
-        width: 45%;
-        display: flex;
-        text-align: justify;
-        padding-top: 60px;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .first-half-image img {
-        width: 441px;
-        height: 354px;
-        flex-shrink: 0;
-        border-radius: 8px;
-    }
-    
-    .first-half-header {
-        width: 337px;
-        height: 39px;
-        flex-shrink: 0;
-        color: #000;
-        font-family: Poppins;
-        font-size: 32px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-    
-    .first-half-content-text {
-        width: 400px;
-        height: 71px;
-        flex-shrink: 0;
-        color: #000;
-        font-family: Poppins;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
-    
+
     .second-half-text {
-        height: 100%;
-        width: 47%;
-        display: flex;
-        text-align: justify;
-        padding-top: 60px;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-     .second-half-image img {
-        width: 441px;
-        height: 354px;
-        flex-shrink: 0;
-        border-radius: 8px;
-    }
-    
+        height: 50%;
+        width: 100%;
+           }
 }
-
-   

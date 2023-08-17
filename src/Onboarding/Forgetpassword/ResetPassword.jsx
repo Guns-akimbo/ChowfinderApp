@@ -9,28 +9,45 @@ function ResetPassword() {
 
   const handleResetPassword = async () => {
     try {
-    
-      await axios.post(`http://chowfinder.onrender.com/api/users/reset-password//${token}`, {
-        newPassword
-      });
-      setMessage('Your password has been successfully reset.');
+      await axios.post(
+        `https://chowfinder.onrender.com/api/users/reset-password/${token}`,
+        {
+          newPassword,
+        }
+      );
+      setMessage(response?.data?.message);
     } catch (error) {
-      console.error('Error resetting password:', error);
-      setMessage('An error occurred. Please try again later.');
+      if (error.response && error.response.data && error.response.data.message) {
+        // Extract and set the error message from the response
+        setMessage(`An error occurred: ${error.response.data.message}`);
+      } else {
+        console.error('Error resetting password:', error);
+        setMessage(error.response.data.error);
+      }
     }
   };
+   
+
 
   return (
-    <div>
-      <h2>Reset Password</h2>
+    <div className='ResetPassword'>
+      <section className='ResetPassword-wrapper'>
+     <div className='Reset-Passwordheader'><h2>Reset Password</h2></div> 
+
+     <div className='ResetPassword-inputt'>
       <p>Enter your new password:</p>
       <input
+      className='inputt'
         type="password"
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)}
       />
-      <button onClick={handleResetPassword}>Reset Password</button>
-      <p>{message}</p>
+      </div>
+      <button 
+      className='forgettext-button'
+      onClick={handleResetPassword}>Reset Password</button>
+      <p className='forgetpassword-errormesage'>{message}</p>
+      </section>
     </div>
   );
 }
