@@ -25,13 +25,14 @@ function Header() {
   );
   const [updateUi, setupdateUi] = useState(false);
 
+  console.log(userisLoggedIn);
   const logout = () => {
     localStorage.setItem(
       "User",
       JSON.stringify({  token: ""})
     );
 
-    setupdateUi(!updateUi);
+    setupdateUi(updateUi);
   };
 
   return (
@@ -69,7 +70,29 @@ function Header() {
                 <li> Become a Partner</li>
              
               <div>
-                {userisLoggedIn?.id !== "" && !updateUi && (
+
+
+              {
+                userisLoggedIn.token ? <div>
+                <li onClick={logout} 
+                className='custom-link'
+                >
+                  Logout
+                </li>
+              </div>:<NavLink to="/login" 
+                  className='custom-link'
+                  >
+                    <li >
+                      <AiOutlineUser className="li" /> Sign in
+                    </li>
+                  </NavLink>
+              }
+
+
+
+
+
+                {/* {userisLoggedIn?.id !== "" && !updateUi && (
                   <div>
                     <li onClick={logout} 
                     className='custom-link'
@@ -87,7 +110,7 @@ function Header() {
                       <AiOutlineUser className="li" /> Sign in
                     </li>
                   </Link>
-                ) : null}
+                ) : null} */}
               </div>
             </nav>
 

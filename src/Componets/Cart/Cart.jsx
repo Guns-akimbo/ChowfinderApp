@@ -162,6 +162,32 @@ function Cart({}) {
     }
   };
 
+  const gateway =()=>{
+    try{
+      const refVal = "colin"+ Math.random() * 1000;
+    window.Korapay.initialize({
+       key:"pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
+      reference: `${refVal}`,
+      amount: total, 
+      currency: "NGN",
+      customer: {
+        name: user.name,
+        email: user.email
+      },
+      notification_url: "https://example.com/webhook"
+    });
+    }catch(err){
+      console.log(err)
+    }
+  }
+  const payment =()=>{
+
+    gateway();
+    //cashbackAPI
+  }
+
+
+
   return (
     <>
       <div className="Cart">
@@ -249,7 +275,7 @@ function Cart({}) {
                 <div className="addressholder">
                   <input type="text" />
                 </div>
-                <div className="paynow">Order Now</div>
+                <div className="paynow"  onClick={payment}>Order Now</div>
               </main>
             </main>
           </div>
