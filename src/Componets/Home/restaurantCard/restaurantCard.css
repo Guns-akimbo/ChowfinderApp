@@ -76,8 +76,9 @@
 
     /* CSS styles for mobile devices */
     .Restaurant {
-        height: 300px;
-        width: 45%;
+        height: 500px;
+        width: 90%;
+        margin-left: 15px;
     }
 
     .Restaurant-name h4 {
@@ -90,8 +91,8 @@
 
     /* CSS styles for tablets */
     .Restaurant {
-        height: 300px;
-        width: 30%;
+        height: 500px;
+        width: 4%;
     }
 
     .Restaurant-name h4 {
