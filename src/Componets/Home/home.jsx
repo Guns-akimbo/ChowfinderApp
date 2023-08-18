@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import { NavLink } from "react-router-dom";
 import food from "../../assets/food.svg";
+import HashLoader from "react-spinners/HashLoader";
 
 function Home() {
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -84,6 +85,11 @@ function Home() {
               </div>
               <div className="search-restaurant">
                 <section className="select-restaurant">
+                {loading ? (
+                <HashLoader color={"#FD8D14"} loading={loading} size={50} />
+              ) : (
+               
+            
                   <select
                     name="location"
                     id="location"
@@ -100,7 +106,7 @@ function Home() {
                       </option>
                     ))}
                   </select>
-
+  )}
                 </section>
                 <button
                   className="select-search"

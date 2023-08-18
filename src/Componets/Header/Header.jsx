@@ -5,6 +5,7 @@ import { CgMenu } from "react-icons/cg";
 import { ImCancelCircle } from "react-icons/im";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
+import Logo from "../../assets/Logo.png"
 
 function Header() {
     const [menu, setMenu] = useState(false);
@@ -44,7 +45,7 @@ function Header() {
               <div className="HiMenuAlt2">
                 <CgMenu size={30} onClick={toggleMenu} />
               </div>
-              <img src="\src\assets\Logo.png" alt="" />
+              <img src={Logo} alt="" />
             </div>
        
             <nav className="Navmenu">

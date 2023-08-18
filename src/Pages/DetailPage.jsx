@@ -1,12 +1,12 @@
 const { VITE_End_Point } = import.meta.env;
 import "./Pages.css";
 import amaa from "../assets/amaa.jpg";
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import HashLoader from "react-spinners/HashLoader";
 // import 'sweetalert2/dist/sweetalert2.min.css';
-
 
 const Detailpage = ({}) => {
   const { categoryId, restaurantId, mealId } = useParams();
@@ -51,10 +51,10 @@ const Detailpage = ({}) => {
       console.log(res);
       setTimeout(() => {
         Swal.fire({
-          text: 'Item added to cart successfully',
+          text: "Item added to cart successfully",
           timer: 2000, // Automatically close after 2 seconds
           timerProgressBar: true, // Show a progress bar for the timer
-          showConfirmButton: false, // Hide the "OK" button   
+          showConfirmButton: false, // Hide the "OK" button
         });
       }, 2000);
       setloadings(false);
@@ -97,9 +97,13 @@ const Detailpage = ({}) => {
               </span>
             </div>
             <div className="popupBtn">
-              <button className="Viewcart" onClick={addToCart}>
-                Add to order
-              </button>
+              {loadings ? (
+                <HashLoader color={"#FD8D14"} loadings={loadings} size={50} />
+              ) : (
+                <button className="Viewcart" onClick={addToCart}>
+                  Add to order
+                </button>
+              )}
             </div>
           </div>
         </div>
