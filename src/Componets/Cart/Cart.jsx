@@ -2,6 +2,7 @@ const { VITE_End_Point } = import.meta.env;
 import "./Cart.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 // import Header from "../Header/Header"
 
@@ -14,8 +15,8 @@ function Cart({}) {
   const [loading, setloading] = useState(false);
   const [loadings, setloadings] = useState(false);
   const [cartData, setCartData] = useState([]);
-  const[total,setTotal]=useState("")
-  const[cashback,setcashBack]=useState("")
+  const [total, setTotal] = useState("");
+  const [cashback, setcashBack] = useState("");
   const token = JSON.parse(localStorage.getItem("User"))?.token;
 
   const getCartData = async () => {
@@ -27,10 +28,10 @@ function Cart({}) {
         },
       });
       setCartData(res.data.items);
-      console.log(res.data)
+      console.log(res.data);
       setTotal(res.data.grandTotal);
-      setcashBack(res.data.cashBack)
-      console.log(res.data.user)
+      setcashBack(res.data.cashBack);
+      console.log(res.data.user);
       setloading(false);
     } catch (err) {
       console.log(err);
@@ -58,6 +59,14 @@ function Cart({}) {
           Authorization: `Bearer ${token}`,
         },
       });
+      setTimeout(() => {
+        Swal.fire({
+          text: "increased",
+          timer: 1000, // Automatically close after 2 seconds
+          timerProgressBar: true, // Show a progress bar for the timer
+          showConfirmButton: false, // Hide the "OK" button
+        });
+      }, 1000);
       getCartData();
       console.log(res);
       setloadings(false);
@@ -83,6 +92,14 @@ function Cart({}) {
           },
         }
       );
+      setTimeout(() => {
+        Swal.fire({
+          text: "Item reduced from cart ",
+          timer: 1000, // Automatically close after 2 seconds
+          timerProgressBar: true, // Show a progress bar for the timer
+          showConfirmButton: false, // Hide the "OK" button
+        });
+      }, 1000);
       getCartData();
       console.log(res);
       setloadings(false);
@@ -127,7 +144,16 @@ function Cart({}) {
           Authorization: `Bearer ${token}`,
         },
       });
+      setTimeout(() => {
+        Swal.fire({
+          text: "item cleared successfully",
+          timer: 1000, // Automatically close after 2 seconds
+          timerProgressBar: true, // Show a progress bar for the timer
+          showConfirmButton: false, // Hide the "OK" button
+        });
+      }, 1000);
       getCartData();
+
       console.log(res);
       setloadings(false);
     } catch (err) {
@@ -179,8 +205,12 @@ function Cart({}) {
                       {i?.itemTotal}
                     </div>
                     <div className="Cart-itemHeaderremove">
-                      <div className="remove-item" onClick={()=>deleteItem(i?.menu)} >X</div>
-                 
+                      <div
+                        className="remove-item"
+                        onClick={() => deleteItem(i?.menu)}
+                      >
+                        X
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -190,12 +220,11 @@ function Cart({}) {
           </div>
           <div className="Cart-detailaction">
             <main className="Cart-detailactionholder">
-            
-              <div className="rewardshow">  
+              <div className="rewardshow">
                 <p className="blur">Total: </p>
                 <p>{total}</p>
               </div>
-              
+
               <div className="toataprice">
                 <p className="blur">Cashback:</p>
                 <p> {cashback}</p>
