@@ -10,12 +10,11 @@ function Footer() {
                     <img src="./src/assets/Logo.png" alt=""/>
                     </div>
                     <div className='company-contact'><p>
-                        UK Street,Green homecity<br/>
+                    161 Muyibi Street, Ajegunle<br/>
                         Lagos Nigeria<br/>
                         Tel :09058965388<br/>
-                        info@Chowfinder.com<br/>
-                        www.ChowFinder.com<br/>
-                    </p></div>
+                        chowfinder1@gmail.com<br/>
+                         </p></div>
                     <div className='social'>
                     <img src="./src/assets/ICONS.png" alt=""/>
                     </div>

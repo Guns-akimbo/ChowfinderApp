@@ -94,15 +94,17 @@
 /* For devices with a width up to 767px (e.g., mobile devices) */
 @media (min-width: 100px) and (max-width: 767px) {
   .how-we-contains {
+    display: flex;
     overflow-X: scroll;
     flex-wrap: wrap;
     flex-direction: row;
   }
 
   .about {
-    height: 50%;
+    /* height: 100%; */
     width: 60%;
     margin: 15px;
+    /* background-color: aquamarine; */
   }
 
   .about-img {
@@ -118,6 +120,10 @@
   .how-des {
     font-size: 12px;
   }
+.about{
+  height: 70%;
+  width: 88%;
+} 
 
 }
 
@@ -125,16 +131,21 @@
 
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 768px) and (max-width: 991px) {
+  .Howwework {
+    width: 100%;
+    height:1000px;}
+
   .how-we-contains {
-    height: 40vh;
-    justify-content: space-between;
+    height: 40;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .about {
-    width: 23%;
-    height: 70%;
-    text-align: center;
-  }
+    width: 48%;
+    height: 45%;
+    /* text-align: center; */
+      }
 
   .about-des {
     font-size: 17px;
@@ -146,6 +157,15 @@
     height: 45%;
     width: 45%;
     border-radius: 50%;
+  }
+
+  .how-des {
+    font-size: 28px;
+  }
+
+  .how-dir {
+    font-size: 24px;
+    padding-inline: 40px;
   }
 
 }
