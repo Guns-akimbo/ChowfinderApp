@@ -74,7 +74,7 @@ function Header() {
 
 
               {
-                userisLoggedIn.token ? <div>
+                userisLoggedIn?.token ? <div>
                 <li onClick={logout} 
                 className='custom-link'
                 >
