@@ -102,9 +102,7 @@ function Home() {
                 <section className="select-restaurant">
                 {loading ? (
                 <HashLoader color={"#FD8D14"} loading={loading} size={50} />
-              ) : (
-               
-            
+              ) : (           
                   <select
                     name="location"
                     id="location"

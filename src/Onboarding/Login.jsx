@@ -3,7 +3,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { BsPerson, BsTelephone } from "react-icons/bs";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
-import { useEffect, useState, } from "react";
+import { useEffect, useState } from "react";
 import slogan from "../assets/slogan.jpeg";
 import { GiConfirmed } from "react-icons/gi";
 import Input from "../Componets/Input";
@@ -11,8 +11,8 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Header from "../Componets/Header";
 // import HashLoader from "react-spinners/ClipLoader";
-import rightlogin from "../assets/rightlogin.jpg"
-import leftlogin from "../assets/leftlogin.jpg"
+import rightlogin from "../assets/rightlogin.jpg";
+import leftlogin from "../assets/leftlogin.jpg";
 import HashLoader from "react-spinners/HashLoader";
 import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -39,14 +39,13 @@ const signupSchema = yup
     phoneNumber: yup
       .string()
       .required("Phone number is required.")
-      .matches(/^\d{11}$/,
-       "Phone number must be a 11-digit numeric value."),
+      .matches(/^\d{11}$/, "Phone number must be a 11-digit numeric value."),
     password: yup
       .string()
       .required("Password is required")
-      .matches( "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$", 
-      "8 characters, 1 capital, 1 special eg:@."
-
+      .matches(
+        "^(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}$",
+        "8 characters, 1 capital, 1 special eg:@."
       ),
   })
   .required();
@@ -153,7 +152,7 @@ const Login = () => {
         data
       );
       console.log(res);
-     
+
       setLoad(false);
       Swal.fire({
         title: "Verify email address!",
@@ -167,8 +166,8 @@ const Login = () => {
       }, 2000);
     } catch (err) {
       setLoad(false);
-      console.log(err); 
-      setErrorMessage(err.response.data.message)
+      console.log(err);
+      setErrorMessage(err.response.data.message);
     }
   };
   const loginSubmit = async (data) => {
@@ -179,42 +178,43 @@ const Login = () => {
         data
       );
       console.log("Login response:", res);
+      console.log(res.data);
       setLoad(false);
-  
-      const { token } = res.data; // Access token directly
-      // user token is stored in localStorage using the setItem 
-    localStorage.setItem("User", JSON.stringify({ token }));  
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;  
+
+      const { token, fullName, email } = res.data; // Access token directly
+      // user token is stored in localStorage using the setItem
+      localStorage.setItem("User", JSON.stringify({ token, name:fullName, email:email }));
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       console.log("Token stored:", token);
       navigate("/");
     } catch (err) {
       setLoad(false);
       console.log("Error:", err);
+      setErrorMessage(err?.response.data.Failed);
     }
   };
-  
-  
+
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
+
+  
 
   return (
     <>
       <Header />
       <section className="bigcontainer">
         {load ? (
-          <HashLoader
-
-            color={"#F6F5F5"}
-            load={load}         
-            size={130}
-          />
+          <HashLoader color={"#F6F5F5"} load={load} size={100} />
         ) : (
           <div className="formcontainer">
             <div
               className={`form-box sign-in ${showSignUpForm ? "hide" : "show"}`}
             >
               <h2>Login</h2>
+              <p style={{ color: "red", marginBlockStart: "5px" }}>
+                {errorMessage}
+              </p>
               <form onSubmit={LoginhandleSubmit((data) => loginSubmit(data))}>
                 {Values.map((e) => (
                   <Input
@@ -239,7 +239,7 @@ const Login = () => {
                   value="Login"
                 />
               </form>
-              <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
+              {/* <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p> */}
             </div>
 
             <div
@@ -302,7 +302,9 @@ const Login = () => {
                   className="submit-btn"
                   value="Sign Up"
                 />
-                <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
+                <p style={{ color: "red", marginBlockStart: "5px" }}>
+                  {errorMessage}
+                </p>
               </form>
             </div>
           </div>

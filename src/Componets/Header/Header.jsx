@@ -30,7 +30,7 @@ function Header() {
   const logout = () => {
     localStorage.setItem(
       "User",
-      JSON.stringify({  token: ""})
+      JSON.stringify({token: "", name:"",email:""})
     );
 
     setupdateUi(updateUi);
