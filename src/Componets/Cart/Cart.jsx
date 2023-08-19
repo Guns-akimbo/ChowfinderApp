@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
+import Cartcomp from "./Cartcomp";
 // import Header from "../Header/Header"
 
-function Cart({}) {
+function Cart() {
   // const [loading, setloading] = useState();
   const [isChecked, setIsChecked] = useState(false);
   const handleToggle = () => {
@@ -28,10 +30,10 @@ function Cart({}) {
         },
       });
       setCartData(res.data.items);
-      console.log(res.data);
+      // console.log(res.data);
       setTotal(res.data.grandTotal);
       setcashBack(res.data.cashBack);
-      console.log(res.data.user);
+      // console.log(res.data.user);
       setloading(false);
     } catch (err) {
       console.log(err);
@@ -43,12 +45,12 @@ function Cart({}) {
     getCartData();
   }, []);
 
-  console.log(cartData);
+  // console.log(cartData);
   // console.log(total)
 
   const addToCart = async (mealId) => {
     try {
-      console.log(mealId);
+      console.log(mealId, "add Api");
       setloadings(true);
       const cartItem = {
         menuItemId: mealId,
@@ -68,7 +70,7 @@ function Cart({}) {
         });
       }, 1000);
       getCartData();
-      console.log(res);
+      // console.log(res);
       setloadings(false);
     } catch (err) {
       console.log(err);
@@ -77,7 +79,7 @@ function Cart({}) {
   };
   const removeItem = async (mealId) => {
     try {
-      console.log(mealId);
+      console.log(mealId, "decerase Api");
       setloadings(true);
       const cartItem = {
         menuItemId: mealId,
@@ -109,36 +111,14 @@ function Cart({}) {
     }
   };
 
-  // const deleteItem = async (mealId) => {
-  //   try {
-  //       console.log(mealId)
-  //     setloadings(true);
-  //     const cartItem = {
-  //       menuItemId: mealId,
-  //     };
-  //     const token = JSON.parse(localStorage.getItem("User"))?.token;
-  //     const res = await axios.delete(`${VITE_End_Point}/delete-from-cart/`, cartItem, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     getCartData()
-  //     console.log(res);
-  //     setloadings(false);
-  //   } catch (err) {
-  //     console.log(err);
-  //     setloadings(false);
-  //   }
-  // };
-
-  const deleteItem = async (menuItemId) => {
+  const deleteItem = async (mealId) => {
+    console.log(mealId, "delete Api");
     try {
       setloadings(true);
-
       const token = JSON.parse(localStorage.getItem("User"))?.token;
       const res = await axios.delete(`${VITE_End_Point}/delete-from-cart/`, {
         data: {
-          menuItemId: menuItemId,
+          menuItemId: [mealId],
         },
         headers: {
           Authorization: `Bearer ${token}`,
@@ -153,7 +133,6 @@ function Cart({}) {
         });
       }, 1000);
       getCartData();
-
       console.log(res);
       setloadings(false);
     } catch (err) {
@@ -162,31 +141,28 @@ function Cart({}) {
     }
   };
 
-  const gateway =()=>{
-    try{
-      const refVal = "colin"+ Math.random() * 1000;
-    window.Korapay.initialize({
-       key:"pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
-      reference: `${refVal}`,
-      amount: total, 
-      currency: "NGN",
-      customer: {
-        name: user.name,
-        email: user.email
-      },
-      notification_url: "https://example.com/webhook"
-    });
-    }catch(err){
-      console.log(err)
+  const gateway = () => {
+    try {
+      const refVal = "colin" + Math.random() * 1000;
+      window.Korapay.initialize({
+        key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
+        reference: `${refVal}`,
+        amount: total,
+        currency: "NGN",
+        customer: {
+          name:name,
+          email:email,
+        },
+        notification_url: "https://example.com/webhook",
+      });
+    } catch (err) {
+      console.log(err);
     }
-  }
-  const payment =()=>{
-
+  };
+  const payment = () => {
     gateway();
     //cashbackAPI
-  }
-
-
+  };
 
   return (
     <>
@@ -204,42 +180,16 @@ function Cart({}) {
               </article>
               <article className="Cart-itemHolder">
                 {cartData.map((i) => (
-                  <div className="Cart-itemHoldereach" key={i?._id}>
-                    <div className="Cart-itemHeaderdesc">
-                      <main className="descimage">
-                        <img src={i?.itemImage} />
-                      </main>
-                      <main className="itemdescrition">{i?.itemName}</main>
-                    </div>
-                    <div className="Cart-itemHeaderquantity">
-                      <div
-                        className="increase"
-                        onClick={() => addToCart(i?.menu)}
-                      >
-                        +
-                      </div>
-                      <div className="itemnumber">{i?.quantity}</div>
-                      <div
-                        className="decrease"
-                        onClick={() => removeItem(i?.menu)}
-                      >
-                        -
-                      </div>
-                    </div>
-                    <div className="Cart-itemHeaderprice">{i?.itemPrice}</div>
-                    <div className="Cart-itemHeadertotalprice">
-                      {i?.itemTotal}
-                    </div>
-                    <div className="Cart-itemHeaderremove">
-                      <div
-                        className="remove-item"
-                        onClick={() => deleteItem(i?.menu)}
-                      >
-                        X
-                      </div>
-                    </div>
-                  </div>
+                  <Cartcomp
+                    {...i}
+                    addToCart={addToCart}
+                    deleteItem={deleteItem}
+                    removeItem={removeItem}
+                    key={i?._id}
+                    setloadings={setloadings}
+                  />
                 ))}
+
                 <hr />
               </article>
             </div>
@@ -275,7 +225,9 @@ function Cart({}) {
                 <div className="addressholder">
                   <input type="text" />
                 </div>
-                <div className="paynow"  onClick={payment}>Order Now</div>
+                <div className="paynow" style={{cursor:"pointer"}} onClick={payment}>
+                  Order Now
+                </div>
               </main>
             </main>
           </div>

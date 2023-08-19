@@ -6,14 +6,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import HashLoader from "react-spinners/HashLoader";
+import { useNavigate } from "react-router-dom";
 // import 'sweetalert2/dist/sweetalert2.min.css';
 
 const Detailpage = ({}) => {
+  const [errorMessage, setErrorMessage] = useState("");
   const { categoryId, restaurantId, mealId } = useParams();
   const [loading, setloading] = useState();
   const [loadings, setloadings] = useState();
   const [data, setdata] = useState([]);
   const [mealData, setMealData] = useState(null);
+  const navigate=useNavigate()
 
   console.log("Category ID:", categoryId);
   console.log("Restaurant ID:", restaurantId);
@@ -59,7 +62,26 @@ const Detailpage = ({}) => {
       }, 2000);
       setloadings(false);
     } catch (err) {
-      console.log(err);
+      console.log(err,"error");
+      if(err?.response.data.message){
+        Swal.fire({
+          icon: "error", // Show an error icon
+          title: "Error",
+          text: err?.response.data.message, // Display the error message
+          timer: 2000,
+          timerProgressBar: true,
+        });
+        navigate("/login")  
+      }else{
+        Swal.fire({
+          // icon: "error", // Show an error icon
+          title: "Error",
+          text: err?.response.data.error, // Display the error message
+          timer: 4000,
+          timerProgressBar: true,
+        });
+      }
+      
       setloadings(false);
     }
   };
@@ -105,6 +127,7 @@ const Detailpage = ({}) => {
                 </button>
               )}
             </div>
+            <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
           </div>
         </div>
       )}

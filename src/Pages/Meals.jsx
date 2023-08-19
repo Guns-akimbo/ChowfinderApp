@@ -6,12 +6,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 // import { Color } from "@rc-component/color-picker";
 
-function Meals({ restaurantId }) {
-  const { categoryId } = useParams();
+function Meals({ restaurantId,_id }) {
+  // const { categoryId } = useParams();
   const [loading, setloading] = useState(false);
   const [meal, setmeals] = useState([]);
 
-  console.log(categoryId, restaurantId);
+  console.log(_id, restaurantId);
   // console.log("meals")
 
   const meals = async () => {
@@ -20,7 +20,7 @@ function Meals({ restaurantId }) {
       // catId/category-specific/:id
       // To get all food for a specific category by a specific restaurant
       const res = await axios.get(
-        `${VITE_End_Point}/${categoryId}/category-specific/${restaurantId}`
+        `${VITE_End_Point}/${_id}/category-specific/${restaurantId}`
       );
       console.log(res?.data);
       setloading(false);
@@ -32,14 +32,19 @@ function Meals({ restaurantId }) {
   };
 
   useEffect(() => {
+    if(_id !== undefined)
     meals();
-  }, []);
+    console.log("call")
+  }, [_id]);
+  // by setting _id as dependencies we are telling useffect to hold the meals  till there a change or till category id is ready  
+  // if statement is preventing the meals api from running if its undefined.
+
 
   return (
     <>
       {meal?.map((i) => (
         <Link
-          to={`/detail/${categoryId}/${restaurantId}/${i._id}`}
+          to={`/detail/${_id}/${restaurantId}/${i._id}`}
           className="foodcard"
           key={i._id}
           style={{ textDecoration: "none", color: "black" }}
