@@ -9,7 +9,6 @@ import Detailpage from "./Pages/DetailPage";
 import Cart from "./Componets/Cart/Cart";
 import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
 import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
-import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
 
 const myApp = () => {
   return (
@@ -18,7 +17,6 @@ const myApp = () => {
         <Route path="/" element={<Home />} />
         <Route path="/About" element={<Aboutus />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard/*" element={<Userdashboard/>} />
         <Route path="/menu/:restaurantId/*" element={<Menu />} />
         <Route path="/verification/:token" element={<Verification />} />
         <Route
@@ -29,7 +27,6 @@ const myApp = () => {
 
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/forgotpassword" element={<ForgetPassword />} />
-  
       </Routes>
     </div>
   );

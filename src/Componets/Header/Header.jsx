@@ -152,22 +152,22 @@ function Header() {
                 <li> Become a Partner</li>
               
               <div>
-                {userisLoggedIn?.id !== "" && !updateUi && (
-                  <div>
-                    <li onClick={logout} style={{ cursor: "pointer" }}>
-                      Logout
-                    </li>
-                  </div>
-                )}
-
-                {userisLoggedIn?.id === "" || updateUi === true ? (
-                  <Link to="/login" 
-                  className='custom-link'>
+           
+              {
+                userisLoggedIn?.token ? <div>
+                <li onClick={logout} 
+                className='custom-link'
+                >
+                  Logout
+                </li>
+              </div>:<NavLink to="/login" 
+                  className='custom-link'
+                  >
                     <li >
                       <AiOutlineUser className="li" /> Sign in
                     </li>
-                  </Link>
-                ) : null}
+                  </NavLink>
+              }
               </div>
                         </nav>
                     </div>
