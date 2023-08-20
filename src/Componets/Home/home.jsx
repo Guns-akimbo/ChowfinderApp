@@ -10,6 +10,9 @@ import Header from "../Header/Header";
 import { NavLink } from "react-router-dom";
 import food from "../../assets/food.svg";
 import HashLoader from "react-spinners/HashLoader";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
+
 
 function Home() {
   const [selectedLocation, setSelectedLocation] = useState("");
@@ -55,7 +58,19 @@ function Home() {
   };
 
   const handleSelectButtonClick = () => {
-    setShowPopup(true);
+    if (!selectedLocation) {
+      setTimeout(() => {
+        Swal.fire({
+          text: "Please select Location",
+          timer: 1500, 
+          timerProgressBar: true,
+          showConfirmButton: false, 
+        });
+      });
+    } else {
+      setShowPopup(true);
+    }
+   
   };
 
   const handleClose = () => {
@@ -109,6 +124,7 @@ function Home() {
                 <button
                   className="select-search"
                   onClick={handleSelectButtonClick}
+                  // disabled={!selectedLocation}
                 >
                   Select Restaurant
                 </button>
