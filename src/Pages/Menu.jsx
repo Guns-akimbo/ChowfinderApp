@@ -1,6 +1,6 @@
 const { VITE_End_Point } = import.meta.env;
 import Logo from "../assets/Logo.jpg";
-import { BsCart2, BsPerson, BsArrowLeft } from "react-icons/bs";
+import { BsCart2, BsPerson, BsArrowLeft, BsCart4 } from "react-icons/bs";
 import bb from "../assets/bb.jpg";
 import "./Menu.css";
 import { NavLink } from "react-router-dom";
@@ -61,7 +61,7 @@ const Menu = () => {
 
   useEffect(() => {
    
-    console.log(categories)
+    // console.log(categories)
   }, []);
 
   useEffect(() => {
@@ -70,15 +70,15 @@ const Menu = () => {
 
   const menuList = [
     {
-      path: `/menu/${restaurantId}`,
+      path: `/menu/${restaurantId}/`,
       ...categories[0],
     },
     {
-      path: `/menu/${restaurantId}/proteins`,
+      path: `/menu/${restaurantId}/proteins/`,
       ...categories[1],
     },
     {
-      path: `/menu/${restaurantId}/drinks`,
+      path: `/menu/${restaurantId}/drinks/`,
       ...categories[2],
     },
   ];
@@ -94,6 +94,16 @@ const Menu = () => {
           <BsArrowLeft className="arrowleft" />
           <p>Resturants</p>
         </NavLink>
+        <div className="Navsign">
+              <NavLink
+                to="/Cart"
+                className='custom-link'
+              >
+                <BsCart4 size={20} />
+                <div className="cartlenght"></div>
+              </NavLink>
+            </div>
+
       </div>
 
       <section className="menulist-lord">
@@ -119,10 +129,10 @@ const Menu = () => {
           <span className="foodcategory">
             {menuList.map((i) => (
               <NavLink
-                style={{ textDecoration: "red" }}
+                style={{ textDecoration: "none", }}
                 // we are sending  the id which is the category id {id} to the meals,proteins and drinks page
                 to={`${i.path}`}
-                className={({ isActive }) => (isActive ? "active" : null)}
+                className={({ isActive }) => (isActive ? "active" : "active2")} 
                 key={i._id}
               >
                 <h5>{i?.title}</h5>

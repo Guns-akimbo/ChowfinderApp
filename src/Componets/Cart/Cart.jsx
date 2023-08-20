@@ -6,7 +6,9 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 import Cartcomp from "./Cartcomp";
+// import Header from "../Header/Header";
 // import Header from "../Header/Header"
+import Header from "../Header";
 
 function Cart() {
   // const [loading, setloading] = useState();
@@ -20,6 +22,11 @@ function Cart() {
   const [total, setTotal] = useState("");
   const [cashback, setcashBack] = useState("");
   const token = JSON.parse(localStorage.getItem("User"))?.token;
+  const name=JSON.parse(localStorage.getItem("User"))?.fullName
+  const email=JSON.parse(localStorage.getItem("User"))?.email
+
+  console.log(name,"username",email)
+ 
 
   const getCartData = async () => {
     try {
@@ -30,7 +37,7 @@ function Cart() {
         },
       });
       setCartData(res.data.items);
-      // console.log(res.data);
+      console.log(res.data);
       setTotal(res.data.grandTotal);
       setcashBack(res.data.cashBack);
       // console.log(res.data.user);
@@ -45,7 +52,7 @@ function Cart() {
     getCartData();
   }, []);
 
-  // console.log(cartData);
+  console.log(cartData);
   // console.log(total)
 
   const addToCart = async (mealId) => {
@@ -141,6 +148,28 @@ function Cart() {
     }
   };
 
+
+ const cashBack=async()=>{
+  try{
+    setloading(true)
+    const token = JSON.parse(localStorage.getItem("User"))?.token;
+    const res = await axios.post(`${VITE_End_Point}/place-order/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(res.customerAddress)
+     
+  }catch(err){
+    console.log(err);
+      setloadings(false);
+  }
+
+ }
+
+ console.log(token, "mary token")
+
+
   const gateway = () => {
     try {
       const refVal = "colin" + Math.random() * 1000;
@@ -153,19 +182,23 @@ function Cart() {
           name:name,
           email:email,
         },
-        notification_url: "https://example.com/webhook",
+        notification_url: "https://example.com/webhook",       
       });
     } catch (err) {
       console.log(err);
     }
   };
+  console.log(name)
+ 
   const payment = () => {
     gateway();
+    cashBack()
     //cashbackAPI
   };
 
   return (
     <>
+     <Header/>
       <div className="Cart">
         <h4>Your Order</h4>
         <section className="Cart-wrapper">

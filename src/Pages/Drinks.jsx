@@ -4,10 +4,10 @@ import amaa from "../assets/amaa.jpg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-function Drinks({restaurantId}) {
+function Drinks({restaurantId,_id}) {
 
-  const{categoryId}=useParams()
-  console.log(categoryId,) 
+  // const{categoryId}=useParams()
+  console.log(_id,) 
 
   const [loading, setloading] = useState(false);
   const [drinks, setdrinks] = useState([]);
@@ -18,7 +18,7 @@ function Drinks({restaurantId}) {
       setloading(true);
       // catId/category-specific/:id
       const res = await axios.get(
-        `${VITE_End_Point}/${categoryId}/category-specific/${restaurantId}`
+        `${VITE_End_Point}/${_id}/category-specific/${restaurantId}`
       );
       console.log(res?.data);
       setloading(false);
@@ -39,7 +39,7 @@ function Drinks({restaurantId}) {
     <>
        { drinks?.map((i) => ( 
          <Link
-         to={`/detail/${categoryId}/${restaurantId}/${i?._id}`}
+         to={`/detail/${_id}/${restaurantId}/${i?._id}`}
          style={{ textDecoration: "none", color:"black"}}
          key={i._id}
            className="foodcard">

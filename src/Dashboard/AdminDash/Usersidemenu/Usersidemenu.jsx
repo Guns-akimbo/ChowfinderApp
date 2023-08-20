@@ -22,7 +22,7 @@ const Usersidemenu = () => {
           items={[
             {
               label: "Timeline",
-              key: "/",
+              key: "/timeline",
               icon:<HomeOutlined/>
             },
             {

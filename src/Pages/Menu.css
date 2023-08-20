@@ -126,6 +126,14 @@
   align-items: center;
 }
 
+.active {
+  color: #fc8019;
+}
+.active2 {
+  color: inherit;
+}
+
+
 .timesection {
   height: 7vh;
   width: 100%;

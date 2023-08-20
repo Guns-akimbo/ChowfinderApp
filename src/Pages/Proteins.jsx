@@ -5,10 +5,10 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function Proteins({ restaurantId }) {
-  const { categoryId } = useParams();
+function Proteins({ restaurantId,_id }) {
+  
 
-  console.log(categoryId,restaurantId);
+  console.log(_id,restaurantId);
 
   const [loading, setloading] = useState(false);
   const [proteins, setproteins] = useState([]);
@@ -18,7 +18,7 @@ function Proteins({ restaurantId }) {
       setloading(true);
       // catId/category-specific/:id
       const res = await axios.get(
-        `${VITE_End_Point}/${categoryId}/category-specific/${restaurantId}`
+        `${VITE_End_Point}/${_id}/category-specific/${restaurantId}`
       );
       console.log(res?.data);
       setloading(false);
@@ -37,7 +37,7 @@ function Proteins({ restaurantId }) {
     <>
       {proteins.map((i) => (
         <Link 
-        to={`/detail/${categoryId}/${restaurantId}/${i?._id}`}
+        to={`/detail/${_id}/${restaurantId}/${i?._id}`}
          style={{ textDecoration: "none", color:"black"}}
          key={i._id}
         className="foodcard">

@@ -9,6 +9,8 @@ import Detailpage from "./Pages/DetailPage";
 import Cart from "./Componets/Cart/Cart";
 import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
 import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
+// import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
+// import RestuarantsDash from "./Dashboard/RestuarantsDash/RestuarantsDash";
 
 const myApp = () => {
   return (
@@ -22,10 +24,11 @@ const myApp = () => {
         <Route
           path="/detail/:categoryId/:restaurantId/:mealId"
           element={<Detailpage />}
-        />
+        /> 
         <Route path="/Cart" element={<Cart/>} />
 
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
+        {/* <Route path="/*" element={<RestuarantsDash/>} />  */}
         <Route path="/forgotpassword" element={<ForgetPassword />} />
       </Routes>
     </div>

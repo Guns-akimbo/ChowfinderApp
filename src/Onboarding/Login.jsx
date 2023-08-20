@@ -178,27 +178,34 @@ const Login = () => {
         data
       );
       console.log("Login response:", res);
-      console.log(res.data);
+      console.log(res);
       setLoad(false);
-
       const { token, fullName, email } = res.data; // Access token directly
       // user token is stored in localStorage using the setItem
-      localStorage.setItem("User", JSON.stringify({ token, name:fullName, email:email }));
+      localStorage.setItem("User", JSON.stringify({ token, fullName, email }));
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       console.log("Token stored:", token);
       navigate("/");
     } catch (err) {
       setLoad(false);
       console.log("Error:", err);
-      setErrorMessage(err?.response.data.Failed);
+      if (err?.response.data.message) {
+        Swal.fire({
+          // Show an error icon
+          title: "Error",
+          text: err?.response.data.message, // Display the error message
+          timer: 3000,
+          timerProgressBar: true,
+        });
+      } else {
+        setErrorMessage(err?.response.data.Failed);
+      }
     }
   };
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
-  
 
   return (
     <>
@@ -239,7 +246,6 @@ const Login = () => {
                   value="Login"
                 />
               </form>
-              {/* <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p> */}
             </div>
 
             <div
@@ -282,7 +288,9 @@ const Login = () => {
               <form
                 action=""
                 onSubmit={SignuphandleSubmit((data) => signupSubmit(data))}
+                
               >
+                
                 {Value.map((e) => (
                   <Input
                     {...e}
@@ -292,8 +300,8 @@ const Login = () => {
                     name={e.name}
                     type={e.type}
                     placeholder={e.placeholder}
-                    icon={e.icon}
-                  />
+                    icon={e.icon}                  
+                  />              
                 ))}
 
                 <input
