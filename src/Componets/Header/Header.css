@@ -222,6 +222,12 @@ display: none;
     width: 100%;
   } 
 
+  .cartlenght {
+    position: absolute;
+    left: 7px;
+    top: 20px;
+  }
+
 
 }
 
@@ -244,6 +250,10 @@ display: none;
     align-items: center;
   } 
 
+  .logo img{
+    display: none;
+  }
+
   .showmenu {
     display: block;
     display: flex; 
@@ -256,11 +266,18 @@ display: none;
     left: 6px;
     top: 20px;
   } 
-}
 
-@media (min-width: 991px) and (max-width: 1360px) {
+  }
+
+@media (min-width: 991px) and (max-width: 1368px) {
   /* CSS styles for small screen laptop */
  .Navmenu li {
     font-size: 12px;
   } 
+
+  .cartlenght {
+    position: absolute;
+    left: 10px;
+    top: 17px;
+  }
 }

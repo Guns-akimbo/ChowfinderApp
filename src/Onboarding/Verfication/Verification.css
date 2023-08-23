@@ -81,4 +81,30 @@ font-family: sans-serif;
     cursor: pointer;
     border: none;
   }
+
+  @media (max-width: 767px) {
+
+    /* CSS styles for mobile devices */
+    .Verificationwrap {
+      width: 90%;
+      height: 70%;
+       }
+    
+  
+  }
+  /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+  @media (min-width: 768px) and (max-width: 991px) {
+
+    .Verificationwrap {
+      width: 70%;
+      height: 70%;
+       }
+  
+  }
+  
+  
+  @media (min-width: 320px) and (max-width: 565px) {
+  
+  
+  }
   

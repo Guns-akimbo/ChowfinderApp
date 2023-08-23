@@ -1,5 +1,7 @@
 import React from 'react'
+import { BsFacebook,BsTwitter,BsLinkedin } from "react-icons/bs";
 import './Footer.css'
+import Logo from "../../assets/Logo.png"
 
 function Footer() {
     return (
@@ -7,7 +9,7 @@ function Footer() {
             <div className='Footer-wrapper'>
                 <main className='footer-holders'>
                     <div className='logos'>
-                    <img src="./src/assets/Logo.png" alt=""/>
+                    <img src={Logo} alt=""/>
                     </div>
                     <div className='company-contact'><p>
                     161 Muyibi Street, Ajegunle<br/>
@@ -16,7 +18,10 @@ function Footer() {
                         chowfinder1@gmail.com<br/>
                          </p></div>
                     <div className='social'>
-                    <img src="./src/assets/ICONS.png" alt=""/>
+                    <BsFacebook color='#1773ea' size={25}/>
+                   < BsLinkedin color='#0073b1' size={25}/>
+                   <BsTwitter color='#1c96e9' size={25}/>
+
                     </div>
                 </main>
                 <main className='footer-holders'>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Review.css';
-import { VscArrowCircleLeft, VscArrowCircleRight } from 'react-icons/vsc';
+// import { VscArrowCircleLeft  } from 'react-icons/vsc';
+import {  BsFillArrowRightCircleFill,BsFillArrowLeftCircleFill  } from 'react-icons/bs';
 import ReviewCard from './reviewCard';
 
 function Review() {
@@ -63,7 +64,7 @@ function Review() {
   },
   {
     id: 9,
-    name: "Martin Luther",
+    name: "JAMES SMITH",
     cuisine: "Efficient delivery, consistent quality, value for money.",
     imageUrl: "https://www.nobelprize.org/images/king-13174-content-portrait-mobile-tiny.jpg",
   },
@@ -94,6 +95,7 @@ function Review() {
 // Function to handle next page
 const goToNextPage = () => {
   setCurrentPage((prevPage) => (prevPage % totalPageCount) + 1);
+ 
 };
 
 // Function to handle previous page
@@ -114,14 +116,18 @@ const goToPreviousPage = () => {
       <div className='Review-container'>
        
         <main className='main-reviewholder'>
-        <main className='left-arrow' onClick={goToPreviousPage}>
-          <VscArrowCircleLeft size={40} />
+        <main className='left-arrow' >
+      
+          <BsFillArrowLeftCircleFill className='VscArrowCircleLeft' size={35}onClick={goToPreviousPage} />
+          
         </main>
           {review.slice(indexOfFirstReview, indexOfLastReview).map((review) => (
             <ReviewCard name={review.name} imageUrl={review.imageUrl} cuisine={review.cuisine} key={review.id} />
           ))}
-           <main className='right-arrow' onClick={goToNextPage}>
-          <VscArrowCircleRight size={40} />
+           <main className='right-arrow' >
+           
+          <BsFillArrowRightCircleFill className='VscArrowCircleLeft' size={35} onClick={goToNextPage} />
+        
         </main>
         </main>
        

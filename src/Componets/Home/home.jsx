@@ -62,7 +62,7 @@ function Home() {
       setTimeout(() => {
         Swal.fire({
           text: "Please select Location",
-          timer: 1500, 
+          timer: 2000, 
           timerProgressBar: true,
           showConfirmButton: false, 
         });
@@ -139,7 +139,7 @@ function Home() {
                     <section className="rap">
                       <main className="Restuarantlisting-header">
                         <h4>Available Restaurants</h4>{" "}
-                        <AiFillCloseCircle onClick={handleClose} />
+                        <AiFillCloseCircle size={35} className='VscArrowCircleLeft' onClick={handleClose} />
                       </main>
                       <main className="Restuarantlisting-holder">
                         {filteredRestaurants?.map((restaurant) => (
@@ -156,7 +156,7 @@ function Home() {
                                   alt="food"
                                 />
                               </div>
-                              <div className="Restaurant-name">
+                              <div className="Restaurant-name1">
                                 <h4>{restaurant?.businessName}</h4>
                                 <p>{restaurant?.address}</p>
                               </div>

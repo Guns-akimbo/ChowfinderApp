@@ -101,9 +101,6 @@
   background: #fff;
 }
 
-/* .select-restaurant select {
-    border-radius: 8px;
-} */
 
 option {
   padding: 10px;
@@ -161,6 +158,8 @@ option {
   flex-wrap: wrap;
   overflow-y: scroll;
   justify-content: space-around;
+  
+
 }
 
 .Restuarantlisting-header {
@@ -171,9 +170,36 @@ option {
   justify-content: space-between;
   padding-inline: 40px;
   align-items: center;
-  font-size: 24px;
+  font-size: 28px;
   color: #292d32;
+  
 }
+
+
+.Restuarantlisting-header h4{
+    font-size: 16px;
+  color: #292d32;
+  
+} 
+
+.Restaurant{
+  color: inherit;
+text-decoration: none;
+}
+
+.Restaurant-name1 h4{
+color: #fc8019;
+font-size: 18px;
+text-align: center;
+padding-bottom: 5px;
+}
+
+.Restaurant-name1 p{
+  color: #232323;
+  font-size: 14px;
+
+  text-align: center;
+  }
 
 .select-search {
   height: 3.9rem;
@@ -192,12 +218,14 @@ option {
     width: 100%;
     display: flex;
     flex-direction: column-reverse;
+    margin-top: 25px;
   }
 
   .slogan {
     height:30%;
     width: 100%;
     padding-bottom: 10px;
+
   }
 
   .slogan h4 {
@@ -224,8 +252,8 @@ option {
   }
 
   .bacckima img {
-    width: 100%;
     height: 100%;
+    width: 100%;
   }
   .select-restaurant {
     height: 3rem;
@@ -239,8 +267,8 @@ option {
     font-size: 12px;
   }
   .Restuarantlistingll-wrapper {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 60%;
   }
 
   .Restuarantlisting-header {
@@ -263,17 +291,23 @@ option {
     height: 50vh;
     width: 100%;
     display: flex;
+    margin-top: 50px;
+
   }
 
   .select-restaurant {
-    height: 5rem;
+    height: 4rem;
     width: 10rem;
+    margin-top: 20px;
+
   }
 
   .select-search {
-    height: 5rem;
+    height: 4rem;
     width: 10rem;
     font-size: 12px;
+    margin-top: 20px;
+
   }
 
   .slogan h4 {
@@ -287,6 +321,7 @@ option {
 
   p {
     font-size: 12px;
+    padding-top: 20px;
   }
 
   .search {
@@ -302,8 +337,16 @@ option {
     height: 100%;
   }
 
-  .Restuarantlistingll-wrapper {
-    width: 80%;
-    height: 80%;
+  .bacckima img{
+    width: 95%;
+    height: 100%;
+    /* background-color: #fc8019; */
   }
+
+  .Restuarantlistingll-wrapper {
+    width: 85%;
+    height: 75%;
+  }
+
+
 }

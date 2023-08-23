@@ -67,8 +67,11 @@ function Header() {
                   About Us
                 </li>
               </NavLink>
-             
+              <NavLink to="/Partner" 
+              className='custom-link'
+              >
                 <li> Become a Partner</li>
+                </NavLink>
              
               <div>
 
@@ -131,7 +134,7 @@ function Header() {
                 <div className='showmenu'>
                     <div className='gridmenu'>
                         <div className="caCircle">
-                            <ImCancelCircle size={35} onClick={hideMenu} />
+                            <ImCancelCircle size={30} onClick={hideMenu} />
                         </div>
                         <nav className='dropMenu'>
                         <NavLink to="/" 
@@ -147,9 +150,11 @@ function Header() {
                 </li>
               </NavLink>
             
-             
-              
+              <NavLink to="/partner" 
+              className='custom-link'
+              >
                 <li> Become a Partner</li>
+                </NavLink>
               
               <div>
            
