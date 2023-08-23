@@ -11,6 +11,7 @@ import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
 import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
 import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
 import RestuarantsDash from "./Dashboard/RestuarantsDash/RestuarantsDash";
+import Partner from "./Onboarding/Forgetpassword/Partner/Partner"
 
 const myApp = () => {
   return (
@@ -25,6 +26,7 @@ const myApp = () => {
           path="/detail/:categoryId/:restaurantId/:mealId"
           element={<Detailpage />}
         /> 
+        <Route path='/partner' element={<Partner/>} />
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/dashboard/*" element={<Userdashboard/>} /> 

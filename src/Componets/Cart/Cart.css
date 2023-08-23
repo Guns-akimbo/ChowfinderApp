@@ -305,6 +305,21 @@ hr {
     border-radius: 5px;
 }
 
+.paynowdisabled {
+    height: 80%;
+    width: 30%;
+    background-color: #fbb57c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.paynowdisabled[disabled]{
+    cursor: not-allowed;
+}
+
 .blur{
     color: #B6B7B8;
 }
