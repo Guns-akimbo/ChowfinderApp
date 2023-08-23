@@ -21,6 +21,8 @@
   align-items: center;
   font-size: 16px;
   position:relative;
+  /* background: rgb(248, 163, 4); */
+
   
 }
 
@@ -205,25 +207,49 @@
   display: block;
 }
  
-
-
-/* Media query for mobile screens */
-@media (max-width: 768px) {
-  .sign-in,
-  .sign-up {
-    width: 100%; /* Make each form take up the full width */
+@media (max-width: 767px) {
+  .formcontainer {
+    display: flex;
+    flex-direction: column;
+    width: 0%;
   }
 
-  .sign-up {
-    display: none; /* Hide the sign-up form on mobile */
+  .bigcontainer{
+    min-height: 100vh;
+    min-width: 100%;
+   
   }
 
-  .hide.sign-up.show {
-    display: block; /* Show the sign-up form when needed */
-  }
+  .form-box {
+    width: 320px;
+    height: 380px;
+     }
 
-  .imgBox img {
-   display: none;
-   height: 1px;
-  }
+     .imgBox img {
+      width: 400px;
+      height:150px ;
+      display: none;
+    }
+
+    .imgBox {
+    padding-top: 15px;
+      height: 40px;
+      width: 320px;
+      background-color: #fff;
+     
+     
+    }
+
+    .submit-btn {
+      width: 180px;
+      padding: 15px;
+      margin-inline: 60px;   
+    }
+
+}
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+   
 }

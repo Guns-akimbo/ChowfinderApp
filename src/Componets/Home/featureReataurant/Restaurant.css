@@ -44,7 +44,9 @@
 @media (min-width: 623px) and (max-width: 1024px) {
 
     /* CSS styles for laptop */
-  
+    .Restaurantholder-wrapper{
+       overflow: scroll;
+        }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

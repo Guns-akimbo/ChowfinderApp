@@ -1,7 +1,8 @@
 .Review {
-    height: 50vh;
+    height: max-content;
     width: 100%;
     margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .Review-header {
@@ -30,7 +31,7 @@
 
 .main-reviewholder {
     height: 100%;
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -47,13 +48,12 @@
 
 .reviewCard {
     height: 200px;
-    width: 420px;
+    width: 360px;
     background-color: #FFA75F;
     border-radius: 10px;
     display: flex;
     align-items: center;
-
-}
+   }
 
 .reviewCard-image {
     height: 90%;
@@ -64,8 +64,8 @@
 }
 
 .reviewCard-image img {
-    height: 70%;
-    width: 70%;
+    height: 95%;
+    width: 90%;
     border-radius: 4px;
 }
 
@@ -98,29 +98,41 @@
     text-align: center;
 }
 
+
+.VscArrowCircleLeft{
+    color: #fd7404;
+    /* background-color: #f8f7f7; */
+     /* width: 20px;
+    height: 20px; */
+} 
+
+.VscArrowCircleLeft:hover{
+    color: #fd7404; 
+}
 @media (min-width: 200px) and (max-width: 767px) {
 
     /* CSS styles for mobile devices */
 
     .Review {
-        height: 50vh;
+        height: max-content;
         width: 100%;
     }
 
     .Review-container {
-        height: 90%;
+        height: 100%;
         width: 100%;
         display: flex;
     }
 
     .Review-header h1{
         font-size: 20px;
+
     }
 
     .main-reviewholder {
         display: flex;
-        flex-direction: column;
-    }
+       flex-direction: column; 
+                }
 
     .right-arrow {
         height: 5%;
@@ -139,9 +151,9 @@
     }
 
     .reviewCard {
-        height: 100px;
-        width: 180px;
-
+        height:130px;
+        width:210px;
+        margin: 5px;
     }
 
     .reviewCard-reviews h4 {
@@ -160,12 +172,13 @@
 
     /* CSS styles for tablets */
     .reviewCard {
-        height: 120px;
-        width: 230px;
+        height: 200x;
+        width: 270px;
+            /* padding-inline: 10px; */
     }
 
     .Review-header {
-        height: 20%;
+        height: 10%;
         width: 100%;
         /* text-align: center;
         font-size: 24px;
@@ -174,20 +187,24 @@
 
     .reviewCard-reviews h4 {
         font-size: 14px;
-    }
+            }
 
     .Review-header h1 {
-        font-size: 32px;
+        font-size: 28px;
+            }
+    
+    .reviewCard-reviews p {
+        font-size: 14px;
     }
 
     .Review {
-        height: 50vh;
+        height: 70vh;
         width: 100%;
     }
 
+   
 }
 
-/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 991px) and (max-width: 1300px) {
 
     /* CSS styles for tablets */
