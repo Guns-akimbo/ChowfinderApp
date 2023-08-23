@@ -142,11 +142,7 @@ const Menu = () => {
           <span className="foodcategory">
             {menuList.map((i) => (
               <NavLink
-<<<<<<< HEAD
                 style={{ textDecoration: "none" }}
-=======
-               style={{ textDecoration: "red" }}
->>>>>>> origin/mary
                 // we are sending  the id which is the category id {id} to the meals,proteins and drinks page
                 to={`${i.path}`}
                 className={({ isActive }) => (isActive ? "active" : "active2")}
