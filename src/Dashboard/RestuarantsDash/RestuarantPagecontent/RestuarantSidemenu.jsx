@@ -27,21 +27,21 @@ const RestuarantSidemenu=()=>{
                 {
                     label:"Dashboard", 
                     icon:<AppstoreOutlined/>,
-                    key:"/"
+                    key:"/restaurantdashboard/"
             },
                 {
                     label:"inventory",
-                    key:"/inventory",
+                    key:"/restaurantdashboard/inventory",
                     icon:<ShopOutlined/>
             },
                 {
                     label:"Orders",
-                    key:"/orders",
+                    key:"/restaurantdashboard/orders",
                     icon:<ShoppingCartOutlined/>
             },
                 {
                     label:"Customers",
-                    key:"/customers",
+                    key:"/restaurantdashboard/customers",
                     icon:<UserOutlined/>
             },
 

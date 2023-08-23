@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+const { VITE_End_Point } = import.meta.env;
+import React, { useState,useEffect } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCart4 } from "react-icons/bs";
 import { CgMenu } from "react-icons/cg";
@@ -6,10 +7,14 @@ import { ImCancelCircle } from "react-icons/im";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/Logo.png"
+import axios from "axios";
 
 function Header() {
     const [menu, setMenu] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [cartData, setCartData] = useState([]);
+    const [loading, setloading] = useState(false);
+    const token = JSON.parse(localStorage.getItem("User"))?.token;
 
     const toggleMenu = () => {
       setMenu(!menu);
@@ -32,9 +37,39 @@ function Header() {
       "User",
       JSON.stringify({token: "", name:"",email:""})
     );
-
+   
     setupdateUi(updateUi);
+    window.location.reload()
   };
+
+  console.log(token , " victor token ")
+
+  const getCartData = async () => {
+    try {
+      setloading(true);
+      const res = await axios.get(`${VITE_End_Point}/get-cart/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCartData(res.data.items);
+      // setEmptycart(false)
+      console.log(res.data);
+      // console.log(res.data.user);
+      setloading(false);
+    } catch (err) {
+      console.log(err);
+      setloading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCartData();
+  }, []);
+
+
+
+
 
   return (
     <>
@@ -68,7 +103,11 @@ function Header() {
                 </li>
               </NavLink>
              
+              <NavLink to="/partner" 
+              className='custom-link'
+              >
                 <li> Become a Partner</li>
+                </NavLink>
              
               <div>
 
@@ -121,7 +160,7 @@ function Header() {
                 className='custom-link'
               >
                 <BsCart4 size={20} />
-                <div className="cartlenght"></div>
+                <div className="cartlenght"> {cartData.length}</div>
               </NavLink>
             </div>
           </section>
@@ -131,7 +170,7 @@ function Header() {
                 <div className='showmenu'>
                     <div className='gridmenu'>
                         <div className="caCircle">
-                            <ImCancelCircle size={35} onClick={hideMenu} />
+                            <ImCancelCircle size={30} onClick={hideMenu} />
                         </div>
                         <nav className='dropMenu'>
                         <NavLink to="/" 
@@ -148,8 +187,11 @@ function Header() {
               </NavLink>
             
              
-              
+              <NavLink to="/partner" 
+              className='custom-link'
+              >
                 <li> Become a Partner</li>
+                </NavLink>
               
               <div>
            

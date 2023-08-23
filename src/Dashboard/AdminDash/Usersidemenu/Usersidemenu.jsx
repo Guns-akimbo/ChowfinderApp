@@ -22,22 +22,22 @@ const Usersidemenu = () => {
           items={[
             {
               label: "Timeline",
-              key: "/timeline",
+              key: "/dashboard/",
               icon:<HomeOutlined/>
             },
             {
               label: "Cashback",
-              key: "/cashback",
+              key: "/dashboard/cashback",
               icon:<ShoppingCartOutlined />
             },
             {
               label: "Recent Vedors",
-              key: "/recentOrders",
+              key: "/dashboard/recentOrders",
               icon: <FaMoneyBillAlt/>
             },
             {
               label: "Account settings ",
-              key: "/settings",
+              key: "/dashboard/settings",
               icon:<SettingOutlined />
             },
           ]}

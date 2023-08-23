@@ -9,8 +9,8 @@ import Detailpage from "./Pages/DetailPage";
 import Cart from "./Componets/Cart/Cart";
 import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
 import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
-// import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
-// import RestuarantsDash from "./Dashboard/RestuarantsDash/RestuarantsDash";
+import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
+import RestuarantsDash from "./Dashboard/RestuarantsDash/RestuarantsDash";
 
 const myApp = () => {
   return (
@@ -26,9 +26,9 @@ const myApp = () => {
           element={<Detailpage />}
         /> 
         <Route path="/Cart" element={<Cart/>} />
-
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
-        {/* <Route path="/*" element={<RestuarantsDash/>} />  */}
+        <Route path="/dashboard/*" element={<Userdashboard/>} /> 
+        <Route path="/restaurantdashboard/*" element={<RestuarantsDash/>} /> 
         <Route path="/forgotpassword" element={<ForgetPassword />} />
       </Routes>
     </div>

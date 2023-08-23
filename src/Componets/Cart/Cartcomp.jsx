@@ -4,6 +4,7 @@ import HashLoader from "react-spinners/HashLoader";
 
 const Cartcomp = (props) => {
     const [loadings, setloadings] = useState(false);
+    // console.log(removeItem)
 
   return (
     <div className="Cart-itemHoldereach">

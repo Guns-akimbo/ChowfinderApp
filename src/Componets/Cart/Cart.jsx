@@ -9,9 +9,11 @@ import Cartcomp from "./Cartcomp";
 // import Header from "../Header/Header";
 // import Header from "../Header/Header"
 import Header from "../Header";
+import Emptycart from "./Emptycart";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
-  // const [loading, setloading] = useState();
+  const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const handleToggle = () => {
     setIsChecked((prevState) => !prevState);
@@ -22,12 +24,23 @@ function Cart() {
   const [total, setTotal] = useState("");
   const [cashback, setcashBack] = useState("");
   const token = JSON.parse(localStorage.getItem("User"))?.token;
-  const name=JSON.parse(localStorage.getItem("User"))?.fullName
-  const email=JSON.parse(localStorage.getItem("User"))?.email
+  const name = JSON.parse(localStorage.getItem("User"))?.fullName;
+  const email = JSON.parse(localStorage.getItem("User"))?.email;
+  const [address, setAddress] = useState({ customerAddress: "", cashBackToggle: "" });
+  // const [emptycart, setEmptycart] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  useEffect(() => {
+    setAddress({
+      ...address,
+      cashBackToggle: isChecked,
+    });
+  }, [isChecked]);
+  console.log(address);
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
 
-  console.log(name,"username",email)
- 
-
+  console.log(name, "username", email);
   const getCartData = async () => {
     try {
       setloading(true);
@@ -40,11 +53,11 @@ function Cart() {
       console.log(res.data);
       setTotal(res.data.grandTotal);
       setcashBack(res.data.cashBack);
-      // console.log(res.data.user);
       setloading(false);
     } catch (err) {
       console.log(err);
       setloading(false);
+      setCartData([]);
     }
   };
 
@@ -52,7 +65,7 @@ function Cart() {
     getCartData();
   }, []);
 
-  console.log(cartData);
+  // console.log(cartData);
   // console.log(total)
 
   const addToCart = async (mealId) => {
@@ -125,12 +138,13 @@ function Cart() {
       const token = JSON.parse(localStorage.getItem("User"))?.token;
       const res = await axios.delete(`${VITE_End_Point}/delete-from-cart/`, {
         data: {
-          menuItemId: [mealId],
+          menuItemId: mealId,
         },
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      // setEmptycart(true)
       setTimeout(() => {
         Swal.fire({
           text: "item cleared successfully",
@@ -148,123 +162,193 @@ function Cart() {
     }
   };
 
+  const debounce = (fn, delay) => {
+    let timer;
+    return () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        fn();
+      }, delay);
+    };
+  };
 
- const cashBack=async()=>{
-  try{
-    setloading(true)
-    const token = JSON.parse(localStorage.getItem("User"))?.token;
-    const res = await axios.post(`${VITE_End_Point}/place-order/`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log(res.customerAddress)
-     
-  }catch(err){
-    console.log(err);
-      setloadings(false);
-  }
-
- }
-
- console.log(token, "mary token")
-
+  const cashBack = async () => {
+    try {
+      setloading(true);
+      const token = JSON.parse(localStorage.getItem("User"))?.token;
+      const res = await axios.post(`${VITE_End_Point}/place-order/`, address, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      Swal.fire({
+        title: "Congratulations Customer",
+        text: "Order Successfull,Check your mail for more details.",
+        timer: 5000,
+        timerProgressBar: true, // Show a progress bar for the timer
+        showConfirmButton: false, // Hide the "OK" button
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    } catch (err) {
+      console.log(err);
+      setErrorMessage(err.response.data.error);
+      setloading(false);
+    }
+  };
 
   const gateway = () => {
     try {
-      const refVal = "colin" + Math.random() * 1000;
+      const refVal = "Chowfinderapp" + Math.random() * 1000;
       window.Korapay.initialize({
         key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
         reference: `${refVal}`,
         amount: total,
         currency: "NGN",
         customer: {
-          name:name,
-          email:email,
+          name: name,
+          email: email,
         },
-        notification_url: "https://example.com/webhook",       
+        notification_url: "https://example.com/webhook",
+        onSuccess: function (data) {
+          data?.reference === refVal ? cashbackApi() : null;
+        },
       });
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(name)
- 
+
+  const cashbackApi = debounce(cashBack, 2000);
+
   const payment = () => {
     gateway();
-    cashBack()
-    //cashbackAPI
   };
 
   return (
     <>
-     <Header/>
+      <Header />
+
       <div className="Cart">
+        <p style={{ color: "red", marginBlockStart: "5px" }}>{errorMessage}</p>
         <h4>Your Order</h4>
-        <section className="Cart-wrapper">
-          <div className="Cart-items">
-            <div className="Cart-itemswrapper">
-              <article className="Cart-itemHeader">
-                <div className="Cart-itemHeaderdesc">Description</div>
-                <div className="Cart-itemHeaderquantity">Quantity</div>
-                <div className="Cart-itemHeaderprice">Item-Price</div>
-                <div className="Cart-itemHeadertotalprice">Sub-Total Price</div>
-                <div className="Cart-itemHeaderremove">Remove</div>
-              </article>
-              <article className="Cart-itemHolder">
-                {cartData.map((i) => (
-                  <Cartcomp
-                    {...i}
-                    addToCart={addToCart}
-                    deleteItem={deleteItem}
-                    removeItem={removeItem}
-                    key={i?._id}
-                    setloadings={setloadings}
-                  />
-                ))}
+        {loading ? (
+          <HashLoader color={"#FD8D14"} loading={loading} size={70} />
+        ) : cartData?.length === 0 ? (
+          <Emptycart />
+        ) : (
+          <section className="Cart-wrapper">
+            <div className="Cart-items">
+              <div className="Cart-itemswrapper">
+                <article className="Cart-itemHeader">
+                  <div className="Cart-itemHeaderdesc">Description</div>
+                  <div className="Cart-itemHeaderquantity">Quantity</div>
+                  <div className="Cart-itemHeaderprice">Item-Price</div>
+                  <div className="Cart-itemHeadertotalprice">
+                    Sub-Total Price
+                  </div>
+                  <div className="Cart-itemHeaderremove">Remove</div>
+                </article>
+                <article className="Cart-itemHolder">
+                  {cartData.map((i) => (
+                    <Cartcomp
+                      {...i}
+                      addToCart={addToCart}
+                      deleteItem={deleteItem}
+                      removeItem={removeItem}
+                      key={i?._id}
+                      setloadings={setloadings}
+                    />
+                  ))}
 
-                <hr />
-              </article>
+                  <hr />
+                </article>
+              </div>
             </div>
-          </div>
-          <div className="Cart-detailaction">
-            <main className="Cart-detailactionholder">
-              <div className="rewardshow">
-                <p className="blur">Total: </p>
-                <p>{total}</p>
-              </div>
-
-              <div className="toataprice">
-                <p className="blur">Cashback:</p>
-                <p> {cashback}</p>
-              </div>
-              <div>
-                <p>Use cashback?</p>
-                <label
-                  className={`toggle-container ${isChecked ? "checked" : ""}`}
-                >
-                  <input
-                    type="checkbox"
-                    checked={isChecked}
-                    onChange={handleToggle}
-                  />
-                  <span className="slider"></span>
-                </label>
-              </div>
-            </main>
-            <main className="finallyo">
-              <main className="finallyo-header">Enter delivery Address:</main>
-              <main className="finallyo-container">
-                <div className="addressholder">
-                  <input type="text" />
+            <div className="Cart-detailaction">
+              <main className="Cart-detailactionholder">
+                <div className="rewardshow">
+                  <p className="blur">Total: </p>
+                  <p>{total}</p>
                 </div>
-                <div className="paynow" style={{cursor:"pointer"}} onClick={payment}>
-                  Order Now
+
+               { isChecked && <div className="toataprice">
+                  <p className="blur">Cashback:</p>
+                  <p> {cashback}</p>
+                </div>}
+
+                <div>
+                  <p>Use cashback?</p>
+
+                  <div
+                    onClick={handleToggle}
+                    style={{
+                      padding: "3px 3px",
+                      borderRadius: "50px",
+                      backgroundColor: "grey",
+                      width: 80,
+                      display: "flex",
+                      justifyContent: isChecked ? "flex-end" : "flex-start",
+                    }}
+                  >
+                    <div
+                      style={{
+                        transition: "ease-in-out 5s",
+                        height: 16,
+                        width: 16,
+                        backgroundColor: "red",
+                        borderRadius: "50px",
+                      }}
+                    ></div>
+                  </div>
+                  {/* <label
+                    className={`toggle-container ${isChecked ? "checked" : ""}`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={handleToggle}
+                    />
+                    <span className="slider"></span>
+                  </label> */}
                 </div>
               </main>
-            </main>
-          </div>
-        </section>
+              <main className="finallyo">
+                <main className="finallyo-header">Enter delivery Address:</main>
+                <main className="finallyo-container">
+                  <div className="addressholder">
+                    <input
+                      type="text"
+                      name="customerAddress"
+                      value={address?.customerAddress}
+                      onChange={(e) => {
+                        setAddress({
+                          ...address,
+                          customerAddress: e.target.value,
+                        });
+                      }}
+                    />
+                  </div>
+                  <button
+                    className={
+                      address?.customerAddress.length < 10
+                        ? "paynowdisabled"
+                        : "paynow"
+                    }
+                    disabled={
+                      address?.customerAddress.length < 10 ? true : false
+                    }
+                    style={{ cursor: "pointer" }}
+                    onClick={payment}
+                  >
+                    Order Now
+                  </button>
+                </main>
+              </main>
+            </div>
+          </section>
+        )}
       </div>
     </>
   );

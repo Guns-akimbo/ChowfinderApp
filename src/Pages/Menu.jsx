@@ -5,13 +5,13 @@ import bb from "../assets/bb.jpg";
 import "./Menu.css";
 import { NavLink } from "react-router-dom";
 import Detailpage from "./DetailPage";
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import Meals from "./Meals";
 import Drinks from "./Drinks";
 import Proteins from "./Proteins";
 import { useParams, Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
 
 const Menu = () => {
   const [meal, setmeal] = useState(true);
@@ -19,12 +19,15 @@ const Menu = () => {
   const [data, setData] = useState([]);
   const [categoryload, setcategoryload] = useState(false);
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
+  const [cartData, setCartData] = useState([]);
+  const [loading, setloading] = useState(false);
+  const token = JSON.parse(localStorage.getItem("User"))?.token;
 
   async function fetchMenu() {
     try {
       // console.log("started");
       // console.log(restaurantId);
+      setloading(true);
       const response = await axios.get(
         `${VITE_End_Point}/rest/getone/${restaurantId}`
       );
@@ -32,13 +35,13 @@ const Menu = () => {
       // console.log(response?.data.restaurant);
       // console.log("ended");
       setData(response?.data.restaurant);
+      setloading(false);
     } catch (error) {
       console.log("Error fetching menu:", error);
       console.log("error");
+      setloading(false);
     }
   }
-
-  // this api is to get one
 
   const getCategories = async () => {
     try {
@@ -56,11 +59,9 @@ const Menu = () => {
   useEffect(() => {
     fetchMenu();
     getCategories();
-
   }, []);
 
   useEffect(() => {
-   
     // console.log(categories)
   }, []);
 
@@ -83,9 +84,25 @@ const Menu = () => {
     },
   ];
 
-  //
+  const getCartData = async () => {
+    try {
+      setloading(true);
+      const res = await axios.get(`${VITE_End_Point}/get-cart/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCartData(res.data.items);
+      setloading(false);
+    } catch (err) {
+      console.log(err);
+      setloading(false);
+    }
+  };
 
-  // console.log(menuList)
+  useEffect(() => {
+    getCartData();
+  }, []);
 
   return (
     <main className="menu">
@@ -95,15 +112,11 @@ const Menu = () => {
           <p>Resturants</p>
         </NavLink>
         <div className="Navsign">
-              <NavLink
-                to="/Cart"
-                className='custom-link'
-              >
-                <BsCart4 size={20} />
-                <div className="cartlenght"></div>
-              </NavLink>
-            </div>
-
+          <NavLink to="/Cart" className="custom-link">
+            <BsCart4 size={20} />
+            <div className="cartlenght">{cartData.length}</div>
+          </NavLink>
+        </div>
       </div>
 
       <section className="menulist-lord">
@@ -129,10 +142,10 @@ const Menu = () => {
           <span className="foodcategory">
             {menuList.map((i) => (
               <NavLink
-                style={{ textDecoration: "none", }}
+                style={{ textDecoration: "none" }}
                 // we are sending  the id which is the category id {id} to the meals,proteins and drinks page
                 to={`${i.path}`}
-                className={({ isActive }) => (isActive ? "active" : "active2")} 
+                className={({ isActive }) => (isActive ? "active" : "active2")}
                 key={i._id}
               >
                 <h5>{i?.title}</h5>
@@ -143,15 +156,21 @@ const Menu = () => {
             <Routes>
               <Route
                 path="/"
-                element={<Meals restaurantId={restaurantId} {...categories[0]}/>}
+                element={
+                  <Meals restaurantId={restaurantId} {...categories[0]} />
+                }
               />
               <Route
                 path="/proteins"
-                element={<Proteins restaurantId={restaurantId} {...categories[1]}/>}
+                element={
+                  <Proteins restaurantId={restaurantId} {...categories[1]} />
+                }
               />
               <Route
                 path="/drinks"
-                element={<Drinks restaurantId={restaurantId} {...categories[2]} />}
+                element={
+                  <Drinks restaurantId={restaurantId} {...categories[2]} />
+                }
               />
             </Routes>
           </section>
