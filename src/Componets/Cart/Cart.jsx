@@ -11,8 +11,25 @@ import Cartcomp from "./Cartcomp";
 import Header from "../Header";
 import Emptycart from "./Emptycart";
 import { useNavigate } from "react-router-dom";
+// import { useForm } from "react-hook-form";
+// import { yupResolver } from "@hookform/resolvers/yup";
+// import * as yup from "yup";
+
+// const addressSchema = yup
+//   .object({
+//     customerAddress: yup
+//       .string()
+//       .required("Address is required")
+//       // .matches(/^\d{11}$/, "11 characters"),
+//   })
+//   .required();
 
 function Cart() {
+  // const { register: addressRegister,
+  //   formState: { errors },
+  //  } = useForm({
+  //   resolver: yupResolver(addressSchema),
+  // });
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
   const handleToggle = () => {
@@ -26,8 +43,10 @@ function Cart() {
   const token = JSON.parse(localStorage.getItem("User"))?.token;
   const name = JSON.parse(localStorage.getItem("User"))?.fullName;
   const email = JSON.parse(localStorage.getItem("User"))?.email;
-  const [address, setAddress] = useState({ customerAddress: "", cashBackToggle: "" });
-  // const [emptycart, setEmptycart] = useState(false);
+  const [address, setAddress] = useState({
+    customerAddress: "",
+    cashBackToggle: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setAddress({
@@ -64,9 +83,6 @@ function Cart() {
   useEffect(() => {
     getCartData();
   }, []);
-
-  // console.log(cartData);
-  // console.log(total)
 
   const addToCart = async (mealId) => {
     try {
@@ -176,6 +192,7 @@ function Cart() {
     try {
       setloading(true);
       const token = JSON.parse(localStorage.getItem("User"))?.token;
+      // const adjustedTotal = total - cashback;
       const res = await axios.post(`${VITE_End_Point}/place-order/`, address, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -188,6 +205,7 @@ function Cart() {
         timerProgressBar: true, // Show a progress bar for the timer
         showConfirmButton: false, // Hide the "OK" button
       });
+      console.log(res);
       setTimeout(() => {
         navigate("/");
       }, 5000);
@@ -198,27 +216,69 @@ function Cart() {
     }
   };
 
-  const gateway = () => {
-    try {
-      const refVal = "Chowfinderapp" + Math.random() * 1000;
-      window.Korapay.initialize({
-        key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
-        reference: `${refVal}`,
-        amount: total,
-        currency: "NGN",
-        customer: {
-          name: name,
-          email: email,
-        },
-        notification_url: "https://example.com/webhook",
-        onSuccess: function (data) {
-          data?.reference === refVal ? cashbackApi() : null;
-        },
-      });
-    } catch (err) {
-      console.log(err);
+   const gateway = () => {
+    const adjustedCashback = total - cashback; // Subtract total from cashback
+    console.log(adjustedCashback);
+
+    if (adjustedCashback >= 0) {
+      try {
+        const refVal = "Chowfinderapp" + Math.random() * 1000;
+        window.Korapay.initialize({
+          key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
+          reference: `${refVal}`,
+          amount: adjustedCashback,
+          currency: "NGN",
+          customer: {
+            name: name,
+            email: email,
+          },
+          notification_url: "https://example.com/webhook",
+          onSuccess: function (data) {
+            data?.reference === refVal ? cashbackApi() : null;
+          },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      // If adjustedCashback is negative, show an error message
+      setErrorMessage("Not enough cashback to cover the total amount.");
     }
   };
+
+//   const gateway = () => {
+//   // Assuming total, cashback, name, and email are defined and have valid values
+//   const adjustedCashback = Math.max(0, cashback - total); // Ensure adjustedCashback is non-negative
+//   console.log(adjustedCashback);
+
+//   if (adjustedCashback >= 0) {
+//     try {
+//       const refVal = "Chowfinderapp" + Math.random() * 1000;
+//       window.Korapay.initialize({
+//         key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
+//         reference: `${refVal}`,
+//         amount: total, // Pay the remaining total after deducting cashback
+//         currency: "NGN",
+//         customer: {
+//           name: name,
+//           email: email,
+//         },
+//         notification_url: "https://example.com/webhook",
+//         onSuccess: function (data) {
+//           if (data?.reference === refVal) {
+//             cashbackApi();
+//           }
+//         },
+//       });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   } else {
+//     // If adjustedCashback is negative, show an error message
+//     setErrorMessage("Not enough cashback to cover the total amount.");
+//   }
+// };
+
 
   const cashbackApi = debounce(cashBack, 2000);
 
@@ -273,10 +333,12 @@ function Cart() {
                   <p>{total}</p>
                 </div>
 
-               { isChecked && <div className="toataprice">
-                  <p className="blur">Cashback:</p>
-                  <p> {cashback}</p>
-                </div>}
+                {isChecked && (
+                  <div className="toataprice">
+                    <p className="blur">Cashback:</p>
+                    <p> {cashback}</p>
+                  </div>
+                )}
 
                 <div>
                   <p>Use cashback?</p>

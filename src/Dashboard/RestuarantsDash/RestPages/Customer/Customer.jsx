@@ -19,7 +19,7 @@ function Customer() {
 
   },[])
 
-  // console.log(getInventory)
+  
 
 
   return (
