@@ -81,14 +81,13 @@
   text-decoration: none; 
 }
 
-.active{
-  color: red;
-}
 
-.Navsign:hover {
-  color: #f8a866;
+.Navsign p:hover {
+  color: #f7f6f4;
   font-weight: 400;
 }
+
+
 
 .cartlenght {
   height: 20px;

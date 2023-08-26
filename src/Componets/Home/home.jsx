@@ -139,7 +139,7 @@ function Home() {
                     <section className="rap">
                       <main className="Restuarantlisting-header">
                         <h4>Available Restaurants</h4>{" "}
-                        <AiFillCloseCircle size={35} className='VscArrowCircleLeft' onClick={handleClose} />
+                        <AiFillCloseCircle size={35}  className='VscArrowCircleLeft' onClick={handleClose} />
                       </main>
                       <main className="Restuarantlisting-holder">
                         {filteredRestaurants?.map((restaurant) => (

@@ -131,7 +131,7 @@ function Header() {
             <div className="Navsign">
               <NavLink to="/Cart" className="custom-link">
                 <BsCart4 size={20} />
-                <div className="cartlenght"> {cartData.length}</div>
+                <div className="cartlenght"><p>{cartData.length}</p></div>
               </NavLink>
             </div>
           </section>
