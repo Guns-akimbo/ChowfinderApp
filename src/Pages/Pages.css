@@ -162,7 +162,6 @@
   width: 5%;
   height: 100%;
   border-radius: 3px;
-  border: 2px solid white;
 }
 
 .signindiv {
@@ -204,6 +203,12 @@
   .popimage {
     width: 100%;
     height: 50%;
+  }
+
+  .Logodiv img {
+    width: 15%;
+    border: none;
+
   }
 
   .poptext {

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsCart4 } from "react-icons/bs";
 import { CgMenu } from "react-icons/cg";
-import { ImCancelCircle } from "react-icons/im";
+import { AiFillCloseCircle } from "react-icons/ai";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
@@ -141,8 +141,7 @@ function Header() {
         <div className="showmenu">
           <div className="gridmenu">
             <div className="caCircle">
-              <ImCancelCircle size={30} onClick={hideMenu} />
-              <ImCancelCircle size={30} onClick={hideMenu} />
+              <AiFillCloseCircle size={35}  className='VscArrowCircleLeft' onClick={hideMenu} />
             </div>
             <nav className="dropMenu">
               <NavLink to="/" className="custom-link">
