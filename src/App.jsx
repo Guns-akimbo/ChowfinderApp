@@ -11,7 +11,7 @@ import ResetPassword from "./Onboarding/Forgetpassword/ResetPassword";
 import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
 import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
 import RestuarantsDash from "./Dashboard/RestuarantsDash/RestuarantsDash";
-import Partner from "./Onboarding/Forgetpassword/Partner/Partner"
+import Partner from "./Onboarding/Partner/Partner"
 
 const myApp = () => {
   return (

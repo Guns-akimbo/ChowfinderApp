@@ -9,6 +9,7 @@
   position: fixed;
   top: 0%;
   bottom: 0%;
+  z-index: 100;
 }
 
 .grid {
@@ -81,14 +82,13 @@
   text-decoration: none; 
 }
 
-.active{
-  color: red;
-}
 
-.Navsign:hover {
-  color: #f8a866;
+.Navsign p:hover {
+  color: #f7f6f4;
   font-weight: 400;
 }
+
+
 
 .cartlenght {
   height: 20px;
@@ -102,6 +102,11 @@
   justify-content: center;
   align-items: center;
   font-size: 10px;
+}
+
+.ImCancelCircle{
+color: #d62e0d;
+/* background-color: #fcfaf8; */
 }
 
 .HiMenuAlt2 {
@@ -157,7 +162,11 @@
 .gridmenu {
   width: 50%;
   height: 100%;
-  background-color: #f8a866;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
 }
 
@@ -238,6 +247,8 @@ display: none;
   .HiMenuAlt2 {
     display: block;
     align-items: center;
+    transform: scale(123456);
+    transition: all 250ms ease-in;
   } 
 
   .Navmenu {
