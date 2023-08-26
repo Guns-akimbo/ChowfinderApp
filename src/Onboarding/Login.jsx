@@ -233,6 +233,7 @@ const Login = () => {
                     name={e.name}
                     type={e.type}
                     placeholder={e.placeholder}
+              
                     // icon={e.icon}
                   />
                 ))}

@@ -3,7 +3,7 @@ import axios from "axios";
 const token = JSON.parse(localStorage.getItem("User"))?.token;
 
 
- export const getOrders = async () => {
+ export const getOrders = async (token) => {
   try {
     const res = await axios.get(`${VITE_End_Point}/get-all-orders/`, {
       headers: {
