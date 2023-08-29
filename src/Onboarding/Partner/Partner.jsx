@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import { NavLink, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import './Partner.css';
+import HashLoader from 'react-spinners/HashLoader';
+import PartnerLogin from './patner-loginr';
+import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
+
+
 
 function Partner() {
   const initialState = {
@@ -11,91 +18,99 @@ function Partner() {
     phoneNumber: '',
     password: '',
     confirmPassword: '',
-    profileImage: null,
   };
 
   const [formData, setFormData] = useState(initialState);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
-  
-    
-  // const convertFileToBase64 = (file) => {
-  //   return new Promise((resolve) => {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(file);
-  //     reader.onload = () => {
-  //       resolve(reader.result);
-  //     };
-  //   });
-  // };
-      
-  const handleChange = (e) => {
-    const { name, value, type } = e.target;
-  
-    if (type === 'file') {
-      const newValue = e.target.files[0];
-      convertFileToBase64(newValue)
-        .then((base64String) => {
-          setFormData((prevData) => ({ ...prevData, [name]: base64String }));
-        })
-        .catch((error) => {
-          console.error('Error converting file to base64:', error);
-        });
-    } else {
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
-    }
+  const handlepassword = () => {
+    setPasswordVisible(!passwordVisible);
   };
-  
-  
-   const signupSubmit = async (e) => {
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const signupSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
     try {
-      console.log(formData)
       const res = await axios.post(
         "https://chowfinder.onrender.com/api/rest/signup",
         formData
-         );
-            if (res && res.data) {
-            
+      );
+
+      if (res && res.data) {
         console.log('Sign-up successful:', res.data);
-        setIsSuccess(true);
+        setError(null);
+        showSuccessAlert();
+        Navigate('/partnerLogin')
       } else {
         console.log('Response data is missing or undefined.');
       }
     } catch (err) {
       console.error('Sign-up error:', err.message);
-      
+
       if (err.response) {
-        console.error('Server Response Data:', err);
-        // console.error('Server Response Status:', err.response.status);
-        // console.error('Server Response Headers:', err.response.headers);
+        const errorMessage =
+          err.response.data.message || 'An error occurred during sign-up. Please try again later.';
+        setError(errorMessage);
+      } else {
+        setError('An error occurred during sign-up. Please try again later.');
       }
-  
-      setError('An error occurred during sign-up. Please try again later.');
+    }
+    finally {
+      setLoading(false);
     }
   };
-  
+
+  const showSuccessAlert = () => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Sign-up Successful!',
+      text: 'Please check your email for verification instructions. After verification, you can log in.',
+      confirmButtonText: 'OK',
+    });
+  };
+
   return (
+
     <div className="signup-container">
       <h2>Sign Up</h2>
       {error && <p className="error-message">{error}</p>}
-      
+
       {isSuccess ? (
         <p>Sign-up successful! You can now log in.</p>
       ) : (
-        <form onSubmit={signupSubmit} encType="multipart/form-data">
+        <form onSubmit={signupSubmit}>
           <input type="text" name="businessName" placeholder="Business Name" required onChange={handleChange} />
           <input type="text" name="address" placeholder="Address" required onChange={handleChange} />
           <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
           <input type="text" name="description" placeholder="Description" required onChange={handleChange} />
           <input type="tel" name="phoneNumber" placeholder="Phone Number" required onChange={handleChange} />
-          <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
-          <input type="password" name="confirmPassword" placeholder="Confirm Password" required onChange={handleChange} />
-          <input type="file" name="profileImage" accept="image/*"  onChange={handleChange} />
-          <button type="submit">Sign Up</button>
+         <div><input type={passwordVisible ? 'text' : 'password'}
+            name="password" placeholder="Password" required onChange={handleChange} />{passwordVisible ? (
+              <PiEyeBold onClick={handlepassword} />
+            ) : (
+              <PiEyeClosedBold onClick={handlepassword} />
+            )}</div> 
+         <div><input type={passwordVisible ? 'text' : 'password'}
+            name="confirmPassword" placeholder="Confirm Password" required onChange={handleChange} />
+            
+            </div> 
+          <button type="submit" disabled={loading} className='rest-button'>
+            <span>{loading ? <HashLoader color={"#ffffff"} size={30} loading={loading} /> : 'Sign Up'}</span>
+          </button>
         </form>
+
       )}
+
+      <span className='patner-loginrouter'> Already a partner <span><NavLink to='/partnerLogin'>Sign In</NavLink></span></span>
     </div>
   );
 }

@@ -12,6 +12,9 @@ import ForgetPassword from "./Onboarding/Forgetpassword/ForgetPassword";
 import Userdashboard from "./Dashboard/AdminDash/Userdashboard"
 import RestuarantsDash from "./Dashboard/RestuarantsDash/RestuarantsDash";
 import Partner from "./Onboarding/Partner/Partner"
+import VerifyPartner from "./Onboarding/Partner/Verifyrestaurant";
+import PartnerLogin from "./Onboarding/Partner/patner-loginr";
+import RestForgetPassword from "./Onboarding/Partner/restForgetword";
 
 const myApp = () => {
   return (
@@ -27,6 +30,9 @@ const myApp = () => {
           element={<Detailpage />}
         /> 
         <Route path='/partner' element={<Partner/>} />
+        <Route path="verifyPartner" element={<VerifyPartner/>}/>
+        <Route path="/partnerLogin" element = {<PartnerLogin/>}/>
+        <Route path = "/RestForgetPassword" element ={<RestForgetPassword/>}/>
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/dashboard/*" element={<Userdashboard/>} /> 
