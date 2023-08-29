@@ -19,15 +19,11 @@
     gap: 10px;
   }
   
-  input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #ffd819;
+  .rest-button {
+    height: 37px;
+    width: 180px;
+    /* padding: 17px; */
+    background-color: #ffd501;
     color: white;
     border: none;
     border-radius: 5px;
@@ -37,4 +33,66 @@
   button:hover {
     background-color: #ffd501;
   }
+
+  .patner-password{
+    display: block;
+    height: 13px;
+    color: rgb(29, 24, 24);
+    font-size: 12px;
+    text-align: right;
+    cursor: pointer;
+    padding-top: 5px;
+  }
+
+  .patner-loginrouter{
+    display:block;
+    height: 40px;
+    width: 100%;
+    /* background-color: #ffd501; */
+    display: flex;
+    align-items:flex-end;
+    justify-content: center;
+    cursor: pointer;
+    gap: 5px;
+     }
+
+     a{
+      text-decoration: none;
+      color: #ffd501;
+     }
+.login-containerholder{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  .login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+
+  
   
