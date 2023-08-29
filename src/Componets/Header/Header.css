@@ -12,6 +12,14 @@
   z-index: 100;
 }
 
+.user-info{
+font-size: 12px;
+display: flex;
+align-items: center;
+width: 10%;
+text-shadow: 1px 15px 3px rgba(253, 251, 251, 0.27);
+color: #991c15;
+}
 .grid {
   height: 100%;
   width: 90%;
@@ -237,7 +245,14 @@ display: none;
     top: 20px;
   }
 
-
+  .user-info{
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    color: #991c15;
+    }
 }
 
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */

@@ -101,7 +101,7 @@ function Meals({ restaurantId, _id }) {
         >
           <div className="leftcard">
             <span className="Cardnamed">
-              <h2>{i?.name}</h2>
+              <p className="Cardnamedb">{i?.name}</p>
               <p>Price:{i?.price}</p>
             </span>
             <div className="pri">

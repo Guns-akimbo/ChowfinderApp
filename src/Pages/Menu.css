@@ -218,6 +218,12 @@
   font-size: 14px;
 }
 
+.Cardnamedb{
+  font-size: 30px;
+  font-weight: 900;
+  /* color: #fc8019; */
+}
+
 .pri{
   width: 100%;
   height: 50%;
@@ -306,6 +312,7 @@
     width: 100%;
      }
 
+    
 
 }
 
@@ -338,5 +345,13 @@
     height: 47vh;
     width: 100%;
      }
+
+     .Cardnamed p{
+      font-size: 14px;
+    }
+    
+    .Cardnamed h2{
+      font-size: 18px;
+    }
 
 }

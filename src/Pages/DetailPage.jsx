@@ -111,10 +111,10 @@ const Detailpage = () => {
               <span className="deleteBtn" onClick={handleClose}>
                 <p>X</p>
               </span>
-              <span className="text">
+              <span className="detail-text">
                 <h3>Meal: {mealData?.name}</h3>
 
-                <h4>Description: {mealData?.foodDesc}</h4>
+                <p>Description: {mealData?.foodDesc}</p>
                 <h5> ₦{mealData?.price}</h5>
               </span>
             </div>

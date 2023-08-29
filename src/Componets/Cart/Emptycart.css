@@ -4,9 +4,6 @@
   margin: 0;
 }
 
-body {
-  /* background-color: red; */
-}
 
 .emptymain {
   width: 100%;
@@ -72,77 +69,33 @@ body {
   border: none;
 }
 @media (max-width: 767px) {
-  .Cart-wrapper {
-      height: 98%;
-      width: 90%;
+
+      .emptymainwrapper {
+        width: 80%;
+        height: 80%;
+       /* background-color: blue; */
       }
 
-      .Cart-itemHeader {
-          font-size: 8px;
-      }
-      .finallyo-header {
-          padding-left: 1px;
-          font-size: 8px;
-      }
-
-      .paynow {
-          font-size: 13px;
-      }
-
-      .blur{
-
-          font: size 12px; ;
+      .emptycarttext h4 {
+       font-size: 15px;
 
       }
-
-      .rewardshow {
+          .rewardshow {
          display: block;
          align-items: center;
           padding-block: 10px;
          }
-
-      .toataprice {
-          height: 60%;
-          width: 25%;
-         border: 1px solid rgb(185, 181, 189);  
-         display: block;
-         align-items: center;
-         padding-block: 10px;}
-              
-     
-
-      .Cart-itemHoldereach {
-          height: 27%;
-          width: 100%;      
-      }
+         .emptyBtn {
+          width: 160px;
+          height: 35px;
+          font-size: 13px;
+                  }
 
 }
 
 /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
 @media (min-width: 768px) and (max-width: 991px) {
-  .Cart-wrapper {
-      height: 85%;
-      width: 92%;
-      }
-
-      .finallyo-header {
-          padding-left: 70px;
-          font-size: 8px;
-      }
-
-       .paynow {
-          font-size: 13px;
-      }
-
-      .blur{
-
-          font: size 12px; ;
-
-      }
-      .Cart-itemHoldereach {
-          height: 25%;
-          width: 100%;      
-      }
+ 
    
 }
 

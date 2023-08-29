@@ -137,7 +137,7 @@ function Header() {
             {/* Display user's name if logged in */}
             {userisLoggedIn?.token && (
               <div className="user-info">
-                <span>Hello, {userisLoggedIn.fullName}</span>
+                <span >{userisLoggedIn.fullName}</span>
               </div>
             )}
             <div className="Navsign">
@@ -170,9 +170,18 @@ function Header() {
                 <li>About Us</li>
               </NavLink>
 
-              <NavLink to="/partner" className="custom-link">
-                <li> Become a Partner</li>
-              </NavLink>
+             
+              <div>
+                {userisLoggedIn?.token ? (
+                  <NavLink to="/dashboard/" className="custom-link">
+                    <li>Dashboard</li>
+                  </NavLink>
+                ) : (
+                  <NavLink to="/partner" className="custom-link">
+                    <li>Become a Partner</li>
+                  </NavLink>
+                )}
+              </div>
 
               <div>
                 {userisLoggedIn?.token ? (

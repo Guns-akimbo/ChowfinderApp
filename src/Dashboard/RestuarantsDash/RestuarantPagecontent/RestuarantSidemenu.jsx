@@ -17,7 +17,7 @@ const RestuarantSidemenu=()=>{
             <Menu 
             style={{backgroundColor:"orange",
             color:"white",
-            height:"93vh",
+            height:"100vh",
             width:"15vw",
             padding:"10px"}}
             onClick={(item)=>{

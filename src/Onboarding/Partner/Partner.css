@@ -30,7 +30,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .rest-button:hover {
     background-color: #ffd501;
   }
 

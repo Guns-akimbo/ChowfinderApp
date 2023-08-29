@@ -88,8 +88,8 @@
 
     /* CSS styles for mobile devices */
     .Restaurant {
-        height: 500px;
-        width: 90%;
+        height: 430px;
+        width: 70%;
         margin-left: 15px;
     }
 
@@ -122,7 +122,6 @@
     .Restaurant {
         height: 410px;
         width: 45%;
-        
     }
 
 }
