@@ -19,6 +19,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
+
+
 const loginSchema = yup
   .object({
     email: yup.string().required("Email is required"),
@@ -50,6 +52,7 @@ const signupSchema = yup
   })
   .required();
 
+
 const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -57,6 +60,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [load, setLoad] = useState(false);
+
   const {
     register: loginRegister,
     handleSubmit: LoginhandleSubmit,
@@ -238,6 +242,15 @@ const Login = () => {
       localStorage.setItem("User", JSON.stringify({ token, fullName, email }));
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       console.log("Token stored:", token);
+      
+      Swal.fire({
+        text: `Hello, ${fullName}!`,
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+
+
       navigate("/");
     } catch (err) {
       setLoad(false);

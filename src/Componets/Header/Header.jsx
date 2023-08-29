@@ -70,18 +70,18 @@ function Header() {
     getCartData();
   }, []);
 
-  useEffect(() => {
-    if (userisLoggedIn?.token && !hasLoggedInOnce) {
-      setHasLoggedInOnce(true);
+  // useEffect(() => {
+  //   if (userisLoggedIn?.token && !hasLoggedInOnce) {
+  //     setHasLoggedInOnce(true);
 
-      Swal.fire({
-        text: `Hello, ${userisLoggedIn.fullName}!`,
-        timer: 5000,
-        timerProgressBar: true,
-        showConfirmButton: false,
-      });
-    }
-  }, [userisLoggedIn, ]);
+  //     Swal.fire({
+  //       text: `Hello, ${userisLoggedIn.fullName}!`,
+  //       timer: 5000,
+  //       timerProgressBar: true,
+  //       showConfirmButton: false,
+  //     });
+  //   }
+  // }, [userisLoggedIn, ]);
 
 
   return (
@@ -137,7 +137,7 @@ function Header() {
             {/* Display user's name if logged in */}
             {userisLoggedIn?.token && (
               <div className="user-info">
-                <span >{userisLoggedIn.fullName}</span>
+                <span>Hello, {userisLoggedIn.fullName}</span>
               </div>
             )}
             <div className="Navsign">

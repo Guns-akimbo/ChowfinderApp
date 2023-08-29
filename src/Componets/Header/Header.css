@@ -16,9 +16,12 @@
 font-size: 12px;
 display: flex;
 align-items: center;
-width: 10%;
+justify-content: center;
+width: 30%;
 text-shadow: 1px 15px 3px rgba(253, 251, 251, 0.27);
 color: #991c15;
+/* background-color: #991c15; */
+
 }
 .grid {
   height: 100%;
@@ -250,7 +253,7 @@ display: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 60%;
     color: #991c15;
     }
 }
