@@ -12,9 +12,11 @@ function Approutes() {
         <Route path="/inventory" element={<Inventory />}></Route>
         <Route path="/orders" element={<Orders />}></Route>
         <Route path="/customers" element={<Customer />}></Route>
+        <Route path="/logout" element={<Customer />}></Route>
       </Routes>
     
   );
 }
+
 
 export default Approutes;

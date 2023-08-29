@@ -118,13 +118,16 @@ const Menu = () => {
           </NavLink>
         </div>
       </div>
-
       <section className="menulist-lord">
         <div className="menulist-lordholder">
           <main className="restuarant-lord">
-            <img src={data?.profileImage} alt="" />
+            {/* <img src={data?.profileImage} alt="" /> */}
+            {!data?.profileImage ? (
+              <p>Loading.... </p>
+            ) : (
+              <img src={data?.profileImage} alt="Loadinggg" />
+            )}
           </main>
-
           <div className="restuarant-lordname">
             <div className="restuarant-lordname1">
               <h1>{data?.businessName}</h1>
@@ -137,7 +140,7 @@ const Menu = () => {
           </div>
 
           <div className="timesection">
-            <h3>Opening Time :1am-12pm</h3>
+            <h3>Opening Time :8am-9pm</h3>
           </div>
           <span className="foodcategory">
             {menuList.map((i) => (

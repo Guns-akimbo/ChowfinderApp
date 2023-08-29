@@ -31,7 +31,7 @@
   background-color: white;
   box-shadow: 0 5px 25px rgb(0 0 0 / 15%);
   width: 350px;
-  height: 600px;
+  height: 500px;
   padding: 50px 40px;
   border-radius: 5px;
   overflow: hidden;
@@ -53,6 +53,7 @@
   align-items: center;
   border-bottom: 2px solid #eee;
   margin-bottom: 15px;
+  /* background-color:red; */
   /* background-color: red; */
 }
 
@@ -87,20 +88,35 @@
   color: #828da0;
   font-size: 0.85em;
 }
-.eyebtnopen {
+
+.input-container{
+  
+  position: relative;
+}
+
+.eyebtn {
   cursor: pointer;
+  position: relative;
+  right: 0px;
+  position: absolute;
+  bottom: 40px;
+  right: 5%;
+  top: 10px;
+  
 }
 
 .eyebtnopen:hover {
-  color: #0065ff;
+  color:orange;
   transition: 0.3s ease;
 }
+
+
 .eyebtn {
   cursor: pointer;
 }
 
 .eyebtn:hover {
-  color: #0065ff;
+  color: orange;
   transition: 0.3s ease;
 }
 
@@ -131,6 +147,12 @@
 
 }
 
+.submit-btn:hover{
+  color: bisque;
+  background-color:darkgoldenrod;
+}
+
+
 .imgBox {
   z-index: 888;
   display: flex;
@@ -159,6 +181,12 @@
   margin-left: 5px;
   cursor: pointer;
 }
+
+
+.sliding-link span:hover{
+  color: orange;
+}
+
 
 /* .sign-up{
   display: none;

@@ -8,6 +8,8 @@ import "./Header.css";
 import { NavLink } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import axios from "axios";
+import Userdashboard from "../../Dashboard/AdminDash/Userdashboard";
+import Swal from "sweetalert2";
 
 function Header() {
   const [menu, setMenu] = useState(false);
@@ -15,6 +17,8 @@ function Header() {
   const [cartData, setCartData] = useState([]);
   const [loading, setloading] = useState(false);
   const token = JSON.parse(localStorage.getItem("User"))?.token;
+  // const [loggedInOnce, setLoggedInOnce] = useState(false);
+  const [hasLoggedInOnce, setHasLoggedInOnce] = useState(false);
 
   const toggleMenu = () => {
     setMenu(!menu);
@@ -66,6 +70,20 @@ function Header() {
     getCartData();
   }, []);
 
+  useEffect(() => {
+    if (userisLoggedIn?.token && !hasLoggedInOnce) {
+      setHasLoggedInOnce(true);
+
+      Swal.fire({
+        text: `Hello, ${userisLoggedIn.fullName}!`,
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+    }
+  }, [userisLoggedIn, ]);
+
+
   return (
     <>
       {!menu && (
@@ -87,9 +105,17 @@ function Header() {
                 <li>About Us</li>
               </NavLink>
 
-              <NavLink to="/partner" className="custom-link">
-                <li> Become a Partner</li>
-              </NavLink>
+              <div>
+                {userisLoggedIn?.token ? (
+                  <NavLink to="/dashboard/" className="custom-link">
+                    <li>Dashboard</li>
+                  </NavLink>
+                ) : (
+                  <NavLink to="/partner" className="custom-link">
+                    <li>Become a Partner</li>
+                  </NavLink>
+                )}
+              </div>
 
               <div>
                 {userisLoggedIn?.token ? (
@@ -105,33 +131,21 @@ function Header() {
                     </li>
                   </NavLink>
                 )}
-
-                {/* {userisLoggedIn?.id !== "" && !updateUi && (
-                  <div>
-                    <li onClick={logout} 
-                    className='custom-link'
-                    >
-                      Logout
-                    </li>
-                  </div>
-                )}
-
-                {userisLoggedIn?.id === "" || updateUi === true ? (
-                  <Link to="/login" 
-                  className='custom-link'
-                  >
-                    <li >
-                      <AiOutlineUser className="li" /> Sign in
-                    </li>
-                  </Link>
-                ) : null} */}
               </div>
             </nav>
 
+            {/* Display user's name if logged in */}
+            {userisLoggedIn?.token && (
+              <div className="user-info">
+                <span>Hello, {userisLoggedIn.fullName}</span>
+              </div>
+            )}
             <div className="Navsign">
               <NavLink to="/Cart" className="custom-link">
                 <BsCart4 size={20} />
-                <div className="cartlenght"><p>{cartData.length}</p></div>
+                <div className="cartlenght">
+                  <p>{cartData.length}</p>
+                </div>
               </NavLink>
             </div>
           </section>
@@ -141,7 +155,11 @@ function Header() {
         <div className="showmenu">
           <div className="gridmenu">
             <div className="caCircle">
-              <AiFillCloseCircle size={35}  className='VscArrowCircleLeft' onClick={hideMenu} />
+              <AiFillCloseCircle
+                size={35}
+                className="VscArrowCircleLeft"
+                onClick={hideMenu}
+              />
             </div>
             <nav className="dropMenu">
               <NavLink to="/" className="custom-link">

@@ -1,5 +1,5 @@
 import { Menu } from "antd"
-import { AppstoreOutlined, ShopOutlined, ShoppingCartOutlined, UserOutlined } from "@ant-design/icons"
+import { AppstoreOutlined, ShopOutlined, ShoppingCartOutlined, UserOutlined,LogoutOutlined } from "@ant-design/icons"
 import { useNavigate } from "react-router-dom"
 
 
@@ -17,7 +17,7 @@ const RestuarantSidemenu=()=>{
             <Menu 
             style={{backgroundColor:"orange",
             color:"white",
-            height:"92vh",
+            height:"93vh",
             width:"15vw",
             padding:"10px"}}
             onClick={(item)=>{
@@ -43,6 +43,11 @@ const RestuarantSidemenu=()=>{
                     label:"Customers",
                     key:"/restaurantdashboard/customers",
                     icon:<UserOutlined/>
+            },
+                {
+                    label:"Logout",
+                    key:"/restaurantdashboard/logout",
+                    icon:<LogoutOutlined />
             },
 
 

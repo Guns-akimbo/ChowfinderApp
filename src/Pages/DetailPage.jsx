@@ -9,14 +9,14 @@ import HashLoader from "react-spinners/HashLoader";
 import { useNavigate } from "react-router-dom";
 // import 'sweetalert2/dist/sweetalert2.min.css';
 
-const Detailpage = ({}) => {
+const Detailpage = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const { categoryId, restaurantId, mealId } = useParams();
   const [loading, setloading] = useState();
   const [loadings, setloadings] = useState();
   const [data, setdata] = useState([]);
   const [mealData, setMealData] = useState(null);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   console.log("Category ID:", categoryId);
   console.log("Restaurant ID:", restaurantId);
@@ -62,8 +62,8 @@ const Detailpage = ({}) => {
       }, 2000);
       setloadings(false);
     } catch (err) {
-      console.log(err,"error");
-      if(err?.response.data.message){
+      console.log(err, "error");
+      if (err?.response.data.message) {
         Swal.fire({
           icon: "error", // Show an error icon
           title: "Error",
@@ -71,8 +71,8 @@ const Detailpage = ({}) => {
           timer: 2000,
           timerProgressBar: true,
         });
-        navigate("/login")  
-      }else{
+        navigate("/login");
+      } else {
         Swal.fire({
           // icon: "error", // Show an error icon
           title: "Error",
@@ -81,7 +81,7 @@ const Detailpage = ({}) => {
           timerProgressBar: true,
         });
       }
-      
+
       setloadings(false);
     }
   };
@@ -127,7 +127,9 @@ const Detailpage = ({}) => {
                 </button>
               )}
             </div>
-            <p style={{color:"red",marginBlockStart:"5px"}}>{errorMessage}</p>
+            <p style={{ color: "red", marginBlockStart: "5px" }}>
+              {errorMessage}
+            </p>
           </div>
         </div>
       )}

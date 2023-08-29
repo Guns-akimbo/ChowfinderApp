@@ -36,6 +36,7 @@ function Cart() {
     setIsChecked((prevState) => !prevState);
   };
   const [loading, setloading] = useState(false);
+  const [reload, setReload] = useState(false);
   const [loadings, setloadings] = useState(false);
   const [cartData, setCartData] = useState([]);
   const [total, setTotal] = useState("");
@@ -73,6 +74,10 @@ function Cart() {
       setTotal(res.data.grandTotal);
       setcashBack(res.data.cashBack);
       setloading(false);
+      // if (cartData.length == 1) {
+      //   window.location.reload();
+      // }
+      console.log("cart length", cartData.length);
     } catch (err) {
       console.log(err);
       setloading(false);
@@ -81,8 +86,14 @@ function Cart() {
   };
 
   useEffect(() => {
+    console.log("cart length", cartData.length);
+  }, [cartData]);
+  useEffect(() => {
     getCartData();
   }, []);
+  useEffect(() => {
+    getCartData();
+  }, [reload]);
 
   const addToCart = async (mealId) => {
     try {
@@ -160,16 +171,31 @@ function Cart() {
           Authorization: `Bearer ${token}`,
         },
       });
-      // setEmptycart(true)
-      setTimeout(() => {
+      if (res) {
         Swal.fire({
           text: "item cleared successfully",
           timer: 1000, // Automatically close after 2 seconds
           timerProgressBar: true, // Show a progress bar for the timer
           showConfirmButton: false, // Hide the "OK" button
         });
-      }, 1000);
-      getCartData();
+        // getCartData();
+        // console.log(res.data.cart.items);
+        setCartData(res.data.cart.items);
+        // navigate("/Cart")
+      }
+      // setEmptycart(true)
+      // setTimeout(() => {
+      //   Swal.fire({
+      //     text: "item cleared successfully",
+      //     timer: 1000, // Automatically close after 2 seconds
+      //     timerProgressBar: true, // Show a progress bar for the timer
+      //     showConfirmButton: false, // Hide the "OK" button
+      //   });
+      //   window.location.reload();
+      // }, 1000);
+      // getCartData();
+      // setReload(!reload)
+
       console.log(res);
       setloadings(false);
     } catch (err) {
@@ -216,7 +242,7 @@ function Cart() {
     }
   };
 
-   const gateway = () => {
+  const gateway = () => {
     const adjustedCashback = total - cashback; // Subtract total from cashback
     console.log(adjustedCashback);
 
@@ -226,7 +252,7 @@ function Cart() {
         window.Korapay.initialize({
           key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
           reference: `${refVal}`,
-          amount: adjustedCashback,
+          amount: isChecked ? adjustedCashback : total,
           currency: "NGN",
           customer: {
             name: name,
@@ -246,39 +272,38 @@ function Cart() {
     }
   };
 
-//   const gateway = () => {
-//   // Assuming total, cashback, name, and email are defined and have valid values
-//   const adjustedCashback = Math.max(0, cashback - total); // Ensure adjustedCashback is non-negative
-//   console.log(adjustedCashback);
+  //   const gateway = () => {
+  //   // Assuming total, cashback, name, and email are defined and have valid values
+  //   const adjustedCashback = Math.max(0, cashback - total); // Ensure adjustedCashback is non-negative
+  //   console.log(adjustedCashback);
 
-//   if (adjustedCashback >= 0) {
-//     try {
-//       const refVal = "Chowfinderapp" + Math.random() * 1000;
-//       window.Korapay.initialize({
-//         key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
-//         reference: `${refVal}`,
-//         amount: total, // Pay the remaining total after deducting cashback
-//         currency: "NGN",
-//         customer: {
-//           name: name,
-//           email: email,
-//         },
-//         notification_url: "https://example.com/webhook",
-//         onSuccess: function (data) {
-//           if (data?.reference === refVal) {
-//             cashbackApi();
-//           }
-//         },
-//       });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   } else {
-//     // If adjustedCashback is negative, show an error message
-//     setErrorMessage("Not enough cashback to cover the total amount.");
-//   }
-// };
-
+  //   if (adjustedCashback >= 0) {
+  //     try {
+  //       const refVal = "Chowfinderapp" + Math.random() * 1000;
+  //       window.Korapay.initialize({
+  //         key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
+  //         reference: `${refVal}`,
+  //         amount: total, // Pay the remaining total after deducting cashback
+  //         currency: "NGN",
+  //         customer: {
+  //           name: name,
+  //           email: email,
+  //         },
+  //         notification_url: "https://example.com/webhook",
+  //         onSuccess: function (data) {
+  //           if (data?.reference === refVal) {
+  //             cashbackApi();
+  //           }
+  //         },
+  //       });
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   } else {
+  //     // If adjustedCashback is negative, show an error message
+  //     setErrorMessage("Not enough cashback to cover the total amount.");
+  //   }
+  // };
 
   const cashbackApi = debounce(cashBack, 2000);
 
@@ -311,15 +336,53 @@ function Cart() {
                   <div className="Cart-itemHeaderremove">Remove</div>
                 </article>
                 <article className="Cart-itemHolder">
-                  {cartData.map((i) => (
-                    <Cartcomp
-                      {...i}
-                      addToCart={addToCart}
-                      deleteItem={deleteItem}
-                      removeItem={removeItem}
-                      key={i?._id}
-                      setloadings={setloadings}
-                    />
+                  {cartData?.map((i) => (
+                    // <Cartcomp
+                    //   {...i}
+                    //   addToCart={addToCart}
+                    //   deleteItem={deleteItem}
+                    //   removeItem={removeItem}
+                    //   key={i?._id}
+                    //   setloadings={setloadings}
+                    // />
+
+                    <div className="Cart-itemHoldereach">
+                      <div className="Cart-itemHeaderdesc">
+                        <main className="descimage">
+                          <img src={i?.itemImage} alt="Loadinggg" />
+                        </main>
+                        <main className="itemdescrition">{i?.itemName}</main>
+                      </div>
+                      <div className="Cart-itemHeaderquantity">
+                        <div
+                          className="increase"
+                          onClick={() => addToCart(i?.menu)}
+                        >
+                          +
+                        </div>
+
+                        <div className="itemnumber">{i?.quantity}</div>
+                        <div
+                          className="decrease"
+                          onClick={() => removeItem(i?.menu)}
+                        >
+                          -
+                        </div>
+                      </div>
+
+                      <div className="Cart-itemHeaderprice">{i?.itemPrice}</div>
+                      <div className="Cart-itemHeadertotalprice">
+                        {i?.itemTotal}
+                      </div>
+                      <div className="Cart-itemHeaderremove">
+                        <div
+                          className="remove-item"
+                          onClick={() => deleteItem(i?.menu)}
+                        >
+                          X
+                        </div>
+                      </div>
+                    </div>
                   ))}
 
                   <hr />

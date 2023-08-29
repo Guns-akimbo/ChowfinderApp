@@ -81,6 +81,18 @@ const Login = () => {
     }, 5000);
   }, []);
 
+  const handleTogglePassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+    console.log("Toggle password visibility:", showPassword);
+  };
+  
+  // const handleTogglePassword = () => {
+  //   setShowPassword((prevShowPassword) => !prevShowPassword); // Toggle the state
+
+  //   console.log("clicked");
+  //   console.log(showPassword);
+  // };
+
   const Values = [
     {
       id: 1,
@@ -111,17 +123,14 @@ const Login = () => {
     {
       id: 2,
       name: "email",
-      type: "email",
+      type: "email",  // Use "email" type for email input
       placeholder: "Email",
-
-      icon: (
-        <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
-      ),
+      icon: <MdAlternateEmail className={`icon ${isActive ? "active" : ""}`} />,
     },
     {
       id: 3,
       name: "phoneNumber",
-      type: "tel",
+      type: "tel",  // Use "tel" type for phone number input
       placeholder: "Phonenumber",
       icon: <BsTelephone className={`icon ${isActive ? "active" : ""}`} />,
     },
@@ -130,19 +139,53 @@ const Login = () => {
       name: "password",
       type: "password",
       placeholder: "Password",
-
-      icon: (
-        <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
-      ),
+      icon: <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />,
     },
-    // {
-    //   id: 5,
-    //   name: "confirmPassword",
-    //   type: "password",
-    //   placeholder: "Confirm Password",
-    //   icon: <GiConfirmed className={`icon ${isActive ? "active" : ""}`} />,
-    // },
   ];
+  
+
+  // const Value = [
+  //   {
+  //     id: 1,
+  //     name: "fullName",
+  //     type: "text",
+  //     placeholder: "Fullname",
+  //     icon: <BsPerson className={`icon ${isActive ? "active" : ""}`} />,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "email",
+  //     type: "email",
+  //     placeholder: "Email",
+
+  //     icon: (
+  //       <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
+  //     ),
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "phoneNumber",
+  //     type: "tel",
+  //     placeholder: "Phonenumber",
+  //     icon: <BsTelephone className={`icon ${isActive ? "active" : ""}`} />,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "password",
+  //     type: "password",
+  //     placeholder: "Password",
+  //     icon: (
+  //       <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
+  //     ),
+  //   },
+  //   // {
+  //   //   id: 5,
+  //   //   name: "confirmPassword",
+  //   //   type: "password",
+  //   //   placeholder: "Confirm Password",
+  //   //   icon: <GiConfirmed className={`icon ${isActive ? "active" : ""}`} />,
+  //   // },
+  // ];
 
   const signupSubmit = async (data) => {
     try {
@@ -167,7 +210,17 @@ const Login = () => {
     } catch (err) {
       setLoad(false);
       console.log(err);
-      setErrorMessage(err.response.data.message);
+      if (err?.response.data.message) {
+        Swal.fire({
+          // Show an error icon
+          title: "Error",
+          text: err?.response.data.message, // Display the error message
+          timer: 3000,
+          timerProgressBar: true,
+        });
+      } else {
+        setErrorMessage(err?.response.data.Error);
+      }
     }
   };
   const loginSubmit = async (data) => {
@@ -203,10 +256,6 @@ const Login = () => {
     }
   };
 
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
   return (
     <>
       <Header />
@@ -224,19 +273,30 @@ const Login = () => {
               </p>
               <form onSubmit={LoginhandleSubmit((data) => loginSubmit(data))}>
                 {Values.map((e) => (
-                  <Input
-                    {...e}
-                    // {...register(e.name)}
-                    register={loginRegister}
-                    errors={loginErrors}
-                    key={e.id}
-                    name={e.name}
-                    type={e.type}
-                    placeholder={e.placeholder}
-              
-                    // icon={e.icon}
-                  />
+                  <div key={e.id} className="input-container">
+                    <Input
+                      {...e}
+                      register={loginRegister}
+                      errors={loginErrors}
+                      name={e.name}
+                      // type={e.type}
+                      // type={showPassword ? "text" : "password"}
+                      type={e.name === "password" ? (showPassword ? "text" : "password") : e.type}
+                      placeholder={e.placeholder}
+                      icon={e.icon}
+                    />
+                    {e.name === "password" && (
+                      <div className="eyebtn" onClick={handleTogglePassword}>
+                        {showPassword ? (
+                          <AiOutlineEyeInvisible />
+                        ) : (
+                          <AiOutlineEye />
+                        )}
+                      </div>
+                    )}
+                  </div>
                 ))}
+
                 <div className="forget-link">
                   <NavLink to="/forgotpassword">Forgot Password ?</NavLink>
                 </div>
@@ -286,25 +346,31 @@ const Login = () => {
               className={`form-box sign-up ${showSignUpForm ? "show" : "hide"}`}
             >
               <h2>Sign Up </h2>
-              <form
-                action=""
-                onSubmit={SignuphandleSubmit((data) => signupSubmit(data))}
-                
-              >
-                
+              <form onSubmit={SignuphandleSubmit(signupSubmit)}>
                 {Value.map((e) => (
-                  <Input
-                    {...e}
-                    key={e.id}
-                    register={signupRegister}
-                    errors={SignupErrors}
-                    name={e.name}
-                    type={e.type}
-                    placeholder={e.placeholder}
-                    icon={e.icon}                  
-                  />              
+                  <div key={e.id} className="input-container">
+                    <Input
+                      {...e}
+                      key={e.id}
+                      register={signupRegister}
+                      errors={SignupErrors}
+                      name={e.name}
+                      // type={showPassword ? "text" : "password"}
+                      type={e.name === "password" ? (showPassword ? "text" : "password") : e.type}
+                      placeholder={e.placeholder}
+                      icon={e.icon}
+                    />
+                {e.name === "password" && (
+                      <div className="eyebtn" onClick={handleTogglePassword}>
+                        {showPassword ? (
+                          <AiOutlineEyeInvisible />
+                        ) : (
+                          <AiOutlineEye />
+                        )}
+                      </div>
+                    )}
+                  </div>
                 ))}
-
                 <input
                   disabled={load}
                   type="submit"

@@ -16,6 +16,37 @@ const token = JSON.parse(localStorage.getItem("User"))?.token;
    
   }
 };
+//  export const updateUser = async (token) => {
+//   try {
+//     const res = await axios.patch(`${VITE_End_Point}/users/update/`, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//     return(res);
+//   } catch (err) {
+//     console.log(err);
+   
+//   }
+// };
+export const updateUser = async (token) => {
+  try {
+    const res = await axios.patch(
+      `${VITE_End_Point}/users/update/`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res;
+  } catch (err) {
+    console.log(err);
+    // Handle the error here if needed
+  }
+};
+
 
 
 

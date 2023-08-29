@@ -4,7 +4,7 @@ import "../Onboarding/Onboard.css";
 const Input = ({ name, type, icon, placeholder, register, errors }) => {
 
   return (
-    <div style={{marginBottom:"20px"}}>
+    <div style={{marginBottom:"0px"}}>
       <div className="field">
         {icon}
         <input
