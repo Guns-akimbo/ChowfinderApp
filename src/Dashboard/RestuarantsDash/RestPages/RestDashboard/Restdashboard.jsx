@@ -17,18 +17,18 @@ function Restdashboard() {
 
 
   useEffect(()=>{
-    getOrders().then((res)=>{
-      setOrders(res.total)
-    })
+    // getOrders().then((res)=>{
+    //   setOrders(res.total)
+    // })
     getInventory().then((res)=>{
       setInventory(res.total)
     })
     getCustomers().then((res)=>{
       setCustomers(res.total)
     })
-  
 
   },[])
+
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>

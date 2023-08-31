@@ -6,23 +6,9 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader";
 import Cartcomp from "./Cartcomp";
-// import Header from "../Header/Header";
-// import Header from "../Header/Header"
 import Header from "../Header";
 import Emptycart from "./Emptycart";
 import { useNavigate } from "react-router-dom";
-// import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import * as yup from "yup";
-
-// const addressSchema = yup
-//   .object({
-//     customerAddress: yup
-//       .string()
-//       .required("Address is required")
-//       // .matches(/^\d{11}$/, "11 characters"),
-//   })
-//   .required();
 
 function Cart() {
   // const { register: addressRegister,
@@ -35,6 +21,7 @@ function Cart() {
   const handleToggle = () => {
     setIsChecked((prevState) => !prevState);
   };
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setloading] = useState(false);
   const [reload, setReload] = useState(false);
   const [loadings, setloadings] = useState(false);
@@ -48,19 +35,17 @@ function Cart() {
     customerAddress: "",
     cashBackToggle: "",
   });
-  const [errorMessage, setErrorMessage] = useState("");
   useEffect(() => {
     setAddress({
       ...address,
       cashBackToggle: isChecked,
     });
   }, [isChecked]);
-  console.log(address);
+  // console.log(address);
   useEffect(() => {
-    console.log(loading);
+    // console.log(loading);
   }, [loading]);
 
-  console.log(name, "username", email);
   const getCartData = async () => {
     try {
       setloading(true);
@@ -70,24 +55,18 @@ function Cart() {
         },
       });
       setCartData(res.data.items);
-      console.log(res.data);
+      // console.log(res.data);
       setTotal(res.data.grandTotal);
       setcashBack(res.data.cashBack);
       setloading(false);
-      // if (cartData.length == 1) {
-      //   window.location.reload();
-      // }
-      console.log("cart length", cartData.length);
+      // console.log("cart length", cartData.length);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloading(false);
       setCartData([]);
     }
   };
 
-  useEffect(() => {
-    console.log("cart length", cartData.length);
-  }, [cartData]);
   useEffect(() => {
     getCartData();
   }, []);
@@ -97,7 +76,7 @@ function Cart() {
 
   const addToCart = async (mealId) => {
     try {
-      console.log(mealId, "add Api");
+      // console.log(mealId, "add Api");
       setloadings(true);
       const cartItem = {
         menuItemId: mealId,
@@ -108,25 +87,23 @@ function Cart() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setTimeout(() => {
-        Swal.fire({
-          text: "increased",
-          timer: 1000, // Automatically close after 2 seconds
-          timerProgressBar: true, // Show a progress bar for the timer
-          showConfirmButton: false, // Hide the "OK" button
-        });
-      }, 1000);
+      Swal.fire({
+        text: "Item Increased ",
+        timer: 1000, // Automatically close after 2 seconds
+        timerProgressBar: true, // Show a progress bar for the timer
+        showConfirmButton: false, // Hide the "OK" button
+      });
       getCartData();
       // console.log(res);
       setloadings(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloadings(false);
     }
   };
   const removeItem = async (mealId) => {
     try {
-      console.log(mealId, "decerase Api");
+      // console.log(mealId, "decerase Api");
       setloadings(true);
       const cartItem = {
         menuItemId: mealId,
@@ -141,25 +118,23 @@ function Cart() {
           },
         }
       );
-      setTimeout(() => {
-        Swal.fire({
-          text: "Item reduced from cart ",
-          timer: 1000, // Automatically close after 2 seconds
-          timerProgressBar: true, // Show a progress bar for the timer
-          showConfirmButton: false, // Hide the "OK" button
-        });
-      }, 1000);
+      Swal.fire({
+        text: "Item reduced from cart ",
+        timer: 1000, // Automatically close after 2 seconds
+        timerProgressBar: true, // Show a progress bar for the timer
+        showConfirmButton: false, // Hide the "OK" button
+      });
       getCartData();
-      console.log(res);
+      // console.log(res);
       setloadings(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloadings(false);
     }
   };
 
   const deleteItem = async (mealId) => {
-    console.log(mealId, "delete Api");
+    // console.log(mealId, "delete Api");
     try {
       setloadings(true);
       const token = JSON.parse(localStorage.getItem("User"))?.token;
@@ -183,23 +158,10 @@ function Cart() {
         setCartData(res.data.cart.items);
         // navigate("/Cart")
       }
-      // setEmptycart(true)
-      // setTimeout(() => {
-      //   Swal.fire({
-      //     text: "item cleared successfully",
-      //     timer: 1000, // Automatically close after 2 seconds
-      //     timerProgressBar: true, // Show a progress bar for the timer
-      //     showConfirmButton: false, // Hide the "OK" button
-      //   });
-      //   window.location.reload();
-      // }, 1000);
-      // getCartData();
-      // setReload(!reload)
-
-      console.log(res);
+      // console.log(res);
       setloadings(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloadings(false);
     }
   };
@@ -231,12 +193,12 @@ function Cart() {
         timerProgressBar: true, // Show a progress bar for the timer
         showConfirmButton: false, // Hide the "OK" button
       });
-      console.log(res);
+      // console.log(res);
       setTimeout(() => {
         navigate("/");
-      }, 5000);
+      }, 4000);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrorMessage(err.response.data.error);
       setloading(false);
     }
@@ -244,7 +206,7 @@ function Cart() {
 
   const gateway = () => {
     const adjustedCashback = total - cashback; // Subtract total from cashback
-    console.log(adjustedCashback);
+    // console.log(adjustedCashback);
 
     if (adjustedCashback >= 0) {
       try {
@@ -264,46 +226,13 @@ function Cart() {
           },
         });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     } else {
       // If adjustedCashback is negative, show an error message
       setErrorMessage("Not enough cashback to cover the total amount.");
     }
   };
-
-  //   const gateway = () => {
-  //   // Assuming total, cashback, name, and email are defined and have valid values
-  //   const adjustedCashback = Math.max(0, cashback - total); // Ensure adjustedCashback is non-negative
-  //   console.log(adjustedCashback);
-
-  //   if (adjustedCashback >= 0) {
-  //     try {
-  //       const refVal = "Chowfinderapp" + Math.random() * 1000;
-  //       window.Korapay.initialize({
-  //         key: "pk_test_csW94hvov9XAdvuKzQu7wqpkP3Dsn7h6uWLxaURT",
-  //         reference: `${refVal}`,
-  //         amount: total, // Pay the remaining total after deducting cashback
-  //         currency: "NGN",
-  //         customer: {
-  //           name: name,
-  //           email: email,
-  //         },
-  //         notification_url: "https://example.com/webhook",
-  //         onSuccess: function (data) {
-  //           if (data?.reference === refVal) {
-  //             cashbackApi();
-  //           }
-  //         },
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   } else {
-  //     // If adjustedCashback is negative, show an error message
-  //     setErrorMessage("Not enough cashback to cover the total amount.");
-  //   }
-  // };
 
   const cashbackApi = debounce(cashBack, 2000);
 
@@ -314,7 +243,6 @@ function Cart() {
   return (
     <>
       <Header />
-
       <div className="Cart">
         <p style={{ color: "red", marginBlockStart: "5px" }}>{errorMessage}</p>
         <h4>Your Order</h4>
@@ -337,19 +265,14 @@ function Cart() {
                 </article>
                 <article className="Cart-itemHolder">
                   {cartData?.map((i) => (
-                    // <Cartcomp
-                    //   {...i}
-                    //   addToCart={addToCart}
-                    //   deleteItem={deleteItem}
-                    //   removeItem={removeItem}
-                    //   key={i?._id}
-                    //   setloadings={setloadings}
-                    // />
-
-                    <div className="Cart-itemHoldereach">
+                    <div className="Cart-itemHoldereach" key={i?._id}>
                       <div className="Cart-itemHeaderdesc">
                         <main className="descimage">
-                          <img src={i?.itemImage} alt="Loadinggg" />
+                          {loadings ? (
+                            <div className="loader"></div> // Display loading spinner
+                          ) : (
+                            <img src={i?.itemImage} alt="" />
+                          )}
                         </main>
                         <main className="itemdescrition">{i?.itemName}</main>
                       </div>
@@ -360,7 +283,6 @@ function Cart() {
                         >
                           +
                         </div>
-
                         <div className="itemnumber">{i?.quantity}</div>
                         <div
                           className="decrease"
@@ -369,7 +291,6 @@ function Cart() {
                           -
                         </div>
                       </div>
-
                       <div className="Cart-itemHeaderprice">{i?.itemPrice}</div>
                       <div className="Cart-itemHeadertotalprice">
                         {i?.itemTotal}
@@ -384,7 +305,6 @@ function Cart() {
                       </div>
                     </div>
                   ))}
-
                   <hr />
                 </article>
               </div>

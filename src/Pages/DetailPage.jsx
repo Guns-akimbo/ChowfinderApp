@@ -18,9 +18,9 @@ const Detailpage = () => {
   const [mealData, setMealData] = useState(null);
   const navigate = useNavigate();
 
-  console.log("Category ID:", categoryId);
-  console.log("Restaurant ID:", restaurantId);
-  console.log("mealId:", mealId);
+  // console.log("Category ID:", categoryId);
+  // console.log("Restaurant ID:", restaurantId);
+  // console.log("mealId:", mealId);
 
   const getDetail = async () => {
     try {
@@ -34,7 +34,7 @@ const Detailpage = () => {
       const selectedMeal = res?.data.find((meal) => meal._id === mealId);
       setMealData(selectedMeal);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloading(false);
     }
   };
@@ -51,18 +51,16 @@ const Detailpage = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res);
-      setTimeout(() => {
-        Swal.fire({
-          text: "Item added to cart successfully",
-          timer: 2000, // Automatically close after 2 seconds
-          timerProgressBar: true, // Show a progress bar for the timer
-          showConfirmButton: false, // Hide the "OK" button
-        });
-      }, 2000);
+      // console.log(res);
+      Swal.fire({
+        text: "Item added to cart successfully",
+        timer: 2000, // Automatically close after 2 seconds
+        timerProgressBar: true, // Show a progress bar for the timer
+        showConfirmButton: false, // Hide the "OK" button
+      });
       setloadings(false);
     } catch (err) {
-      console.log(err, "error");
+      // console.log(err, "error");
       if (err?.response.data.message) {
         Swal.fire({
           icon: "error", // Show an error icon
@@ -101,7 +99,10 @@ const Detailpage = () => {
 
   return (
     <div className="popup">
-      {mealData && (
+      {loading ? (
+  <p className="loader"></p>
+) : (
+      mealData && (
         <div className="popwrap" key={mealData?._id}>
           <div className="popimage">
             <img src={mealData?.itemImage} alt="" />
@@ -132,7 +133,7 @@ const Detailpage = () => {
             </p>
           </div>
         </div>
-      )}
+      ))}
     </div>
   );
 };

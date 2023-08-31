@@ -38,14 +38,14 @@ function PartnerLogin() {
 
       if (res && res.data) {
         setError(null);
-        console.log('Login successful:', res.data);
+        // console.log('Login successful:', res.data);
         localStorage.setItem('userToken', res.data.token);
         navigate('/restaurantdashboard');
       } else {
         console.log('Response data is missing or undefined.');
       }
     } catch (err) {
-      console.log('Login error:', err);
+      // console.log('Login error:', err);
       if (err.response) {
         setError(err.response.data.message || 'An error occurred during login. Please try again.');
       } else {

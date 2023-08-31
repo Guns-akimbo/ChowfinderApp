@@ -17,8 +17,6 @@ function Header() {
   const [cartData, setCartData] = useState([]);
   const [loading, setloading] = useState(false);
   const token = JSON.parse(localStorage.getItem("User"))?.token;
-  // const [loggedInOnce, setLoggedInOnce] = useState(false);
-  const [hasLoggedInOnce, setHasLoggedInOnce] = useState(false);
 
   const toggleMenu = () => {
     setMenu(!menu);
@@ -34,7 +32,7 @@ function Header() {
   );
   const [updateUi, setupdateUi] = useState(false);
 
-  console.log(userisLoggedIn);
+  // console.log(userisLoggedIn);
   const logout = () => {
     localStorage.setItem(
       "User",
@@ -45,7 +43,7 @@ function Header() {
     window.location.reload();
   };
 
-  console.log(token, " victor token ");
+  // console.log(token, " victor token ");
 
   const getCartData = async () => {
     try {
@@ -57,11 +55,11 @@ function Header() {
       });
       setCartData(res.data.items);
       // setEmptycart(false)
-      console.log(res.data);
+      // console.log(res.data);
       // console.log(res.data.user);
       setloading(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloading(false);
     }
   };
@@ -137,7 +135,7 @@ function Header() {
             {/* Display user's name if logged in */}
             {userisLoggedIn?.token && (
               <div className="user-info">
-                <span>Hello, {userisLoggedIn.fullName}</span>
+                <span>Welcome,{userisLoggedIn.fullName}</span>
               </div>
             )}
             <div className="Navsign">

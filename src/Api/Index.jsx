@@ -12,7 +12,7 @@ const token = JSON.parse(localStorage.getItem("User"))?.token;
     });
     return(res.data);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
    
   }
 };
@@ -42,7 +42,7 @@ export const updateUser = async (token) => {
     );
     return res;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     // Handle the error here if needed
   }
 };

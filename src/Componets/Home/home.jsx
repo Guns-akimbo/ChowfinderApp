@@ -28,7 +28,7 @@ function Home() {
         "https://chowfinder.onrender.com/api/locations/get-all/"
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setLoading(false);
       if (data && data.data && data.data.length > 0) {
         setLocations(data.data.map((item) => item.name));
@@ -50,7 +50,7 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    console.log(loading);
+    // console.log(loading);
   }, [loading]);
 
   const handleLocationChange = (event) => {

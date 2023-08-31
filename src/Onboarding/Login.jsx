@@ -87,15 +87,9 @@ const Login = () => {
 
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
-    console.log("Toggle password visibility:", showPassword);
+    // console.log("Toggle password visibility:", showPassword);
   };
   
-  // const handleTogglePassword = () => {
-  //   setShowPassword((prevShowPassword) => !prevShowPassword); // Toggle the state
-
-  //   console.log("clicked");
-  //   console.log(showPassword);
-  // };
 
   const Values = [
     {
@@ -148,49 +142,6 @@ const Login = () => {
   ];
   
 
-  // const Value = [
-  //   {
-  //     id: 1,
-  //     name: "fullName",
-  //     type: "text",
-  //     placeholder: "Fullname",
-  //     icon: <BsPerson className={`icon ${isActive ? "active" : ""}`} />,
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "email",
-  //     type: "email",
-  //     placeholder: "Email",
-
-  //     icon: (
-  //       <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
-  //     ),
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "phoneNumber",
-  //     type: "tel",
-  //     placeholder: "Phonenumber",
-  //     icon: <BsTelephone className={`icon ${isActive ? "active" : ""}`} />,
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "password",
-  //     type: "password",
-  //     placeholder: "Password",
-  //     icon: (
-  //       <RiLockPasswordFill className={`icon ${isActive ? "active" : ""}`} />
-  //     ),
-  //   },
-  //   // {
-  //   //   id: 5,
-  //   //   name: "confirmPassword",
-  //   //   type: "password",
-  //   //   placeholder: "Confirm Password",
-  //   //   icon: <GiConfirmed className={`icon ${isActive ? "active" : ""}`} />,
-  //   // },
-  // ];
-
   const signupSubmit = async (data) => {
     try {
       setLoad(true);
@@ -198,7 +149,7 @@ const Login = () => {
         "https://chowfinder.onrender.com/api/sign-up",
         data
       );
-      console.log(res);
+      // console.log(res);
 
       setLoad(false);
       Swal.fire({
@@ -213,7 +164,7 @@ const Login = () => {
       }, 2000);
     } catch (err) {
       setLoad(false);
-      console.log(err);
+      // console.log(err);
       if (err?.response.data.message) {
         Swal.fire({
           // Show an error icon
@@ -234,8 +185,8 @@ const Login = () => {
         "https://chowfinder.onrender.com/api/log-in",
         data
       );
-      console.log("Login response:", res);
-      console.log(res);
+      // console.log("Login response:", res);
+      // console.log(res);
       setLoad(false);
       const { token, fullName, email } = res.data; // Access token directly
       // user token is stored in localStorage using the setItem
@@ -249,12 +200,10 @@ const Login = () => {
         timerProgressBar: true,
         showConfirmButton: false,
       });
-
-
       navigate("/");
     } catch (err) {
       setLoad(false);
-      console.log("Error:", err);
+      // console.log("Error:", err);
       if (err?.response.data.message) {
         Swal.fire({
           // Show an error icon

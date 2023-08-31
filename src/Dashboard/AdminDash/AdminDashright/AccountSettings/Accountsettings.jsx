@@ -23,22 +23,6 @@ const Accountsettings = () => {
   const [form] = Form.useForm();
   const [errorMessage, setErrorMessage] = useState("");
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setLoading(true);
-  //       const data = await updateUser(token); // Use 'data' instead of 'res.data'
-  //       setdataSource(data); // Update state with fetched data
-  //       console.log(data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching orders:", error);
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, [token]);
   return (
     <>
       <div className="updateaccountsetings">
@@ -75,7 +59,7 @@ const Accountsettings = () => {
               setLoading(false);
             } catch (err) {
               setLoading(false);
-              console.log(err);
+              // console.log(err);
               setErrorMessage(err.response.data.message);
             }
           }}
@@ -112,6 +96,13 @@ const Accountsettings = () => {
             <Input placeholder="Type your Email" />
           </Form.Item>
           <Form.Item
+            name="phonenumber"
+            label="Phonenumber"
+            requiredMark="optional"
+          >
+            <Input placeholder="Input Your Phonenumber" />
+          </Form.Item>
+          <Form.Item
             name="password"
             label="Password"
             hasFeedback
@@ -127,13 +118,6 @@ const Accountsettings = () => {
           >
             <Input.Password placeholder="Type your Password" />
           </Form.Item>
-
-          {/* <Form.Item name="gender" label="Gender" requiredMark="optional">
-            <Select placeholder="Select your Gender">
-              <Select.Option value="male">Male</Select.Option>
-              <Select.Option value="female">Female</Select.Option>
-            </Select>
-          </Form.Item> */}
 
           {/* <Form.Item
             name="agreement"

@@ -34,11 +34,11 @@ function RecentOrders() {
         setLoading(true);
         const data = await getOrders(token); // Use 'data' instead of 'res.data'
         setdataSource(data.slice(0,5)); // Update state with fetched data
-        console.log(data)
+        // console.log(data)
         setOrders()
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching orders:', error);
+        // console.error('Error fetching orders:', error);
         setLoading(false);
       }
     };

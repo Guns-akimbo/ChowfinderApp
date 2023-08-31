@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 function Meals({ restaurantId, _id }) {
   // const { categoryId } = useParams();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const [loading, setloading] = useState(false);
   const [meal, setmeals] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  console.log(_id, restaurantId);
+  // console.log(_id, restaurantId);
   // console.log("meals")
 
   const meals = async () => {
@@ -25,11 +25,12 @@ function Meals({ restaurantId, _id }) {
       const res = await axios.get(
         `${VITE_End_Point}/${_id}/category-specific/${restaurantId}`
       );
-      console.log(res?.data);
-      setloading(false);
+      // console.log(res?.data);
+    
       setmeals(res?.data);
+      setloading(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrorMessage(err.response.data.message);
       setloading(false);
     }
@@ -37,7 +38,7 @@ function Meals({ restaurantId, _id }) {
 
   useEffect(() => {
     if (_id !== undefined) meals();
-    console.log("call");
+    // console.log("call");
   }, [_id]);
 
   // by setting _id as dependencies we are telling useffect to hold the meals  till there a change or till category id is ready
@@ -55,18 +56,16 @@ function Meals({ restaurantId, _id }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(res);
-      setTimeout(() => {
-        Swal.fire({
-          text: "Item added to cart successfully",
-          timer: 2000, // Automatically close after 2 seconds
-          timerProgressBar: true, // Show a progress bar for the timer
-          showConfirmButton: false, // Hide the "OK" button
-        });
-      }, 2000);
+      // console.log(res);
+      Swal.fire({
+        text: "Item added to cart successfully",
+        timer: 2000, // Automatically close after 2 seconds
+        timerProgressBar: true, // Show a progress bar for the timer
+        showConfirmButton: false, // Hide the "OK" button
+      });
       setloading(false);
     } catch (err) {
-      console.log(err, "error");
+      // console.log(err, "error");
       if (err?.response.data.message) {
         Swal.fire({
           icon: "error", // Show an error icon
@@ -92,37 +91,39 @@ function Meals({ restaurantId, _id }) {
 
   return (
     <>
-      {/* <p style={{ color: "red", marginBlockStart: "5px" }}>{errorMessage}</p> */}
-      {meal?.map((i) => (
-        <div
-          className="foodcard"
-          key={i._id}
-          style={{ textDecoration: "none", color: "black" }}
-        >
-          <div className="leftcard">
-            <span className="Cardnamed">
-              <p className="Cardnamedb">{i?.name}</p>
-              <p>Price:{i?.price}</p>
-            </span>
-            <div className="pri">
-              <Link
-                to={`/detail/${_id}/${restaurantId}/${i._id}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <button className="addedBtn"> See More</button>
-              </Link>
-
-              <BsFillCartXFill
-                className="added"
-                onClick={() => addToCart(i._id)}
-              />
+      {loading ? (
+        <p className="loader"></p>
+      ) : (
+        meal?.map((i) => (
+          <div
+            className="foodcard"
+            key={i._id}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <div className="leftcard">
+              <span className="Cardnamed">
+                <p className="Cardnamedb">{i?.name}</p>
+                <p>Price: {i?.price}</p>
+              </span>
+              <div className="pri">
+                <Link
+                  to={`/detail/${_id}/${restaurantId}/${i._id}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <button className="addedBtn">See More</button>
+                </Link>
+                <BsFillCartXFill
+                  className="added"
+                  onClick={() => addToCart(i._id)}
+                />
+              </div>
+            </div>
+            <div className="rightcard">
+              <img src={i?.itemImage} alt="" />
             </div>
           </div>
-          <div className="rightcard">
-            <img src={i?.itemImage} alt="" />
-          </div>
-        </div>
-      ))}
+        ))
+      )}
     </>
   );
 }

@@ -13,7 +13,7 @@ function Customer() {
   useEffect(()=>{
   setLoading(true)
   getCustomers().then(res=>{
-    setdataSource(res.users)
+    setdataSource(res.users.slice(0,6))
     setLoading(false)
   })
 
@@ -60,7 +60,7 @@ function Customer() {
         ]}
         
         dataSource={dataSource.map(item=> ({...item,key:item.id }))}
-        // pagination={false}
+        pagination={true}
         >
 
         </Table>

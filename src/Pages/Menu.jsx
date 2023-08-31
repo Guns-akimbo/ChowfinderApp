@@ -37,8 +37,8 @@ const Menu = () => {
       setData(response?.data.restaurant);
       setloading(false);
     } catch (error) {
-      console.log("Error fetching menu:", error);
-      console.log("error");
+      // console.log("Error fetching menu:", error);
+      // console.log("error");
       setloading(false);
     }
   }
@@ -48,10 +48,11 @@ const Menu = () => {
       setcategoryload(true);
       const res = await axios.get(`${VITE_End_Point}/all-categories`);
       // console.log(res?.data);
-      setcategoryload(false);
+     
       setCategories(res?.data);
+      setcategoryload(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setcategoryload(false);
     }
   };
@@ -61,9 +62,7 @@ const Menu = () => {
     getCategories();
   }, []);
 
-  useEffect(() => {
-    // console.log(categories)
-  }, []);
+ 
 
   useEffect(() => {
     // console.log(categoryload);
@@ -95,7 +94,7 @@ const Menu = () => {
       setCartData(res.data.items);
       setloading(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setloading(false);
     }
   };
@@ -123,7 +122,7 @@ const Menu = () => {
           <main className="restuarant-lord">
             {/* <img src={data?.profileImage} alt="" /> */}
             {!data?.profileImage ? (
-              <p>Loading.... </p>
+              <p className="loader"></p>
             ) : (
               <img src={data?.profileImage} alt="Loadinggg" />
             )}
@@ -143,13 +142,15 @@ const Menu = () => {
             <h3>Opening Time :8am-9pm</h3>
           </div>
           <span className="foodcategory">
+            
             {menuList.map((i) => (
               <NavLink
                 style={{ textDecoration: "none" }}
                 // we are sending  the id which is the category id {id} to the meals,proteins and drinks page
                 to={`${i.path}`}
-                className={({ isActive }) => (isActive ? "active" : "active2")}
                 key={i._id}
+                className={({ isActive }) => (isActive ? "active" : "active2")}
+               
               >
                 <h5>{i?.title}</h5>
               </NavLink>

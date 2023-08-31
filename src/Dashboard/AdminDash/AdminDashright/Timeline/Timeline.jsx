@@ -20,10 +20,10 @@ function Timeline() {
         const data = await getOrders(token); // Use 'data' instead of 'res.data'
         setdataSource(data.slice(0,4)); // Update state with fetched data
         setOrders(data.length)
-        console.log(data)
+        // console.log(data)
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching orders:', error);
+        // console.error('Error fetching orders:', error);
         setLoading(false);
       }
     };

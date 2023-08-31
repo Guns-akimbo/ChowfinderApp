@@ -13,7 +13,7 @@ function Inventory() {
   useEffect(()=>{
   setLoading(true)
   getInventory().then(res=>{
-    setdataSource(res.products.splice(0,7))
+    setdataSource(res.products.slice(0,7))
     setLoading(false)
   })
 
@@ -26,17 +26,17 @@ function Inventory() {
     
       <Space size={20}
        direction="vertical">
-        <Typography.Title level={4}>Inventory</Typography.Title>
+        <Typography.Title level={4} style={{padding:"10px"}}>Inventory</Typography.Title>
         <Table
         loading={loading}
         columns={[
-          {
-            title:"Thumbnail",
-            dataIndex:"thumbnail",
-            render:(link)=>{
-              return<Avatar src={link}/>
-            }
-          },
+          // {
+          //   title:"Thumbnail",
+          //   dataIndex:"thumbnail",
+          //   render:(link)=>{
+          //     return<Avatar src={link}/>
+          //   }
+          // },
           {
             title:"Title",
             dataIndex:"title"
@@ -50,17 +50,11 @@ function Inventory() {
             title:"Brand",
             dataIndex:"brand"
           },
-          {
-            title:"Category",
-            dataIndex:"category"
-          },
-         
-         
-         
+  
         ]}
         
         dataSource={dataSource.map(item=> ({...item,key:item.id }))}
-        pagination={false}
+        pagination={true}
         >
 
         </Table>
