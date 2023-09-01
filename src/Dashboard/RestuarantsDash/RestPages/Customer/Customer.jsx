@@ -1,73 +1,51 @@
-
-import { Typography,Space,Table, Avatar } from "antd";
-import { useState,useEffect } from "react";
-import { getCustomers, getInventory } from "../../../../Api/Index";
-
+import { Typography, Space, Table, Avatar } from "antd";
+import { useState, useEffect } from "react";
+import { restaurantOrder } from "../../../../Api/Index";
 
 function Customer() {
- 
-  const[loading,setLoading]=useState(false)
-  const [dataSource,setdataSource]=useState([])
+  const [loading, setLoading] = useState(false);
+  const [customers, setCustomers] = useState(0);
+  const [dataSource, setdataSource] = useState([]);
+  const token = JSON.parse(localStorage.getItem("userToken"))?.token;
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const data = await restaurantOrder(token); // Use 'data' instead of 'res.data'
+        setdataSource(data.slice(0, 8)); // Update state with fetched data
+        console.log(data);
+        console.log(token);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
 
-  useEffect(()=>{
-  setLoading(true)
-  getCustomers().then(res=>{
-    setdataSource(res.users.slice(0,6))
-    setLoading(false)
-  })
-
-  },[])
+    fetchData();
+  }, [token]);
 
   
 
-
   return (
-    
-      <Space size={20}
-       direction="vertical">
-        <Typography.Title level={4}>Customers</Typography.Title>
-        <Table
+    <Space size={20} direction="vertical">
+      <Typography.Title level={4}>Customers</Typography.Title>
+      <Table
         loading={loading}
         columns={[
           {
-            title:"Photo",
-            dataIndex:"image",
-            render:(link)=>{
-              return<Avatar src={link}/>
-            }
+            title: "Name",
+            dataIndex: "customerName",
           },
           {
-            title:"First Name",
-            dataIndex:"firstName"
+            title: "Address",
+            dataIndex: "customerAddress",
           },
-          {
-            title:"Lastname",
-            dataIndex:"lastName",
-           
-          },
-          {
-            title:"Email",
-            dataIndex:"email"
-          },
-          {
-            title:"PhoneNumber",
-            dataIndex:"phone"
-          },
-         
-         
-         
         ]}
-        
-        dataSource={dataSource.map(item=> ({...item,key:item.id }))}
-        pagination={true}
-        >
-
-        </Table>
-
-      </Space>
-    
-   
+        dataSource={dataSource.map((item) => ({ ...item, key: item.id }))}
+        pagination={false}
+      ></Table>
+    </Space>
   );
 }
 

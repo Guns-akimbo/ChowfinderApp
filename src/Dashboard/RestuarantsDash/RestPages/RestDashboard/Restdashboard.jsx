@@ -7,27 +7,23 @@ import {
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getCustomers, getInventory, getOrders } from "../../../../Api/Index";
+import { getCustomers, getInventory, restaurantOrder } from "../../../../Api/Index";
 
 function Restdashboard() {
   const [orders,setOrders]=useState(0)
   const [inventory,setInventory]=useState(0)
   const [customers,setCustomers]=useState(0)
   const [revenue,setRevenue]=useState(0)
+  const token = JSON.parse(localStorage.getItem("userToken"))?.token;
 
 
   useEffect(()=>{
-    // getOrders().then((res)=>{
-    //   setOrders(res.total)
-    // })
-    getInventory().then((res)=>{
-      setInventory(res.total)
-    })
-    getCustomers().then((res)=>{
+   
+    restaurantOrder().then((res)=>{
       setCustomers(res.total)
     })
-
-  },[])
+console.log()
+  },[token])
 
 
   return (
@@ -122,15 +118,6 @@ function RecentOrders() {
   const [dataSource, setdataSource] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setLoading(true);
-    getOrders().then((res) => {
-      setdataSource(res.products);
-      setLoading(false);
-    });
-  }, []);
-
-  // console.log(setdataSource);
 
   return (
     <>

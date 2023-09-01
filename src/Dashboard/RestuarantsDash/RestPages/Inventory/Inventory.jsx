@@ -1,33 +1,37 @@
-
-import { Typography,Space,Table, Avatar } from "antd";
-import { useState,useEffect } from "react";
-import { getInventory } from "../../../../Api/Index";
-
+import { Typography, Space, Table, Avatar } from "antd";
+import { useState, useEffect } from "react";
+// import { restInfo } from "../../../../Api/Index";
 
 function Inventory() {
- 
-  const[loading,setLoading]=useState(false)
-  const [dataSource,setdataSource]=useState([])
+  const [loading, setLoading] = useState(false);
+  const [dataSource, setdataSource] = useState([{}]);
+  const token = JSON.parse(localStorage.getItem("userToken"))?.token;
 
 
-  useEffect(()=>{
-  setLoading(true)
-  getInventory().then(res=>{
-    setdataSource(res.products.slice(0,7))
-    setLoading(false)
-  })
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const res = await restInfo(token); // Use 'data' instead of 'res.data'
+        const data=res.token
+        setdataSource(data); // Update state with fetched data
+        console.log(data);
+        console.log(token);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
+    };
 
-  },[])
-
-  // console.log(getInventory)
-
+    fetchData();
+  }, [token]);
 
   return (
-    
-      <Space size={20}
-       direction="vertical">
-        <Typography.Title level={4} style={{padding:"10px"}}>Inventory</Typography.Title>
-        <Table
+    <Space size={20} direction="vertical">
+      <Typography.Title level={4} style={{ padding: "10px" }}>
+        Inventory
+      </Typography.Title>
+      <Table
         loading={loading}
         columns={[
           // {
@@ -38,30 +42,23 @@ function Inventory() {
           //   }
           // },
           {
-            title:"Title",
-            dataIndex:"title"
+            title: "Title",
+            dataIndex: "businessName",
           },
           {
-            title:"Price",
-            dataIndex:"price",
-            render:(value)=><span>₦{value}</span>
+            title: "Price",
+            dataIndex: "price",
+            render: (value) => <span>₦{value}</span>,
           },
           {
-            title:"Brand",
-            dataIndex:"brand"
+            title: "Brand",
+            dataIndex: "brand",
           },
-  
         ]}
-        
-        dataSource={dataSource.map(item=> ({...item,key:item.id }))}
+        dataSource={dataSource.map((item) => ({ ...item, key: item.id }))}
         pagination={true}
-        >
-
-        </Table>
-
-      </Space>
-    
-   
+      ></Table>
+    </Space>
   );
 }
 

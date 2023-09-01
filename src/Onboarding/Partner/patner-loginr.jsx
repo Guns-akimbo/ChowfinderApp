@@ -39,7 +39,13 @@ function PartnerLogin() {
       if (res && res.data) {
         setError(null);
         // console.log('Login successful:', res.data);
-        localStorage.setItem('userToken', res.data.token);
+        // const { token } = res.data; 
+        const token = res.data.token;
+        localStorage.setItem("userToken", JSON.stringify({ token}));
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        console.log("Token stored:", token);
+        console.log(res.data.restaurant)
+        console.log(res.data)
         navigate('/restaurantdashboard');
       } else {
         console.log('Response data is missing or undefined.');
@@ -61,7 +67,7 @@ function PartnerLogin() {
       <div className="login-container">
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className='Rest-form'>
           <input
             type="email"
             name="email"
@@ -70,7 +76,7 @@ function PartnerLogin() {
             value={formData.email}
             onChange={handleChange}
           />
-          <div className='restinput-holder'>
+          <div className='rest-inputholder'>
             <input
               type={passwordVisible ? 'text' : 'password'} 
               name="password"

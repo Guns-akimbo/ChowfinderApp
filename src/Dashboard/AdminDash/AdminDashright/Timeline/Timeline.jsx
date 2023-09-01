@@ -18,7 +18,7 @@ function Timeline() {
       try {
         setLoading(true);
         const data = await getOrders(token); // Use 'data' instead of 'res.data'
-        setdataSource(data.slice(0,4)); // Update state with fetched data
+        setdataSource(data.slice(0,3)); // Update state with fetched data
         setOrders(data.length)
         // console.log(data)
         setLoading(false);
@@ -101,19 +101,19 @@ function Timeline() {
             ),
  
           },
-          {
-            title: "Restaurant",
-            dataIndex: "items",
-            render: (items) => (
-              <ul style={{ listStyleType: "none", padding: 0 }}>
-                {Object.keys(items).map((itemName, index) => (
-                  <li key={index}>
-                    {items[itemName].restaurantName}
-                  </li>
-                ))}
-              </ul>
-            ),
-          },
+          // {
+          //   title: "Restaurant",
+          //   dataIndex: "items",
+          //   render: (items) => (
+          //     <ul style={{ listStyleType: "none", padding: 0 }}>
+          //       {Object.keys(items).map((itemName, index) => (
+          //         <li key={index}>
+          //           {items[itemName].restaurantName}
+          //         </li>
+          //       ))}
+          //     </ul>
+          //   ),
+          // },
           // {
           //   title:"Thumbnail",
           //   dataIndex:"itemImage",

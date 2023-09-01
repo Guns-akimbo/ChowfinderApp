@@ -33,7 +33,7 @@ function RecentOrders() {
       try {
         setLoading(true);
         const data = await getOrders(token); // Use 'data' instead of 'res.data'
-        setdataSource(data.slice(0,5)); // Update state with fetched data
+        setdataSource(data.slice(0,3)); // Update state with fetched data
         // console.log(data)
         setOrders()
         setLoading(false);
@@ -56,10 +56,10 @@ function RecentOrders() {
       <Table
       loading={loading}
         columns={[
-          {
-            title: "Total Amount",
-            dataIndex: "total",
-          },
+          // {
+          //   title: "Total Amount",
+          //   dataIndex: "total",
+          // },
 
           {
             title: "Food Name ",

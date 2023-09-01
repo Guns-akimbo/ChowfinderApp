@@ -1,71 +1,62 @@
-import { Menu } from "antd"
-import { AppstoreOutlined, ShopOutlined, ShoppingCartOutlined, UserOutlined,LogoutOutlined } from "@ant-design/icons"
-import { useNavigate } from "react-router-dom"
+import { Menu } from "antd";
+import {
+  AppstoreOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
-
-
-
-
-const RestuarantSidemenu=()=>{
-
-
-    const navigate=useNavigate()
-    return(
-        <>
-            <div className="sideMenu">
-                    
-            <Menu 
-            style={{backgroundColor:"orange",
-            color:"white",
-            height:"100vh",
-            width:"15vw",
-            padding:"10px"}}
-            onClick={(item)=>{
-              navigate(item.key)
-            }}
-            items={[
-                {
-                    label:"Dashboard", 
-                    icon:<AppstoreOutlined/>,
-                    key:"/restaurantdashboard/"
+const RestuarantSidemenu = () => {
+  const navigate = useNavigate();
+  
+  return (
+    <>
+      <div className="sideMenu">
+        <Menu
+          style={{
+            backgroundColor: "orange",
+            color: "white",
+            height: "94vh",
+            width: "15vw",
+            padding: "10px",
+          }}
+          onClick={(item) => {
+            navigate(item.key);
+          }}
+          items={[
+            {
+              label: "Dashboard",
+              icon: <AppstoreOutlined />,
+              key: "/restaurantdashboard/",
             },
-                {
-                    label:"inventory",
-                    key:"/restaurantdashboard/inventory",
-                    icon:<ShopOutlined/>
+            {
+              label: "inventory",
+              key: "/restaurantdashboard/inventory",
+              icon: <ShopOutlined />,
             },
-                {
-                    label:"Orders",
-                    key:"/restaurantdashboard/orders",
-                    icon:<ShoppingCartOutlined/>
+            {
+              label: "Orders",
+              key: "/restaurantdashboard/orders",
+              icon: <ShoppingCartOutlined />,
             },
-                {
-                    label:"Customers",
-                    key:"/restaurantdashboard/customers",
-                    icon:<UserOutlined/>
+            {
+              label: "Customers",
+              key: "/restaurantdashboard/customers",
+              icon: <UserOutlined />,
             },
-                {
-                    label:"Logout",
-                    key:"/restaurantdashboard/logout",
-                    icon:<LogoutOutlined />
+            {
+              label: "Logout",
+              key: "/restaurantdashboard/logout",
+              icon: <LogoutOutlined />,
+              danger: "true",
             },
+          ]}
+        ></Menu>
+      </div>
+    </>
+  );
+};
 
-
-
-
-
-
-
-
-
-            ]}>
-
-            </Menu>
-
-            </div>
-        
-        </>
-    )
-}
-
-export default RestuarantSidemenu
+export default RestuarantSidemenu;

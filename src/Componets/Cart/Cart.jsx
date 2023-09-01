@@ -329,26 +329,28 @@ function Cart() {
                   <div
                     onClick={handleToggle}
                     style={{
-                      padding: "3px 3px",
-                      borderRadius: "50px",
-                      backgroundColor: "grey",
-                      width: 80,
+                      padding: "3px",
+                      borderRadius: "10px",
+                      backgroundColor: "#fbb57c",
+                      width: "70px",
                       display: "flex",
                       justifyContent: isChecked ? "flex-end" : "flex-start",
+                      cursor: "pointer", // Add cursor pointer for better interactivity
                     }}
                   >
                     <div
                       style={{
-                        transition: "ease-in-out 5s",
-                        height: 16,
-                        width: 16,
-                        backgroundColor: "red",
-                        borderRadius: "50px",
+                        transition: "ease-in-out 0.5s",
+                        height: "16px",
+                        width: "16px",
+                        backgroundColor: isChecked ? "#81C784 " : "white",
+                        borderRadius: "50%",
                       }}
                     ></div>
                   </div>
+
                   {/* <label
-                    className={`toggle-container ${isChecked ? "checked" : ""}`}
+   
                   >
                     <input
                       type="checkbox"

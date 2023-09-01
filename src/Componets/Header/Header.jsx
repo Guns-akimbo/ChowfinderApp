@@ -135,7 +135,7 @@ function Header() {
             {/* Display user's name if logged in */}
             {userisLoggedIn?.token && (
               <div className="user-info">
-                <span>Welcome,{userisLoggedIn.fullName}</span>
+                <span>Hello,{userisLoggedIn.fullName}</span>
               </div>
             )}
             <div className="Navsign">
