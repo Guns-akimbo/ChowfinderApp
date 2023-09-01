@@ -67,15 +67,15 @@ function PartnerLogin() {
       <div className="login-container">
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleLogin} className='Rest-form'>
-          <input
+        <form onSubmit={handleLogin}  className='Rest-form'>
+        <div className='rest-inputholder'><input
             type="email"
             name="email"
             placeholder="Email"
             required
             value={formData.email}
             onChange={handleChange}
-          />
+          /></div>
           <div className='rest-inputholder'>
             <input
               type={passwordVisible ? 'text' : 'password'} 

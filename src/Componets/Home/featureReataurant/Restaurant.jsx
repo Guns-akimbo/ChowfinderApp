@@ -6,7 +6,7 @@ import RestaurantCard  from '../restaurantCard/restaurantCard'
 const allRestaurants = [
     {
       id: 1,
-      name: "Delicious Bistro",
+      name: "Savoury Spots",
       cuisine: "Italian",
       address: "123 Main Street",
       city: "New York",
@@ -16,7 +16,7 @@ const allRestaurants = [
 
     {
         id: 2,
-        name: "Delicious Bistro",
+        name: "Delicious Bites",
         cuisine: "Italian",
         address: "123 Main Street",
         city: "New York",
@@ -26,7 +26,7 @@ const allRestaurants = [
 
       {
         id: 3,
-        name: "Seafood Sensations",
+        name: "Foodie Fiesta",
         cuisine: "Seafood",
         address: "789 Elm Street",
         city: "Orlando",
@@ -36,7 +36,7 @@ const allRestaurants = [
    
       {
         id: 4,
-        name: "Delicious Bistro",
+        name: "Coastal Cravings",
         cuisine: "Italian",
         address: "123 Main Street",
         city: "New York",
@@ -46,7 +46,7 @@ const allRestaurants = [
 
       {
         id: 5,
-        name: "Spicy Noodle House",
+        name: "Zesty Zestaurant",
         cuisine: "Asian",
         address: "456 Elm Avenue",
         city: "Los Angeles",
@@ -113,7 +113,7 @@ const allRestaurants = [
     },
     {
       id: 12,
-      name: "Thai Spice",
+      name: "Culinary Oasis",
       cuisine: "Thai",
       address: "345 Oak Avenue",
       city: "Houston",

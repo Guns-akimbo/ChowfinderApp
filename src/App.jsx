@@ -15,6 +15,7 @@ import Partner from "./Onboarding/Partner/Partner"
 import VerifyPartner from "./Onboarding/Partner/Verifyrestaurant";
 import PartnerLogin from "./Onboarding/Partner/patner-loginr";
 import RestForgetPassword from "./Onboarding/Partner/restForgetword";
+import RestResetPassword from "./Onboarding/Partner/partnerresetpassword";
 
 const myApp = () => {
   return (
@@ -33,6 +34,7 @@ const myApp = () => {
         <Route path="verifyPartner" element={<VerifyPartner/>}/>
         <Route path="/partnerLogin" element = {<PartnerLogin/>}/>
         <Route path = "/RestForgetPassword" element ={<RestForgetPassword/>}/>
+        <Route path="/restrestpassword:token" element={<RestResetPassword/>}/>
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/dashboard/*" element={<Userdashboard/>} /> 

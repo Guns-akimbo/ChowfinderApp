@@ -28,7 +28,6 @@
   width: 100%;
   height: 7vh;
   background-color: #ffe2b8;
-  background: #f0e3dcf2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +35,7 @@
   position: fixed;
   top: 0;
   z-index: 100;
-} 
+}
 
 .arr {
   width: 95%;
@@ -55,13 +54,13 @@
   color: black;
 }
 
-.arr:hover{
-  color:#fc8019;
-}
-.arrowleft:hover{
-  color:#fc8019;
+.arr:hover {
+  color: #fc8019;
 }
 
+.arrowleft:hover {
+  color: #fc8019;
+}
 
 .menulist-lord {
   width: 100%;
@@ -137,8 +136,8 @@
 .delivery {
   display: flex;
   justify-content: center;
-  height: 30px;
-  width: 85px;
+  height: 40px;
+  width: 100px;
   background-color: #f99810;
   border-radius: 3px;
   color: white;
@@ -152,18 +151,18 @@
 }
 
 .pickup {
-  height: 30px;
-  width: 85px;
+  height: 40px;
+  width: 100px;
   border: 1px solid#f99810;
   border-radius: 3px;
-  color:#cb8952;
+  color: #cb8952;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .pickup:hover {
-  color:#f99810;
+  color: #f99810;
   transform: scale(1.04);
 }
 
@@ -171,6 +170,7 @@
 .active {
   color: #fc8019;
 }
+
 .active2 {
   color: inherit;
 }
@@ -182,6 +182,8 @@
   /* background-color: antiquewhite; */
   display: flex;
   align-items: center;
+  padding-left: 55px;
+
 }
 
 .foodcategory {
@@ -191,13 +193,14 @@
   /* background-color: rgb(247, 151, 26); */
   display: flex;
   align-items: center;
+  padding-left: 55px;
   font-size: 18px;
-  gap: 30px;
+  gap: 50px;
   color: inherit;
   text-decoration: none;
 
 
- }
+}
 
 .foodcard {
   width: 360px;
@@ -207,7 +210,7 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: white;
   cursor: pointer;
- /* background-color: green; */
+  /* background-color: green; */
 }
 
 .leftcard {
@@ -217,31 +220,32 @@
   display: flex;
   flex-direction: column;
   /* background-color: yellow; */
-  justify-content: space-between ;
+  justify-content: space-between;
   align-items: center;
 
- 
+
 }
 
-.Cardnamed{
-    width:100%;
-    height: 40%;
-     padding: 5px;
-     display: flex;
-     flex-direction: column;
-     gap: 30px;
+.Cardnamed {
+  width: 100%;
+  height: 40%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
-.Cardnamed p{
+
+.Cardnamed p {
   font-size: 14px;
 }
 
-.Cardnamedb{
+.Cardnamedb {
   font-size: 30px;
   font-weight: 900;
   /* color: #fc8019; */
 }
 
-.pri{
+.pri {
   width: 100%;
   height: 50%;
   display: flex;
@@ -255,7 +259,7 @@
   font-size: 20px;
   color: #f99810;
   transition: color 0.3s, transform 0.2s;
-  
+
 }
 
 .added:hover {
@@ -303,8 +307,10 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 40px;
   margin-block: 5px;
+
 }
 
 
@@ -320,6 +326,16 @@
     gap: 40px;
   }
 
+  .delivery {
+    height: 50px;
+    width: 100px;
+  }
+
+  .pickup {
+    height: 50px;
+    width: 100px;
+  }
+
   .foodcard {
     width: 340px;
     height: 190px;
@@ -328,9 +344,7 @@
   .restuarant-lordname {
     height: 30vh;
     width: 100%;
-     }
-
-    
+  }
 
 }
 
@@ -350,13 +364,13 @@
   }
 
   .restuarant-lordname {
-    height: 30vh;
+    height: 25vh;
     width: 100%;
-  
+
   }
 
   .downmenusection {
-    gap: 5px;
+    gap: 15px;
   }
 
   .restuarant-lordname {

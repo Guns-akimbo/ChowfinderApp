@@ -9,7 +9,7 @@
   position: fixed;
   top: 0%;
   bottom: 0%;
-  z-index: 100;
+  z-index: 10000;
 }
 
 .user-info{
@@ -139,6 +139,8 @@ color: #d62e0d;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10000;
+
 }
 
 
@@ -179,6 +181,7 @@ color: #d62e0d;
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 
+
 }
 
 .dropMenu li {
@@ -190,6 +193,7 @@ color: #d62e0d;
   font-size: 20px;
   padding-left: 15px;
   border-radius: 8px;
+
 }
 
 .dropMenu li:hover {
