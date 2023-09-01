@@ -13,17 +13,11 @@
     text-align: center;
   }
   
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
   .rest-button {
-    height: 37px;
+    height: 42px;
     width: 180px;
     /* padding: 17px; */
-    background-color: #ffd501;
+    background-color: #f88120;
     color: white;
     border: none;
     border-radius: 5px;
@@ -31,7 +25,7 @@
   }
   
   .rest-button:hover {
-    background-color: #ffd501;
+    background-color: #f6b076;
   }
 
   .patner-password{
@@ -58,17 +52,17 @@
 
      a{
       text-decoration: none;
-      color: #ffd501;
+      color: #f88120;
      }
 .login-containerholder{
-  height: 100vh;
+  height: 92vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
   .login-container {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -81,16 +75,42 @@
     margin-top: 10px;
   }
   
-  form {
+  .Rest-form {
     display: flex;
     flex-direction: column;
+    margin-block-start: 20px;
+    gap: 10px;
+    align-items: center;
+
   }
   
-  input {
+  .rest-inputholder input {
     width: 90%;
     padding: 10px;
+    border: none;
+    outline: none;
+   }
+
+  .rest-inputholder{
+    height: 38px;
+    width: 90%;
     border: 1px solid #ccc;
     border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-inline: 5px;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+
+  
+  }
+  @media (min-width: 320px) and (max-width: 565px) {
+    .signup-container {
+      width: 350px;
+        }
+  
   }
   
 

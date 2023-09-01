@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import "./ForgetPassword.css"
-// import Header from '../../Componets/Header';
 import HashLoader from "react-spinners/HashLoader";
 import { NavLink } from 'react-router-dom';
+import Header from '../../Componets/Header';
+
 
 const RestForgetPassword = () => {
 
@@ -13,7 +13,7 @@ const RestForgetPassword = () => {
 
   const handleForgotPassword = async () => {
     try {
-      const response = await axios.get('https://chowfinder.onrender.com/rest/forgot-password', { email });
+      const response = await axios.post('https://Chowfinder.onrender.com/api/rest/forgot-password',{ email });
       setMessage(response.data.message);
       
     } catch (error) {
@@ -31,7 +31,7 @@ const RestForgetPassword = () => {
 
   return (
     <>
-     {/* <Header/> */}
+     <Header/>
       <div className='ForgetPassword'>
         <div className='ForgetPassword-wrapper'>
           <span className='wraapper-grid-header'><h2>Forgot Password</h2></span>

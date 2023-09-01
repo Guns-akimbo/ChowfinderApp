@@ -6,6 +6,7 @@ import './Partner.css';
 import HashLoader from 'react-spinners/HashLoader';
 import PartnerLogin from './patner-loginr';
 import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
+import Header from '../../Componets/Header';
 
 
 
@@ -23,7 +24,7 @@ function Partner() {
   const [formData, setFormData] = useState(initialState);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState(null);
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handlepassword = () => {
@@ -61,7 +62,7 @@ function Partner() {
           err.response.data.message || 'An error occurred during sign-up. Please try again later.';
         setError(errorMessage);
       } else {
-        setError('An error occurred during sign-up. Please try again later.');
+        setError('An error occurred during sign-up. Please check network connection and try again later.');
       }
     }
     finally {
@@ -79,7 +80,8 @@ function Partner() {
   };
 
   return (
-
+<>
+<Header/>
     <div className="signup-container">
       <h2>Sign Up</h2>
       {error && <p className="error-message">{error}</p>}
@@ -87,31 +89,34 @@ function Partner() {
       {isSuccess ? (
         <p>Sign-up successful! You can now log in.</p>
       ) : (
-        <form onSubmit={signupSubmit}>
-          <input type="text" name="businessName" placeholder="Business Name" required onChange={handleChange} />
-          <input type="text" name="address" placeholder="Address" required onChange={handleChange} />
-          <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
-          <input type="text" name="description" placeholder="Description" required onChange={handleChange} />
-          <input type="tel" name="phoneNumber" placeholder="Phone Number" required onChange={handleChange} />
-         <div><input type={passwordVisible ? 'text' : 'password'}
+        <form onSubmit={signupSubmit} className='Rest-form'>
+          <div className='rest-inputholder'><input type="text" name="businessName" placeholder="Business Name" required onChange={handleChange} /></div>
+          <div className='rest-inputholder'><input type="text" name="address" placeholder="Address" required onChange={handleChange} /></div>
+          <div className='rest-inputholder'> <input type="email" name="email" placeholder="Email" required onChange={handleChange} /></div>
+          <div className='rest-inputholder'> <input type="text" name="description" placeholder="Description" required onChange={handleChange} /></div>
+          <div className='rest-inputholder'><input type="tel" name="phoneNumber" placeholder="Phone Number" required onChange={handleChange} /></div>
+          <div className='rest-inputholder'><input type={passwordVisible ? 'text' : 'password'}
             name="password" placeholder="Password" required onChange={handleChange} />{passwordVisible ? (
               <PiEyeBold onClick={handlepassword} />
             ) : (
               <PiEyeClosedBold onClick={handlepassword} />
-            )}</div> 
-         <div><input type={passwordVisible ? 'text' : 'password'}
-            name="confirmPassword" placeholder="Confirm Password" required onChange={handleChange} />
-            
-            </div> 
-          <button type="submit" disabled={loading} className='rest-button'>
+            )}</div>
+          <div className='rest-inputholder'><input type={passwordVisible ? 'text' : 'password'}
+            name="confirmPassword" placeholder="Confirm Password" required onChange={handleChange} />{passwordVisible ? (
+              <PiEyeBold onClick={handlepassword} />
+            ) : (
+              <PiEyeClosedBold onClick={handlepassword} />
+            )}</div>
+          <div className='rest-buttonholder'><button type="submit" disabled={loading} className='rest-button'>
             <span>{loading ? <HashLoader color={"#ffffff"} size={30} loading={loading} /> : 'Sign Up'}</span>
-          </button>
+          </button></div>
         </form>
 
       )}
 
       <span className='patner-loginrouter'> Already a partner <span><NavLink to='/partnerLogin'>Sign In</NavLink></span></span>
     </div>
+    </>
   );
 }
 

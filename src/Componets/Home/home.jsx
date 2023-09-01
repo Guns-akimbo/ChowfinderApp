@@ -62,15 +62,15 @@ function Home() {
       setTimeout(() => {
         Swal.fire({
           text: "Please select Location",
-          timer: 2000, 
+          timer: 2000,
           timerProgressBar: true,
-          showConfirmButton: false, 
+          showConfirmButton: false,
         });
       });
     } else {
       setShowPopup(true);
     }
-   
+
   };
 
   const handleClose = () => {
@@ -80,7 +80,7 @@ function Home() {
   const filteredRestaurants = selectedLocation
     ? locationRestaurants[selectedLocation] || []
     : [];
-    
+
 
   return (
     <>
@@ -101,36 +101,40 @@ function Home() {
               </div>
               <div className="search-restaurant">
                 <section className="select-restaurant">
-                {loading ? (
-                <HashLoader color={"#FD8D14"} loading={loading} size={50} />
-              ) : (           
-                  <select
-                    name="location"
-                    id="location"
-                    onChange={handleLocationChange}
-                    placeholder="select Location"
-                    defaultValue={selectedLocation}
-                  >
-                    <option value="" disabled hidden>
-                      Select Location
-                    </option>
-                    {locations?.map((location) => (
-                      <option key={location} value={location}>
-                        {location}
+                  {loading ? (
+                    <HashLoader color={"#FD8D14"} loading={loading} size={50} />
+                  ) : (
+                    <select
+                      name="location"
+                      id="location"
+                      onChange={handleLocationChange}
+                      placeholder="select Location"
+                      defaultValue={selectedLocation}
+                    >
+                      <option value="" disabled hidden>
+                        Select Location
                       </option>
-                    ))}
-                  </select>
-  )}
+                      {locations?.map((location) => (
+                        <option key={location} value={location}>
+                          {location}
+                        </option>
+                      ))}
+                    </select>
+                  )}
                 </section>
                 <button
                   className="select-search"
                   onClick={handleSelectButtonClick}
-                  // disabled={!selectedLocation}
+                // disabled={!selectedLocation}
                 >
                   Select Restaurant
                 </button>
               </div>
-              <p className='Trusted-by'>Trusted by our various Customers in Lagos </p>
+              <p className="Trusted-by">Trusted by our various Customers in Lagos
+
+              </p>
+
+
             </main>
             <div>
               {/* Restuarant Popup */}
@@ -140,7 +144,7 @@ function Home() {
                     <section className="rap">
                       <main className="Restuarantlisting-header">
                         <h4>Available Restaurants</h4>{" "}
-                        <AiFillCloseCircle size={35}  className='VscArrowCircleLeft' onClick={handleClose} />
+                        <AiFillCloseCircle size={35} className='VscArrowCircleLeft' onClick={handleClose} />
                       </main>
                       <main className="Restuarantlisting-holder">
                         {filteredRestaurants?.map((restaurant) => (

@@ -198,7 +198,7 @@
     .grow-became-header {
         width: 60%;
         height: 100%;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .grow-became-button {
@@ -217,6 +217,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        /* background-color: #FC8019; */
+        
     }
 
     .grow-gang {
@@ -233,7 +235,7 @@
     .gang-write-header {
         width: 100%;
         height: 41px;
-        font-size: 16px;
+        font-size: 26px;
     }
 
     .grow-gang-wrapper {
@@ -269,13 +271,14 @@
     .grow-group-header {
         width: 100%;
         height: 41px;
-        font-size: 18px;
+        font-size: 26px;
 
     }
 
     .grow-group-content {
         width: 100%;
-        height: 116px;
+        height:250px;
+        /* background-color: aqua; */
     }
 
     .grow-group-find {
@@ -297,11 +300,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        
     }
 
     .group-image {
         width: 50%;
-        height: 413px;
+        height: 400px;
         display: flex;
         justify-content: center;
         align-items: center;
