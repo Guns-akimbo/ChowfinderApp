@@ -8,8 +8,6 @@ import PartnerLogin from './patner-loginr';
 import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
 import Header from '../../Componets/Header';
 
-
-
 function Partner() {
   const initialState = {
     businessName: "",
