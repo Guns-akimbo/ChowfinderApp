@@ -42,10 +42,10 @@ function Orders() {
               </ul>
             ),
           },
-          {
-            title: "Order Id",
-            dataIndex: "_id",
-          },
+          // {
+          //   title: "Order Id",
+          //   dataIndex: "_id",
+          // },
           {
             title: "Total",
             dataIndex: "total",

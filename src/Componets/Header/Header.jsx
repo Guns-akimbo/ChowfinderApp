@@ -34,14 +34,34 @@ function Header() {
 
   // console.log(userisLoggedIn);
   const logout = () => {
-    localStorage.setItem(
-      "User",
-      JSON.stringify({ token: "", name: "", email: "" })
-    );
-
-    setupdateUi(updateUi);
-    window.location.reload();
+    // Show a confirmation dialog using Swal
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Logout'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Logged Out',
+          'You have been successfully logged out.',
+          'success'
+        );
+  
+        // Clear user data from localStorage
+        localStorage.setItem(
+          "User",
+          JSON.stringify({ token: "", name: "", email: "" })
+        );
+        // Reload the page
+        window.location.reload();
+      }
+    });
   };
+  
 
   // console.log(token, " victor token ");
 
@@ -68,18 +88,7 @@ function Header() {
     getCartData();
   }, []);
 
-  // useEffect(() => {
-  //   if (userisLoggedIn?.token && !hasLoggedInOnce) {
-  //     setHasLoggedInOnce(true);
 
-  //     Swal.fire({
-  //       text: `Hello, ${userisLoggedIn.fullName}!`,
-  //       timer: 5000,
-  //       timerProgressBar: true,
-  //       showConfirmButton: false,
-  //     });
-  //   }
-  // }, [userisLoggedIn, ]);
 
 
   return (

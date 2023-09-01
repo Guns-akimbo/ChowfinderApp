@@ -195,7 +195,7 @@ const Login = () => {
       console.log("Token stored:", token);
       
       Swal.fire({
-        text: `Hello, ${fullName}!`,
+        text: `Welcome, ${fullName}!`,
         timer: 5000,
         timerProgressBar: true,
         showConfirmButton: false,
