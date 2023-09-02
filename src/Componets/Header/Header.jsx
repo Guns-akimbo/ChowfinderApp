@@ -36,21 +36,21 @@ function Header() {
   const logout = () => {
     // Show a confirmation dialog using Swal
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Logout'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Logout",
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Logged Out',
-          'You have been successfully logged out.',
-          'success'
+          "Logged Out",
+          "You have been successfully logged out.",
+          "success"
         );
-  
+
         // Clear user data from localStorage
         localStorage.setItem(
           "User",
@@ -61,7 +61,6 @@ function Header() {
       }
     });
   };
-  
 
   // console.log(token, " victor token ");
 
@@ -87,9 +86,6 @@ function Header() {
   useEffect(() => {
     getCartData();
   }, []);
-
-
-
 
   return (
     <>
@@ -177,7 +173,6 @@ function Header() {
                 <li>About Us</li>
               </NavLink>
 
-             
               <div>
                 {userisLoggedIn?.token ? (
                   <NavLink to="/dashboard/" className="custom-link">

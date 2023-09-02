@@ -18,7 +18,7 @@ const RestuarantSidemenu = () => {
           style={{
             backgroundColor: "orange",
             color: "white",
-            height: "94vh",
+            height: "93vh",
             width: "15vw",
             padding: "10px",
           }}
@@ -45,12 +45,6 @@ const RestuarantSidemenu = () => {
               label: "Customers",
               key: "/restaurantdashboard/customers",
               icon: <UserOutlined />,
-            },
-            {
-              label: "Logout",
-              key: "/restaurantdashboard/logout",
-              icon: <LogoutOutlined />,
-              danger: "true",
             },
           ]}
         ></Menu>

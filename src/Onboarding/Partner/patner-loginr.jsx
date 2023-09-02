@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './Partner.css';
-import { NavLink, useNavigate } from 'react-router-dom';
-import HashLoader from 'react-spinners/HashLoader';
-import { PiEyeBold, PiEyeClosedBold } from 'react-icons/pi';
-import { Route } from 'react-router-dom';
-import RestuarantsDash from '../../Dashboard/RestuarantsDash/RestuarantsDash';
+import React, { useState } from "react";
+import axios from "axios";
+import "./Partner.css";
+import { NavLink, useNavigate } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader";
+import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
+import { Route } from "react-router-dom";
+import RestuarantsDash from "../../Dashboard/RestuarantsDash/RestuarantsDash";
 
 function PartnerLogin() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handlepassword = () => {
     setPasswordVisible(!passwordVisible);
@@ -39,23 +39,25 @@ function PartnerLogin() {
       if (res && res.data) {
         setError(null);
         // console.log('Login successful:', res.data);
-        // const { token } = res.data; 
-        const token = res.data.token;
-        localStorage.setItem("userToken", JSON.stringify({ token}));
+        const { token, restaurant } = res.data;
+        localStorage.setItem(
+          "userToken",
+          JSON.stringify({ token, restaurant })
+        );
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-        console.log("Token stored:", token);
-        console.log(res.data.restaurant)
-        console.log(res.data)
-        navigate('/restaurantdashboard');
+        navigate("/restaurantdashboard");
       } else {
-        console.log('Response data is missing or undefined.');
+        console.log("Response data is missing or undefined.");
       }
     } catch (err) {
       // console.log('Login error:', err);
       if (err.response) {
-        setError(err.response.data.message || 'An error occurred during login. Please try again.');
+        setError(
+          err.response.data.message ||
+            "An error occurred during login. Please try again."
+        );
       } else {
-        setError('An error occurred during login. Please try again.');
+        setError("An error occurred during login. Please try again.");
       }
     } finally {
       setLoading(false);
@@ -63,22 +65,24 @@ function PartnerLogin() {
   };
 
   return (
-    <div className='login-containerholder'>
+    <div className="login-containerholder">
       <div className="login-container">
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleLogin}  className='Rest-form'>
-        <div className='rest-inputholder'><input
-            type="email"
-            name="email"
-            placeholder="Email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-          /></div>
-          <div className='rest-inputholder'>
+        <form onSubmit={handleLogin} className="Rest-form">
+          <div className="rest-inputholder">
             <input
-              type={passwordVisible ? 'text' : 'password'} 
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="rest-inputholder">
+            <input
+              type={passwordVisible ? "text" : "password"}
               name="password"
               placeholder="Password"
               required
@@ -91,15 +95,23 @@ function PartnerLogin() {
               <PiEyeClosedBold onClick={handlepassword} />
             )}
           </div>
-          <button type="submit" disabled={loading} className='rest-button'>
-            <span>{loading ? <HashLoader color={"#ffffff"} size={30} loading={loading} /> : 'Login'}</span>
+          <button type="submit" disabled={loading} className="rest-button">
+            <span>
+              {loading ? (
+                <HashLoader color={"#ffffff"} size={30} loading={loading} />
+              ) : (
+                "Login"
+              )}
+            </span>
           </button>
         </form>
-        <NavLink to='/RestForgetPassword' className='patner-password'>
+        <NavLink to="/RestForgetPassword" className="patner-password">
           Forgot password?
         </NavLink>
-       <span className='patner-loginrouter'> Not a partner <NavLink to='/partner'>Sign up</NavLink></span>
-
+        <span className="patner-loginrouter">
+          {" "}
+          Not a partner <NavLink to="/partner">Sign up</NavLink>
+        </span>
       </div>
     </div>
   );

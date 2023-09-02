@@ -45,14 +45,17 @@ export const restaurantOrder = async (token) => {
   } catch (err) {   
   }
 };
-
-
-
-
-
-
-
-
+export const getMenu = async (token) => {
+  try {
+    const res = await axios.get(`${VITE_End_Point}/rest/get-all-menu/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return(res.data);
+  } catch (err) {   
+  }
+};
 
 export const getInventory = () => {
   return fetch("https://dummyjson.com/products") .then((res) => res.json())

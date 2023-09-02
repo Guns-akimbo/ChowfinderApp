@@ -2,13 +2,13 @@ import "./RestuarantsDash.css";
 import RestuarantPagecontent from "./RestuarantPagecontent/RestuarantPagecontent";
 import RestuarantSidemenu from "./RestuarantPagecontent/RestuarantSidemenu";
 import { Space } from "antd";
-import DashboardHeader from "./RestPages/Logout/Logout";
+import Restheader from "./RestPages/RestHeader/RestHeader";
 
 const RestuarantsDash = () => {
   return (
     <>
       <div className="RestuarantsDash">
-    <DashboardHeader/>
+        <Restheader />
         <Space className="sidemenuAndPagecontent">
           <RestuarantSidemenu></RestuarantSidemenu>
           <RestuarantPagecontent></RestuarantPagecontent>
