@@ -6,6 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 import { PiEyeBold, PiEyeClosedBold } from "react-icons/pi";
 import { Route } from "react-router-dom";
 import RestuarantsDash from "../../Dashboard/RestuarantsDash/RestuarantsDash";
+import Header from "../../Componets/Header";
 
 function PartnerLogin() {
   const navigate = useNavigate();
@@ -65,55 +66,58 @@ function PartnerLogin() {
   };
 
   return (
-    <div className="login-containerholder">
-      <div className="login-container">
-        <h2>Login</h2>
-        {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleLogin} className="Rest-form">
-          <div className="rest-inputholder">
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              required
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="rest-inputholder">
-            <input
-              type={passwordVisible ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              required
-              value={formData.password}
-              onChange={handleChange}
-            />
-            {passwordVisible ? (
-              <PiEyeBold onClick={handlepassword} />
-            ) : (
-              <PiEyeClosedBold onClick={handlepassword} />
-            )}
-          </div>
-          <button type="submit" disabled={loading} className="rest-button">
-            <span>
-              {loading ? (
-                <HashLoader color={"#ffffff"} size={30} loading={loading} />
+    <>
+      <Header />
+      <div className="login-containerholder">
+        <div className="login-container">
+          <h2>Login</h2>
+          {error && <p className="error-message">{error}</p>}
+          <form onSubmit={handleLogin} className="Rest-form">
+            <div className="rest-inputholder">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="rest-inputholder">
+              <input
+                type={passwordVisible ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+              />
+              {passwordVisible ? (
+                <PiEyeBold onClick={handlepassword} />
               ) : (
-                "Login"
+                <PiEyeClosedBold onClick={handlepassword} />
               )}
-            </span>
-          </button>
-        </form>
-        <NavLink to="/RestForgetPassword" className="patner-password">
-          Forgot password?
-        </NavLink>
-        <span className="patner-loginrouter">
-          {" "}
-          Not a partner <NavLink to="/partner">Sign up</NavLink>
-        </span>
+            </div>
+            <button type="submit" disabled={loading} className="rest-button">
+              <span>
+                {loading ? (
+                  <HashLoader color={"#ffffff"} size={30} loading={loading} />
+                ) : (
+                  "Login"
+                )}
+              </span>
+            </button>
+          </form>
+          <NavLink to="/RestForgetPassword" className="patner-password">
+            Forgot password?
+          </NavLink>
+          <span className="patner-loginrouter">
+            {" "}
+            Not a partner <NavLink to="/partner">Sign up</NavLink>
+          </span>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

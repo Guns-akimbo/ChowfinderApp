@@ -1,5 +1,6 @@
 import { Nav, NavDropdown } from "react-bootstrap";
-import "../../../../Pages/pages.css";
+// import "../../../../Pages/pages.css";
+import "./Dashboardheader.css"
 import Logo from "../../../../assets/Logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
 
