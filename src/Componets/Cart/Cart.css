@@ -17,12 +17,17 @@
     width: 40px;
     height: 40px;
     animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
 .Cart h4 {
     font-size: 32px;
@@ -78,7 +83,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    
+
 }
 
 .Cart-itemHeaderquantity {
@@ -223,7 +228,7 @@
 .rewardshow {
     height: 60%;
     width: 25%;
-    border: 1px solid rgb(185, 181, 189);  
+    border: 1px solid rgb(185, 181, 189);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -244,7 +249,7 @@ hr {
 .toataprice {
     height: 60%;
     width: 25%;
-    border: 1px solid rgb(185, 181, 189);  
+    border: 1px solid rgb(185, 181, 189);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -277,7 +282,7 @@ hr {
     border-radius: 5px;
     display: flex;
     align-items: center;
-        }
+}
 
 .usecash {
     height: 60%;
@@ -331,141 +336,132 @@ hr {
     font-size: 20px;
     border-radius: 5px;
 }
-.paynowdisabled[disabled]{
+
+.paynowdisabled[disabled] {
     cursor: not-allowed;
 }
 
-.blur{
+.blur {
     color: #B6B7B8;
 }
 
 
-  /* Toggle Styles */
-.toggle-container {
-    display: inline-block;
-    position: relative;
-    width: 50px;
-    height: 19px;
-  }
-  
-  /* Hide the default checkbox */
-  .toggle-container input[type="checkbox"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    border-radius: 15px;
-    transition: 0.4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 2px;
-    bottom: 0px;
-    background-color: white;
-    border-radius: 50%;
-    transition: 0.4s;
-  }
-  
-  /* Changing the background color when toggled on */
-  .toggle-container.checked .slider {
-    background-color: #FDCCA4;
-  }
-  
-  /* Moving the slider knob when toggled on */
-  .toggle-container.checked .slider:before {
-    transform: translateX(30px);
-  }
-
-  @media (max-width: 767px) {
+@media (max-width: 767px) {
     .Cart-wrapper {
-        height: 98%;
-        width: 90%;
-        }
+        height: 90%;
+        width: 95%;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
 
-        .Cart-itemHeader {
-            font-size: 8px;
-        }
-        .finallyo-header {
-            padding-left: 1px;
-            font-size: 8px;
-        }
+    .Cart-itemHeader {
+        font-size: 8px;
+    }
 
-        .paynow {
-            font-size: 13px;
-        }
+    .finallyo-header {
+        padding-left: 1px;
+        font-size: 12px;
+    }
 
-        .blur{
+    .blur {
 
-            font: size 12px; ;
+        font-size: 16px;
+        ;
 
-        }
+    }
 
-        .rewardshow {
-           display: block;
-           align-items: center;
-            padding-block: 10px;
-           }
+    .rewardshow {
+        display: block;
+        align-items: center;
+        padding-block: 10px;
+         height: 50px;
+        width: 100px;
+        font-size: 14px;
+    }
 
-        .toataprice {
-            height: 60%;
-            width: 25%;
-           border: 1px solid rgb(185, 181, 189);  
-           display: block;
-           align-items: center;
-           padding-block: 10px;}
-                
-       
+    .toataprice {
+        height: 50px;
+        width: 100px;
+        border: 1px solid rgb(185, 181, 189);
+        display: block;
+        align-items: center;
+        padding-block: 10px;
+        font-size: 14px;
+    }
 
-        .Cart-itemHoldereach {
-            height: 27%;
-            width: 100%;      
-        }
+.itemdescrition{
+    font-size: 12px;
+    padding-inline: 10px;
+    display: block;
+    padding-block: 5px;}
 
-  }
-  
-  /* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
-  @media (min-width: 768px) and (max-width: 991px) {
+    .Cart-itemHoldereach {
+        height: 27%;
+        width: 100%;
+    }
+
+    .increase {
+        height: 50%;
+        width: 30%;
+        background-color: white;
+        color: #212529;
+    }
+
+    .decrease {
+        height: 50%;
+        width: 50%;
+        background-color: white;
+        color: #212529;
+    }
+
+    .itemnumber {
+        border: none;
+    }
+
+    .paynow {
+        height: 50px;
+        width: 100px;
+        font-size: 14px;
+    }
+    .addressholder{
+        height: 50px;
+        width: 200px; 
+    }
+
+    .paynowdisabled {
+     
+        font-size: 14px;
+      
+    }
+
+   }
+
+/* For devices with a width between 768px and 991px (e.g., tablets in portrait mode) */
+@media (min-width: 768px) and (max-width: 991px) {
     .Cart-wrapper {
         height: 85%;
         width: 92%;
-        }
+    }
 
-        .finallyo-header {
-            padding-left: 70px;
-            font-size: 8px;
-        }
+    .finallyo-header {
+        padding-left: 70px;
+        font-size: 8px;
 
-         .paynow {
-            font-size: 13px;
-        }
+    }
 
-        .blur{
+    .paynow {
+        font-size: 13px;
+    }
 
-            font: size 12px; ;
+    .blur {
 
-        }
-                
-       
+        font: size 12px;
+        ;
 
-        .Cart-itemHoldereach {
-            height: 25%;
-            width: 100%;      
-        }
-     
-  }
-  
-  
+    }
+
+    .Cart-itemHoldereach {
+        height: 25%;
+        width: 100%;
+    }
+
+}

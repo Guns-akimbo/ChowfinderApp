@@ -79,6 +79,7 @@ function Partner() {
   return (
 <>
 <Header/>
+<section className='partnerdiv'>
     <div className="signup-container">
       <h2>Sign Up</h2>
       {error && <p className="error-message">{error}</p>}
@@ -117,9 +118,13 @@ function Partner() {
           <NavLink to="/partnerLogin">Sign In</NavLink>
         </span>
       </span>
+
     </div>
+    </section>
+
     </>
   );
 }
 
 export default Partner;
+

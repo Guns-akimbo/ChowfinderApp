@@ -2,6 +2,7 @@ import React from 'react'
 import './Grow.css'
 import bike from "../../../assets/bike.png"
 import businessaccount from "../../../assets/business account.png"
+import { NavLink } from 'react-router-dom'
 
 function Grow() {
     return (
@@ -35,7 +36,7 @@ function Grow() {
             <main className='grow-became'>
                 <div className='grow-became-wrapper'>
                     <div className='grow-became-header'><p>Not yet a ChowFinder Partner yet?</p></div>
-                    <div grow-became-btn><button className='grow-became-button'>Create account </button></div>
+                    <div grow-became-btn><button className='grow-became-button'><NavLink to='/partner'  className="custom-link">Create account</NavLink> </button></div>
 
                 </div>
             </main>

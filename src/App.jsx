@@ -31,10 +31,10 @@ const myApp = () => {
           element={<Detailpage />}
         /> 
         <Route path='/partner' element={<Partner/>} />
-        <Route path="verifyPartner" element={<VerifyPartner/>}/>
+        <Route path="verifyPartner/:token" element={<VerifyPartner/>}/>
         <Route path="/partnerLogin" element = {<PartnerLogin/>}/>
         <Route path = "/RestForgetPassword" element ={<RestForgetPassword/>}/>
-        <Route path="/restrestpassword:token" element={<RestResetPassword/>}/>
+        <Route path="/Restresetpassword:token" element={<RestResetPassword/>}/>
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/dashboard/*" element={<Userdashboard/>} /> 

@@ -8,11 +8,12 @@
 .Review-header {
     height: 20%;
     width: 100%;
-    font-size: 24px;
+    font-size:20px;
     color: #212529;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 10px;
 }
 
 .Review-container {
