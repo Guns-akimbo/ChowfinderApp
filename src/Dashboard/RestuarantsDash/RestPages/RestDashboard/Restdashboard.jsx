@@ -7,7 +7,7 @@ import {
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import { useState } from "react";
 import { useEffect } from "react";
-import { getCustomers, getInventory, restaurantOrder } from "../../../../Api/Index";
+import { getCustomers, getInventory, getOrders, restaurantOrder } from "../../../../Api/Index";
 
 function Restdashboard() {
   const [orders,setOrders]=useState(0)
@@ -17,21 +17,32 @@ function Restdashboard() {
   const token = JSON.parse(localStorage.getItem("userToken"))?.token;
 
 
-  useEffect(()=>{
-   
-    restaurantOrder().then((res)=>{
-      setCustomers(res.total)
-    })
-console.log()
-  },[token])
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const data = await getOrders(token); // Use 'data' instead of 'res.data'
+        setdataSource(data.slice(0,3)); // Update state with fetched data
+        setOrders(data.length)
+        // console.log(data)
+        setLoading(false);
+      } catch (error) {
+        // console.error('Error fetching orders:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [token]);
 
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Typography.Title level={4}>Dashboard</Typography.Title>
-      <Space direction="horizontal">
+      <Space direction="vertical">
         <Card>
-          <Space direction="horizontal">
+          <Space direction="vertical">
             <DashboardCard
               icon={
                 <ShoppingCartOutlined
@@ -77,22 +88,6 @@ console.log()
               title={"Customer"}
               value={customers}
             />
-            <DashboardCard
-              icon={
-                <DollarCircleFilled
-                  style={{
-                    color: "orange",
-                    backgroundColor: " 0.5px solid rgb(234, 232, 232)",
-                    borderRadius: 20,
-                    fontSize: 24,
-                    padding: 8,
-                  }}
-                />
-              }
-              title={"Revenue"}
-              value={revenue}
-              
-            />
           </Space>
         </Card>
       </Space>
@@ -121,7 +116,7 @@ function RecentOrders() {
 
   return (
     <>
-    <Typography.Text> Recent Orders</Typography.Text>
+    {/* <Typography.Text> Recent Orders</Typography.Text>
     <Table
     
       columns={[
@@ -140,7 +135,7 @@ function RecentOrders() {
       pagination={false}
    
     
-    ></Table>
+    ></Table> */}
      </>
   );
 }

@@ -1,15 +1,15 @@
 import { Nav, NavDropdown } from "react-bootstrap";
-// import "../../../../Pages/pages.css";
-import "./Restheader.css"
-
+import "./Restheader.css";
 import Logo from "../../../../assets/Logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 const Restheader = () => {
   const navigate = useNavigate();
   let user = JSON.parse(localStorage.getItem("userToken"));
   let username = user.restaurant.businessName;
+
   function logout() {
     Swal.fire({
       title: "Are you sure?",
@@ -25,8 +25,8 @@ const Restheader = () => {
           title: "Logged Out",
           text: "You have been successfully logged out.",
           icon: "success",
-          timer: 2000, // Set a timer for 5000 milliseconds (5 seconds)
-          showConfirmButton: false, // Hide the confirm button
+          timer: 2000,
+          showConfirmButton: false,
         });
         localStorage.clear();
         navigate("/partnerLogin");
@@ -43,8 +43,18 @@ const Restheader = () => {
           </div>
           <div className="signindiv">
             <Nav style={{ padding: "10px" }}>
-              <NavDropdown title={username} style={{ color: "#fff" }}>
-                <NavDropdown.Item
+              <NavDropdown
+                title={
+                  <span>
+                    {username}
+                    <BsFillArrowDownCircleFill
+                      style={{ fontSize: "15px" }}
+                    />{" "}
+                  </span>
+                }
+                style={{ color: "#fff" }}
+              >
+                <p
                   onClick={logout}
                   style={{
                     color: "#333",
@@ -55,7 +65,7 @@ const Restheader = () => {
                   }}
                 >
                   Logout
-                </NavDropdown.Item>
+                </p>
               </NavDropdown>
             </Nav>
           </div>

@@ -10,9 +10,6 @@ function Timeline() {
   const token = JSON.parse(localStorage.getItem("User"))?.token;
 
 
-
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,7 +17,7 @@ function Timeline() {
         const data = await getOrders(token); // Use 'data' instead of 'res.data'
         setdataSource(data.slice(0,3)); // Update state with fetched data
         setOrders(data.length)
-        // console.log(data)
+        console.log(data)
         setLoading(false);
       } catch (error) {
         // console.error('Error fetching orders:', error);
@@ -31,9 +28,7 @@ function Timeline() {
     fetchData();
   }, [token]);
 
-  
-
-
+   
   return (
     <Space size={20} direction="vertical">
       <Typography.Title level={4}>Activity Timeline</Typography.Title>

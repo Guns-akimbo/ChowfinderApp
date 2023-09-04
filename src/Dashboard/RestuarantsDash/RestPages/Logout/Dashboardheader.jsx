@@ -3,6 +3,7 @@ import { Nav, NavDropdown } from "react-bootstrap";
 import "./Dashboardheader.css"
 import Logo from "../../../../assets/Logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const DashboardHeader = () => {
   const navigate = useNavigate();
@@ -40,12 +41,19 @@ const DashboardHeader = () => {
             </NavLink>
           </div>
           <div className="signindiv">
-            <Nav style={{ padding: "10px" }}>
+          <Nav style={{ padding: "10px" }}>
               <NavDropdown
-                title={user && user.fullName}
+                title={
+                  <span>
+                    {username}
+                    <BsFillArrowDownCircleFill
+                      style={{ fontSize: "15px" }}
+                    />{" "}
+                  </span>
+                }
                 style={{ color: "#fff" }}
               >
-                <NavDropdown.Item
+                <p
                   onClick={logout}
                   style={{
                     color: "#333",
@@ -56,7 +64,7 @@ const DashboardHeader = () => {
                   }}
                 >
                   Logout
-                </NavDropdown.Item>
+                </p>
               </NavDropdown>
             </Nav>
           </div>

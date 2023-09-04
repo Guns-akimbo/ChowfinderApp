@@ -44,26 +44,41 @@ const Accountsettings = () => {
                   },
                 }
               );
-
+              console.log(res);
               // Handle successful response, e.g., show success message
               Swal.fire({
                 title: "Update successful!",
                 text: "Your information has been updated.",
                 icon: "success",
+                timer: 3000,
                 confirmButtonText: "Ok",
               });
-
+             
               // Optional: Update the form fields with the new values
               form.setFieldsValue(values);
-
+              form.resetFields();
               setLoading(false);
             } catch (err) {
               setLoading(false);
-              // console.log(err);
-              setErrorMessage(err.response.data.message);
+              console.log(err);
+              if (err.response.data.message) {
+                Swal.fire({
+                  text: err?.response.data.message, // Display the error message
+                  timer: 3000,
+                  timerProgressBar: true,
+                });
+              } else {
+                setErrorMessage(err.response.data.error);
+              }
             }
+            setLoading(false);
           }}
         >
+          {errorMessage && (
+            <div style={{ color: "red", marginBottom: "16px" }}>
+              {errorMessage}
+            </div>
+          )}
           <Form.Item
             name="fullName"
             label="Fullname"
@@ -96,9 +111,17 @@ const Accountsettings = () => {
             <Input placeholder="Type your Email" />
           </Form.Item>
           <Form.Item
-            name="phonenumber"
+            name="phoneNumber"
             label="Phonenumber"
-            requiredMark="optional"
+            hasFeedback
+            initialValue={dataSource.phoneNumber}
+            rules={[
+              {
+                required: true,
+                message: "Please enter your Phonenumber",
+              },
+              { type: "phoneumber" },
+            ]}
           >
             <Input placeholder="Input Your Phonenumber" />
           </Form.Item>
