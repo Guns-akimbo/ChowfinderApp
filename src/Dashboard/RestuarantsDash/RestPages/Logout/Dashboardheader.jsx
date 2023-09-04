@@ -1,13 +1,16 @@
 import { Nav, NavDropdown } from "react-bootstrap";
 // import "../../../../Pages/pages.css";
-import "./Dashboardheader.css"
+import "./Dashboardheader.css";
 import Logo from "../../../../assets/Logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 const DashboardHeader = () => {
   const navigate = useNavigate();
   let user = JSON.parse(localStorage.getItem("User"));
+  let username = user.fullName;
+  console.log(username);
   function logout() {
     Swal.fire({
       title: "Are you sure?",
@@ -41,8 +44,8 @@ const DashboardHeader = () => {
             </NavLink>
           </div>
           <div className="signindiv">
-          <Nav style={{ padding: "10px" }}>
-              <NavDropdown
+            <Nav style={{ padding: "10px" }}>
+            <NavDropdown
                 title={
                   <span>
                     {username}
