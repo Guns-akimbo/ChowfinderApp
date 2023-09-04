@@ -389,7 +389,7 @@ function Cart() {
                     style={{ cursor: "pointer" }}
                     onClick={payment}
                   >
-                    Order Now
+                     <p>Order Now</p> 
                   </button>
                 </main>
               </main>

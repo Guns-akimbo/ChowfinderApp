@@ -363,18 +363,13 @@
     border-radius: 8px;
   }
 
-  .restuarant-lordname {
-    height: 25vh;
-    width: 100%;
-
-  }
 
   .downmenusection {
     gap: 15px;
   }
 
   .restuarant-lordname {
-    height: 47vh;
+    height: 20vh;
     width: 100%;
      }
 
