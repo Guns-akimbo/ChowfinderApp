@@ -34,7 +34,7 @@ const myApp = () => {
         <Route path="verifyPartner/:token" element={<VerifyPartner/>}/>
         <Route path="/partnerLogin" element = {<PartnerLogin/>}/>
         <Route path = "/RestForgetPassword" element ={<RestForgetPassword/>}/>
-        <Route path="/Restresetpassword:token" element={<RestResetPassword/>}/>
+        <Route path="/Restresetpassword/:token" element={<RestResetPassword/>}/>
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/resetpassword/:token" element={<ResetPassword />} />
         <Route path="/dashboard/*" element={<Userdashboard/>} /> 
