@@ -269,13 +269,14 @@ display: none;
   .HiMenuAlt2 {
     display: block;
     align-items: center;
-    transform: scale(123456);
-    transition: all 250ms ease-in;
+    /* transform: scale(123456);
+    transition: all 250ms ease-in; */
   } 
 
   .Navmenu {
    display: none; 
      align-items: center;
+     justify-content: space-around;
   }
  
   .logo {
@@ -300,6 +301,8 @@ display: none;
     top: 20px;
   } 
 
+ 
+
   }
 
 @media (min-width: 991px) and (max-width: 1368px) {
@@ -313,4 +316,5 @@ display: none;
     left: 10px;
     top: 17px;
   }
+  
 }

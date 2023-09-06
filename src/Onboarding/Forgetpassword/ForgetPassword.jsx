@@ -22,6 +22,7 @@ const ForgetPassword = () => {
         console.error('Error sending password reset request:', error);
         setMessage(error.response.data.error);
         setLoading (true)
+      
       }
     }
   };
@@ -40,8 +41,8 @@ const ForgetPassword = () => {
           </div>
           <div className='handleForgot'>
             <div>
-              <button className='forgettext-button'
-                onClick={handleForgotPassword}> <p> Reset Password</p></button>
+            <button className='forgettext-button' onClick={handleForgotPassword}> <p>{ Loading ? "Loading..." : "Reset Password"}</p></button>
+
             </div>
             <p className='forgetpassword-errormesage'>{message}</p>
           </div>

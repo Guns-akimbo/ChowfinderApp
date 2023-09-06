@@ -66,7 +66,7 @@
   width: 100%;
   height: max-content;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   /* background-color: red; */
   margin-top: 2.7%;
 }
@@ -192,7 +192,7 @@
   color: #212529;
   /* background-color: rgb(247, 151, 26); */
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   padding-left: 55px;
   font-size: 18px;
   gap: 50px;
@@ -394,6 +394,11 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.menulist-lord {
+  display: flex;
+  justify-content: center;
 }
 
 }
