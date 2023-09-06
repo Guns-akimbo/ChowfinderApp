@@ -13,8 +13,6 @@ function Orders() {
         setLoading(true);
         const data = await restaurantOrder(token); // Use 'data' instead of 'res.data'
         setdataSource(data.slice(0, 3)); // Update state with fetched data
-        console.log(data);
-        console.log(token);
         setLoading(false);
       } catch (error) {
         // console.error('Error fetching orders:', error);
