@@ -174,7 +174,7 @@ const Login = () => {
           timerProgressBar: true,
         });
       } else {
-        setErrorMessage(err?.response.data.Error);
+        setErrorMessage(err?.response.data.error);
       }
     }
   };

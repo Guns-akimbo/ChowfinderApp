@@ -7,27 +7,48 @@ function ResetPassword() {
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  // const handleResetPassword = async () => {
+  //   try {
+  //     await axios.post(
+  //       `https://chowfinder.onrender.com/api/users/reset-password/${token}`,
+  //       {
+  //         newPassword,
+  //       }
+  //     );
+  //     setMessage(response?.data?.message);
+  //     console.log(response?.data)
+  //   } catch (error) {
+  //     if (error.response && error.response.data && error.response.data.message) {
+  //       // Extract and set the error message from the response
+  //       console.log(`An error occurred: ${error.response.data.message}`);
+  //     } else {
+  //       console.log(error);
+  //       setMessage(error.response.data.error);
+  //     }
+  //   }
+  // };
   const handleResetPassword = async () => {
     try {
-      await axios.post(
+      const response = await axios.post(
         `https://chowfinder.onrender.com/api/users/reset-password/${token}`,
         {
           newPassword,
         }
-      );
+      ); 
       setMessage(response?.data?.message);
+      console.log(response.data); // Corrected 'data' to 'response.data'
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         // Extract and set the error message from the response
-        setMessage(`An error occurred: ${error.response.data.message}`);
+        console.log(`An error occurred: ${error.response.data.message}`);
+        setMessage(error.response.data.message); // Set the error message in state
       } else {
-        console.error('Error resetting password:', error);
-        setMessage(error.response.data.error);
+        console.log(error);
+        setMessage(error.message); // Set the error message in state
       }
     }
   };
-   
-
+  
 
   return (
     <div className='ResetPassword'>
