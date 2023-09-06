@@ -10,7 +10,6 @@ const DashboardHeader = () => {
   const navigate = useNavigate();
   let user = JSON.parse(localStorage.getItem("User"));
   let username = user.fullName;
-  console.log(username);
   function logout() {
     Swal.fire({
       title: "Are you sure?",

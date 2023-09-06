@@ -192,7 +192,7 @@ const Login = () => {
       // user token is stored in localStorage using the setItem
       localStorage.setItem("User", JSON.stringify({ token, fullName, email }));
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      console.log("Token stored:", token);
+      // console.log("Token stored:", token);
       
       Swal.fire({
         text: `Welcome, ${fullName}!`,

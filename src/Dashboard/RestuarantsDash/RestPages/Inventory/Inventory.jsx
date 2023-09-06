@@ -15,7 +15,6 @@ function Inventory() {
         setLoading(true);
         const data = await getMenu(token); // Use 'data' instead of 'res.data'
         setdataSource(data.slice(0,8)); // Update state with fetched data
-        console.log(data);
         setLoading(false);
       } catch (error) {
         setLoading(false);

@@ -147,8 +147,9 @@ const Menu = () => {
               <NavLink
                 style={{ textDecoration: "none" }}
                 // we are sending  the id which is the category id {id} to the meals,proteins and drinks page
-                to={`${i.path}`}
                 key={i._id}
+                to={`${i.path}`}
+             
                 className={({ isActive }) => (isActive ? "active" : "active2")}
                
               >

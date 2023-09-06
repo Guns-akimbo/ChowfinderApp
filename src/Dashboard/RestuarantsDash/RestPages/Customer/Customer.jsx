@@ -14,14 +14,11 @@ function Customer() {
         setLoading(true);
         const data = await restaurantOrder(token); // Use 'data' instead of 'res.data'
         setdataSource(data.slice(0, 8)); // Update state with fetched data
-        console.log(data);
-        console.log(token);
         setLoading(false);
       } catch (error) {
         setLoading(false);
       }
     };
-
     fetchData();
   }, [token]);
 
