@@ -11,9 +11,10 @@ function RestResetPassword() {
   const [backendError, setBackendError] = useState(null); // State to hold backend error
 
   const handleResetPassword = async () => {
-    setIsLoading(true); // Start loading
+   ; // Start loading
 
     try {
+      setIsLoading(true)
       const response = await axios.put(
         `https://Chowfinder.onrender.com/api/rest/reset-password/${token}`,
         {
@@ -31,7 +32,7 @@ function RestResetPassword() {
         setBackendError(`Backend Error: ${error.response.data.message}`);
       } else {
         // Frontend or network error
-        console.error('Error resetting password:', error);
+        // console.error('Error resetting password:', error);
         setMessage('An error occurred. Please try again later.');
       }
     }

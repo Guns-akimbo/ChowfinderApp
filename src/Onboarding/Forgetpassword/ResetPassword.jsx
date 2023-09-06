@@ -1,32 +1,13 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function ResetPassword() {
   const { token } = useParams();
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
+  const Navigate =useNavigate()
 
-  // const handleResetPassword = async () => {
-  //   try {
-  //     await axios.post(
-  //       `https://chowfinder.onrender.com/api/users/reset-password/${token}`,
-  //       {
-  //         newPassword,
-  //       }
-  //     );
-  //     setMessage(response?.data?.message);
-  //     console.log(response?.data)
-  //   } catch (error) {
-  //     if (error.response && error.response.data && error.response.data.message) {
-  //       // Extract and set the error message from the response
-  //       console.log(`An error occurred: ${error.response.data.message}`);
-  //     } else {
-  //       console.log(error);
-  //       setMessage(error.response.data.error);
-  //     }
-  //   }
-  // };
   const handleResetPassword = async () => {
     try {
       const response = await axios.post(
@@ -36,14 +17,15 @@ function ResetPassword() {
         }
       ); 
       setMessage(response?.data?.message);
-      console.log(response.data); // Corrected 'data' to 'response.data'
+      // console.log(response.data);
+      Navigate("/login");
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         // Extract and set the error message from the response
-        console.log(`An error occurred: ${error.response.data.message}`);
+        // console.log(`An error occurred: ${error.response.data.message}`);
         setMessage(error.response.data.message); // Set the error message in state
       } else {
-        console.log(error);
+        // console.log(error);
         setMessage(error.message); // Set the error message in state
       }
     }
